@@ -63,6 +63,180 @@
 			letter-spacing: 1px;
 		}
 
+		/* ========== PRELOADER ELEGANTE ========== */
+		.kf-preloader {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background: linear-gradient(135deg, var(--neutral-light) 0%, rgba(250, 221, 163, 0.9) 42%, rgba(201, 137, 39, 0.12) 100%);
+			backdrop-filter: blur(6px);
+			z-index: 99999;
+			opacity: 1;
+			visibility: visible;
+			transition: opacity 0.8s ease, visibility 0.8s ease;
+		}
+
+		.kf-preloader.kf-preloader-hidden {
+			opacity: 0;
+			visibility: hidden;
+			pointer-events: none;
+		}
+
+		.kf-preloader-container {
+			position: relative;
+			width: clamp(160px, 28vw, 240px);
+			height: clamp(160px, 28vw, 240px);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.kf-preloader-glow {
+			position: absolute;
+			width: 125%;
+			height: 125%;
+			border-radius: 50%;
+			background: radial-gradient(circle, rgba(201, 137, 39, 0.42) 0%, rgba(201, 137, 39, 0.12) 45%, transparent 70%);
+			filter: blur(18px);
+			animation: kf-glow-pulse 2.8s ease-in-out infinite;
+		}
+
+		@keyframes kf-glow-pulse {
+			0%, 100% {
+				transform: scale(1);
+				opacity: 0.55;
+			}
+			50% {
+				transform: scale(1.18);
+				opacity: 0.9;
+			}
+		}
+
+		.kf-preloader-logo {
+			position: relative;
+			width: 78%;
+			height: 78%;
+			z-index: 2;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.kf-svg-logo {
+			width: 100%;
+			height: 100%;
+			transform-origin: 50% 50%;
+			filter: drop-shadow(0 12px 26px rgba(147, 66, 24, 0.32));
+		}
+
+		.kf-orbit {
+			fill: none;
+			stroke: rgba(201, 137, 39, 0.44);
+			transform-origin: 512px 512px;
+		}
+
+		.kf-orbit-1 {
+			stroke-width: 18;
+			animation: kf-rotate-cw 9s linear infinite;
+		}
+
+		.kf-orbit-2 {
+			stroke: rgba(250, 221, 163, 0.85);
+			stroke-width: 12;
+			animation: kf-rotate-ccw 6.2s linear infinite;
+		}
+
+		@keyframes kf-rotate-cw {
+			from {
+				transform: rotate(0deg);
+			}
+			to {
+				transform: rotate(360deg);
+			}
+		}
+
+		@keyframes kf-rotate-ccw {
+			from {
+				transform: rotate(0deg);
+			}
+			to {
+				transform: rotate(-360deg);
+			}
+		}
+
+		.kf-pretzel {
+			transform-origin: 512px 512px;
+			animation: kf-pretzel-breathe 3.6s ease-in-out infinite;
+		}
+
+		@keyframes kf-pretzel-breathe {
+			0%, 100% {
+				transform: scale(0.97) rotate(-2deg);
+			}
+			50% {
+				transform: scale(1.03) rotate(2deg);
+			}
+		}
+
+		.kf-particle {
+			fill: var(--brand-secondary);
+			opacity: 0.75;
+			transform-origin: 512px 512px;
+			animation: kf-particle-twinkle 2.6s ease-in-out infinite;
+		}
+
+		.kf-particle-2 {
+			animation-delay: 0.4s;
+			fill: var(--brand-primary);
+		}
+
+		.kf-particle-3 {
+			animation-delay: 0.8s;
+			fill: var(--brand-accent);
+		}
+
+		.kf-particle-4 {
+			animation-delay: 1.2s;
+			fill: var(--brand-accent-dark);
+		}
+
+		@keyframes kf-particle-twinkle {
+			0%, 100% {
+				opacity: 0.4;
+				transform: scale(0.85);
+			}
+			50% {
+				opacity: 0.95;
+				transform: scale(1.25);
+			}
+		}
+
+		.kf-preloader-text {
+			position: absolute;
+			bottom: -52px;
+			width: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-family: 'Merienda', Georgia, serif;
+			font-size: clamp(1.1rem, 2.3vw, 1.8rem);
+			color: var(--brand-accent);
+			font-weight: 600;
+			letter-spacing: 2px;
+		}
+
+		.kf-preloader-percent {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			min-width: 3ch;
+		}
+
 		/* ========== HEADER & NAVIGATION ========== */
 		.kf-topline {
 			background-color: var(--neutral-light) !important;
@@ -70,8 +244,8 @@
 		}
 
 		.kf-navbar {
-			background-color: #FFFFFF !important;
-			border-bottom: 2px solid var(--brand-secondary);
+			background-color: var(--brand-secondary) !important;
+			border-bottom: 2px solid var(--brand-primary);
 		}
 
 		.kf-main-menu ul li > a {
@@ -161,7 +335,7 @@
 			justify-content: center;
 			width: 40px;
 			height: 40px;
-			 margin: 0 20px 0 20px;
+			margin: 0 20px;
 			border: 2px solid var(--brand-primary);
 			border-radius: 10px;
 			background: rgba(250, 221, 163, 0.6);
@@ -245,50 +419,68 @@
 			 top: 0 !important;
 		}
 
-		/* Mobile Menu Container */
+		/* Mobile navigation overlay */
 		.kf-navbar-mobile {
-			background: linear-gradient(135deg, rgba(250, 221, 163, 0.96) 0%, rgba(250, 221, 163, 0.92) 100%);
-			backdrop-filter: blur(15px);
-			-webkit-backdrop-filter: blur(15px);
-			box-shadow: inset 0 1px 4px rgba(255, 255, 255, 0.5), 0 25px 50px rgba(31, 27, 17, 0.15);
-			border-top: none;
-			/* leave comfortable space for fixed header */
-			padding: 110px 0 24px 0;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: flex-start;
+			padding: 110px 18px 48px;
+			background: radial-gradient(circle at top, rgba(250, 221, 163, 0.9) 0%, rgba(250, 221, 163, 0.75) 45%, rgba(250, 221, 163, 0.6) 100%);
+			backdrop-filter: blur(14px);
+			transition: opacity 0.3s ease, transform 0.35s ease;
+			opacity: 0;
+			visibility: hidden;
+			pointer-events: none;
+			transform: translateY(-24px);
 			overflow-y: auto;
-			overflow-x: hidden;
+			-webkit-overflow-scrolling: touch;
+			z-index: 95;
 		}
 
-		/* Transición suave al abrir/cerrar menú */
+		.kf-navbar-mobile:before {
+			display: none !important;
+		}
+
+		.kf-header.opened .kf-navbar-mobile,
+		.kf-header.show .kf-navbar-mobile,
 		.kf-header.animated .kf-navbar-mobile {
-			animation: slideDown 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+			opacity: 1;
+			visibility: visible;
+			pointer-events: auto;
+			transform: translateY(0);
 		}
 
-		@keyframes slideDown {
-			from {
-				opacity: 0;
-				transform: translateY(-20px);
-			}
-			to {
-				opacity: 1;
-				transform: translateY(0);
-			}
+		.kf-mobile-panel {
+			width: 100%;
+			max-width: 420px;
+			background: rgba(255, 255, 255, 0.98);
+			border-radius: 18px;
+			border: 1px solid rgba(201, 137, 39, 0.28);
+			box-shadow: 0 22px 36px rgba(31, 27, 17, 0.22);
+			overflow: hidden;
+			display: flex;
+			flex-direction: column;
+			gap: 0;
 		}
 
 		.kf-navbar-mobile .kf-main-menu {
 			margin: 0;
-			padding: 12px 16px;
+			padding: 12px 0;
 			background: transparent;
 			border-radius: 0;
 			box-shadow: none;
-			overflow: hidden;
-			border: none;
-			border-bottom: 2px solid rgba(147, 66, 24, 0.15);
+			border: 0;
 		}
 
 		.kf-navbar-mobile .kf-main-menu ul {
 			list-style: none;
 			margin: 0;
-			padding: 0;
+			padding: 12px 0;
 		}
 
 		.kf-navbar-mobile .kf-main-menu ul li {
@@ -297,42 +489,26 @@
 		}
 
 		.kf-navbar-mobile .kf-main-menu ul li + li {
-			border-top: 1px solid rgba(201, 137, 39, 0.1);
+			border-top: 1px solid rgba(147, 66, 24, 0.12);
 		}
 
 		.kf-navbar-mobile .kf-main-menu ul li a {
 			display: block;
 			color: var(--text-dark) !important;
 			font-weight: 600;
-			font-size: 0.95rem;
-			padding: 14px 16px;
-			transition: all 0.25s ease;
+			font-size: 1.0rem;
+			padding: 12px 20px;
+			transition: all 0.3s ease;
 			text-decoration: none;
-			letter-spacing: 0.2px;
-			position: relative;
-		}
-
-		.kf-navbar-mobile .kf-main-menu ul li a:before {
-			content: '';
-			position: absolute;
-			left: 16px;
-			bottom: 0;
-			width: 0;
-			height: 3px;
-			background: var(--brand-primary);
-			transition: width 0.25s ease;
+			letter-spacing: 0.3px;
 		}
 
 		.kf-navbar-mobile .kf-main-menu ul li a:hover,
 		.kf-navbar-mobile .kf-main-menu ul li a:focus {
-			background: rgba(201, 137, 39, 0.08);
+			background: rgba(201, 137, 39, 0.12);
 			color: var(--brand-primary) !important;
+			padding-left: 26px;
 			font-weight: 700;
-		}
-
-		.kf-navbar-mobile .kf-main-menu ul li a:hover:before,
-		.kf-navbar-mobile .kf-main-menu ul li a:focus:before {
-			width: calc(100% - 32px);
 		}
 
 		.kf-navbar-mobile .kf-main-menu ul li:first-child a {
@@ -344,85 +520,161 @@
 		}
 
 		.kf-navbar-mobile .kf-topline {
-			border-top: none;
-			border-bottom: 2px solid rgba(147, 66, 24, 0.15);
-			padding: 16px;
-			margin: 0;
-			background: transparent;
+			padding: 22px 20px 24px;
+			background: rgba(255, 255, 255, 0.96);
+			border-top: 1px solid rgba(201, 137, 39, 0.2);
+			display: flex;
+			flex-direction: column;
+			gap: 18px;
 		}
 
 		/* Mobile menu topline actions styling */
 		.kf-navbar-mobile .kf-header-actions {
 			display: flex !important;
-			flex-direction: row;
+			flex-wrap: wrap;
 			align-items: center;
 			justify-content: center;
 			gap: 12px;
-			margin-bottom: 14px;
-			order: 1;
+			margin-bottom: 8px;
 		}
 
 		.kf-navbar-mobile .kf-user-icon,
 		.kf-navbar-mobile .kf-lang-icon {
-			width: 40px;
-			height: 40px;
+			width: 38px;
+			height: 38px;
 			border-radius: 50%;
 			border: 2px solid var(--brand-primary);
-			background: rgba(255, 255, 255, 0.9);
+			background: white;
 			display: flex;
 			align-items: center;
 			justify-content: center;
 			cursor: pointer;
-			transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-			box-shadow: 0 4px 12px rgba(201, 137, 39, 0.15);
+			transition: all 0.3s ease;
 		}
 
 		.kf-navbar-mobile .kf-user-icon i,
 		.kf-navbar-mobile .kf-lang-icon i {
 			color: var(--brand-primary);
-			font-size: 1.05rem;
-			transition: all 0.3s ease;
+			font-size: 1rem;
 		}
 
 		.kf-navbar-mobile .kf-user-icon:hover,
 		.kf-navbar-mobile .kf-lang-icon:hover {
 			border-color: var(--brand-accent);
 			background: var(--brand-secondary);
-			transform: translateY(-3px) scale(1.05);
-			box-shadow: 0 8px 20px rgba(201, 137, 39, 0.25);
+			transform: scale(1.08);
 		}
 
 		.kf-navbar-mobile .kf-user-icon:hover i,
 		.kf-navbar-mobile .kf-lang-icon:hover i {
 			color: var(--brand-accent);
-			transform: scale(1.1);
+		}
+
+		.kf-navbar-mobile .kf-topline .row {
+			display: flex;
+			flex-direction: column;
+			gap: 14px;
+			margin: 0;
+		}
+
+		.kf-navbar-mobile .kf-topline .row > div {
+			width: 100% !important;
+			padding: 0;
+		}
+
+		.kf-navbar-mobile .kf-h-group {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+			padding: 14px 16px;
+			border-radius: 14px;
+			background: rgba(250, 221, 163, 0.28);
+			border: 1px solid rgba(201, 137, 39, 0.24);
+			color: var(--text-dark);
+			font-weight: 500;
+			justify-content: flex-start;
+		}
+
+		.kf-navbar-mobile .kf-h-group i {
+			width: 38px;
+			height: 38px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			border-radius: 50%;
+			background: var(--brand-primary);
+			color: var(--text-light);
+			font-size: 1rem;
+			box-shadow: 0 6px 18px rgba(201, 137, 39, 0.35);
+		}
+
+		.kf-navbar-mobile .kf-h-group em {
+			font-style: normal;
+			font-weight: 600;
+			color: var(--brand-accent);
+		}
+
+		.kf-navbar-mobile .kf-h-social {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			gap: 16px;
+			padding: 8px 0 4px;
+		}
+
+		.kf-navbar-mobile .kf-h-social a {
+			width: 38px;
+			height: 38px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			border-radius: 50%;
+			border: 1px solid rgba(201, 137, 39, 0.22);
+			background: rgba(250, 221, 163, 0.32);
+			transition: all 0.3s ease;
+		}
+
+		.kf-navbar-mobile .kf-h-social a i {
+			color: var(--brand-accent);
+			font-size: 0.95rem;
+		}
+
+		.kf-navbar-mobile .kf-h-social a:hover {
+			background: var(--brand-primary);
+			border-color: var(--brand-primary);
+			transform: translateY(-2px);
+		}
+
+		.kf-navbar-mobile .kf-h-social a:hover i {
+			color: var(--text-light);
 		}
 
 		/* Mobile menu button styling */
 		.kf-navbar-mobile .kf-btn.h-btn {
-			padding: 11px 20px;
+			padding: 10px 18px;
 			height: auto;
-			line-height: 1.3;
-			font-size: 0.9rem;
-			width: auto;
-			margin: 0;
+			line-height: 1.4;
+			font-size: 0.95rem;
+			width: 100%;
+			margin: 0 0 12px 0;
 			background: var(--brand-primary) !important;
 			border: 2px solid var(--brand-primary) !important;
 			color: white !important;
-			border-radius: 6px;
-			transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-			font-weight: 700;
+			border-radius: 8px;
+			transition: all 0.3s ease;
 		}
 
 		.kf-navbar-mobile .kf-btn.h-btn:hover {
 			background: white !important;
 			color: var(--brand-primary) !important;
-			transform: translateY(-2px);
-			box-shadow: 0 8px 16px rgba(201, 137, 39, 0.3);
 		}
 
 		.kf-navbar-mobile .kf-btn.h-btn span {
 			display: inline;
+		}
+
+		.kf-navbar-mobile .kf-btn.h-btn i {
+			margin-left: 10px;
 		}
 
 		/* ========== BUTTONS ========== */
@@ -458,19 +710,136 @@
 		}
 
 		/* ========== SLIDER & HERO ========== */
+		.kf-started-slider {
+			overflow: hidden;
+		}
+
+		.kf-started-slider .swiper-container {
+			width: 100%;
+			height: auto;
+		}
+
+		.kf-started-item {
+			position: relative;
+			min-height: 600px;
+			display: flex;
+			align-items: center;
+			justify-content: flex-start;
+		}
+
+		.kf-started-item .slide {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+			z-index: 1;
+		}
+
+		.kf-started-item .slide::after {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(31, 27, 17, 0.45);
+			z-index: 2;
+		}
+
+		.kf-started-item .container {
+			position: relative;
+			z-index: 3;
+		}
+
+		.kf-started-item .description {
+			color: var(--text-light);
+			padding: 40px;
+		}
+
 		.kf-started-slider .description {
 			background: rgba(31, 27, 17, 0.85);
 			padding: 40px;
 			border-left: 5px solid var(--brand-primary);
+			max-width: 600px;
 		}
 
 		.kf-started-item .subtitles {
 			color: var(--brand-secondary);
 			font-weight: 600;
+			font-size: 1rem;
+			margin-bottom: 15px;
 		}
 
 		.kf-started-item .name {
 			color: var(--text-light);
+			font-size: 2.5rem;
+			font-weight: 700;
+			line-height: 1.2;
+			margin-bottom: 25px;
+		}
+
+		.kf-started-item .kf-bts {
+			display: flex;
+			gap: 15px;
+			flex-wrap: wrap;
+		}
+
+		/* Responsive styles for slider */
+		@media (max-width: 768px) {
+			.kf-started-item {
+				min-height: 400px;
+			}
+
+			.kf-started-item .description {
+				padding: 30px;
+				background: rgba(31, 27, 17, 0.9);
+			}
+
+			.kf-started-slider .description {
+				padding: 30px;
+				max-width: 100%;
+			}
+
+			.kf-started-item .name {
+				font-size: 1.8rem;
+			}
+
+			.kf-started-item .subtitles {
+				font-size: 0.9rem;
+			}
+
+			.kf-started-item .kf-bts {
+				flex-direction: column;
+			}
+
+			.kf-started-item .kf-bts a {
+				width: 100%;
+				text-align: center;
+			}
+		}
+
+		@media (min-width: 769px) and (max-width: 1024px) {
+			.kf-started-item {
+				min-height: 500px;
+			}
+
+			.kf-started-item .name {
+				font-size: 2rem;
+			}
+		}
+
+		@media (min-width: 1025px) {
+			.kf-started-item {
+				min-height: 600px;
+			}
+
+			.kf-started-item .name {
+				font-size: 2.8rem;
+			}
 		}
 
 		/* ========== SECTIONS & BACKGROUNDS ========== */
@@ -483,6 +852,42 @@
 		}
 
 		/* ========== CATEGORY SECTION ========== */
+		.section.kf-category {
+			position: relative;
+			overflow: hidden;
+		}
+
+		.section.kf-category .container {
+			position: relative;
+			z-index: 2;
+		}
+
+		.kf-category-ornament {
+			position: absolute;
+			top: -110px;
+			right: -90px;
+			width: clamp(260px, 26vw, 420px);
+			pointer-events: none;
+			z-index: 1;
+		}
+
+		.kf-category-ornament svg {
+			width: 100%;
+			height: auto;
+			color: rgba(201, 137, 39, 0.18);
+			filter: drop-shadow(0 22px 45px rgba(31, 27, 17, 0.18));
+			animation: kf-muffin-float 11s ease-in-out infinite;
+		}
+
+		@keyframes kf-muffin-float {
+			0%, 100% {
+				transform: translateY(0) rotate(0deg) scale(1);
+			}
+			50% {
+				transform: translateY(-20px) rotate(2.5deg) scale(1.04);
+			}
+		}
+
 		.kf-category-item .desc {
 			background: var(--brand-secondary);
 			padding: 15px;
@@ -501,6 +906,43 @@
 
 		.kf-category-item .image:hover {
 			border-color: var(--brand-primary);
+		}
+
+		@media (max-width: 1024px) {
+			.kf-category-ornament {
+				top: 45%;
+				right: auto;
+				left: 50%;
+				transform: translate(-50%, -55%);
+				width: min(420px, 90vw);
+				opacity: 0.16;
+				z-index: 0;
+			}
+
+			.kf-category-ornament svg {
+				animation-duration: 9s;
+			}
+
+			.section.kf-category .kf-category-items,
+			.section.kf-category .kf-category-item,
+			.section.kf-category .kf-title,
+			.section.kf-category .kf-text {
+				position: relative;
+				z-index: 3;
+			}
+		}
+
+		@media (max-width: 600px) {
+			.kf-category-ornament {
+				top: 50%;
+				transform: translate(-50%, -60%);
+				width: min(360px, 110vw);
+				opacity: 0.12;
+			}
+
+			.kf-category-ornament svg {
+				animation-duration: 7.5s;
+			}
 		}
 
 		/* ========== MENU ITEMS ========== */
@@ -884,22 +1326,7 @@
 		/* ========== SWIPER CONTROLS ========== */
 		.swiper-button-next,
 		.swiper-button-prev {
-			color: var(--brand-primary) !important;
-			background: rgba(250, 221, 163, 0.95) !important;
-			width: 50px !important;
-			height: 50px !important;
-			border-radius: 50%;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			transition: all 0.3s ease;
-		}
-
-		.swiper-button-next:hover,
-		.swiper-button-prev:hover {
-			background: var(--brand-accent) !important;
-			color: var(--text-light) !important;
-			transform: scale(1.1);
+			display: none !important;
 		}
 
 		.swiper-pagination-bullet {
@@ -908,6 +1335,71 @@
 
 		.swiper-pagination-bullet-active {
 			background: var(--brand-primary) !important;
+		}
+
+		/* ========== LOGO RESPONSIVE STYLES ========== */
+		.kf-logo {
+			display: flex;
+			align-items: center;
+			justify-content: flex-start;
+			padding-left: 20px;
+		}
+
+		.kf-logo a {
+			display: block;
+			transition: transform 0.3s ease;
+		}
+
+		.kf-logo a:hover {
+			transform: scale(1.05);
+		}
+
+		.kf-logo img {
+			height: auto;
+			width: auto;
+			max-width: 100%;
+			object-fit: contain;
+			transition: all 0.3s ease;
+		}
+
+		/* Desktop styles (1025px+) */
+		@media (min-width: 1025px) {
+			.kf-logo img {
+				max-height: 60px;
+				max-width: 180px;
+			}
+		}
+
+		/* Tablet landscape (769px - 1024px) */
+		@media (min-width: 769px) and (max-width: 1024px) {
+			.kf-logo img {
+				max-height: 50px;
+				max-width: 150px;
+			}
+		}
+
+		/* Tablet portrait (601px - 768px) */
+		@media (min-width: 601px) and (max-width: 768px) {
+			.kf-logo img {
+				max-height: 45px;
+				max-width: 135px;
+			}
+		}
+
+		/* Mobile landscape (481px - 600px) */
+		@media (min-width: 481px) and (max-width: 600px) {
+			.kf-logo img {
+				max-height: 40px;
+				max-width: 120px;
+			}
+		}
+
+		/* Mobile portrait (320px - 480px) */
+		@media (max-width: 480px) {
+			.kf-logo img {
+				max-height: 35px;
+				max-width: 105px;
+			}
 		}
 
 		/* ========== RESPONSIVE ADJUSTMENTS ========== */
@@ -923,45 +1415,50 @@
 			justify-content: flex-end;
 		}
 
-		/* Hide desktop menu on mobile - Breakpoint 768px */
-		@media (max-width: 768px) {
+		/* Desktop menu visibility */
+		@media (min-width: 1025px) {
 			.kf-navbar .kf-main-menu {
-				display: none;
+				display: block !important;
 			}
 
 			.kf-navbar .kf-header-actions {
-				display: none !important;
+				display: flex !important;
+				align-items: center;
+				gap: 18px;
 			}
 
-			.kf-topline .kf-h-group,
-			.kf-topline .kf-h-social {
-				font-size: 0.85rem;
-			}
-		}
-
-		@media (min-width: 769px) {
-			.kf-menu-btn {
-				display: none !important;
-			}
-
+			.kf-menu-btn,
 			.kf-navbar-mobile {
 				display: none !important;
 			}
 		}
 
-		/* Tablet styles (768px+) */
-		@media (min-width: 768px) and (max-width: 1024px) {
-			.kf-topline .col-md-4 {
-				flex: 0 0 33.333333%;
+		/* Tablet & mobile (hamburger active) */
+		@media (max-width: 1024px) {
+			.kf-navbar .kf-main-menu,
+			.kf-navbar .kf-header-actions {
+				display: none !important;
 			}
 
-			.kf-h-group {
-				font-size: 0.9rem;
+			.kf-menu-btn {
+				display: inline-flex !important;
+			}
+
+			.kf-navbar-mobile {
+				display: flex;
+			}
+
+			.kf-topline {
+				padding: 10px 0;
+			}
+
+			.kf-navbar-mobile .kf-h-group {
+				font-size: 0.95rem;
 			}
 		}
 
-		/* Desktop styles (1024px+) */
-		@media (min-width: 1024px) {
+		/* Desktop styles (1025px+) */
+		@media (min-width: 1025px) {
 			.kf-menu-btn {
 				display: none;
 			}
@@ -1010,16 +1507,20 @@
 <body>
 	<div class="bg">
 
-		<!-- Preloader -->
-		<div class="preloader">
-			<div class="centrize full-width">
-				<div class="vertical-center">
-					<div class="spinner-logo">
-						<img src="images/logo.png" alt="" />
-						<div class="spinner-dot">
-							<div class="spinner-line"></div>
-						</div>
-					</div>
+		<!-- Preloader Elegante con Pretzel Animado -->
+		<div class="kf-preloader">
+			<div class="kf-preloader-container">
+				<div class="kf-preloader-glow"></div>
+				<div class="kf-preloader-logo">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" class="kf-svg-logo" role="img" aria-label="Cargando Dulce Berlin">
+						<title>Cargando Dulce Berlin</title>
+						<circle class="kf-orbit kf-orbit-1" cx="512" cy="512" r="440"></circle>
+						<circle class="kf-orbit kf-orbit-2" cx="512" cy="512" r="320"></circle>
+						<g class="kf-pretzel">
+							<path d="M207.168 832a57.792 57.792 0 0 1-55.68-43.392c-8.064-31.061333 10.282667-62.848 41.024-71.04 1.194667-0.362667 26.24-7.509333 61.909333-21.482667C159.872 622.997333 128.597333 514.624 128 444.672 130.282667 258.986667 279.978667 192 379.989333 192c40.554667 0 89.109333 11.050667 132.565334 36.288C548.117333 206.016 593.045333 192 648.789333 192c72.576 0 131.605333 22.72 175.466667 67.584 71.04 72.661333 71.872 173.973333 71.744 185.301333 0.042667 4.010667 0.042667 129.194667-93.717333 224.746667-10.090667 10.218667-20.821333 19.797333-32.149334 28.522667 20.181333 6.805333 41.941333 13.290667 65.386667 19.221333 30.869333 7.786667 49.642667 39.36 41.92 70.549333-7.701333 31.168-39.04 50.218667-69.824 42.282667-72.874667-18.389333-132.757333-41.536-181.994667-67.392-34.261333 7.274667-71.381333 10.944-111.210666 10.944-45.098667 0-85.312-4.693333-121.088-13.184-85.994667 46.186667-164.224 67.584-171.456 69.482667-4.906667 1.258667-9.856 1.941333-14.698667 1.941333z" fill="#FF9800"></path>
+							<path d="M821.632 832c-4.629333 0-9.344-0.618667-13.994667-1.792-406.677333-102.677333-409.834667-354.346667-408.426666-387.605333C399.872 341.226667 466.602667 192 648.789333 192c31.786667 0 57.6 26.090667 57.6 58.24 0 32.085333-25.813333 58.176-57.6 58.176-130.624 0-134.378667 121.834667-134.378666 135.744 0 1.557333-0.064 3.136-0.213334 4.778667-0.298667 6.634667-5.248 185.962667 321.344 268.437333 30.869333 7.786667 49.642667 39.36 41.92 70.549333A57.749333 57.749333 0 0 1 821.632 832z" fill="#FF9800"></path>
+							<path d="M641.130667 637.290667c33.408 21.888 75.712 42.709333 129.088 60.778666a311.936 311.936 0 0 0 32.085333-28.437333c0.490667-0.512 0.874667-1.002667 1.301333-1.450667-49.578667-15.146667-89.450667-32.490667-121.408-50.730666-12.202667 7.381333-25.706667 14.186667-41.066666 19.84zM431.104 317.546667a3.413333 3.413333 0 0 0-0.384 0.789333c21.077333-40.277333 53.738667-76.885333 100.202667-100.181333a216.96 216.96 0 0 0-18.368 10.154666 263.061333 263.061333 0 0 0-40.469334-18.901333c-35.626667 27.434667-61.653333 62.528-79.530666 99.797333a163.925333 163.925333 0 0 1 38.549333 8.341334zM254.4 696.085333c35.392-13.909333 81.152-34.538667 124.437333-61.866666a237.802667 237.802667 0 0 1-40.213333-21.034667c-42.816 24.448-86.677333 42.538667-117.056 53.738667 10.005333 10.133333 20.928 19.925333 32.832 29.162666zM538.730667 706.538667c28.864-25.664 55.232-54.741333 76.522666-87.530667a339.52 339.52 0 0 1-29.290666-25.194667c1.621333-2.624 3.114667-5.376 4.672-8.042666-49.045333 84.181333-136.234667 144-213.696 183.317333a1107.2 1107.2 0 0 0 16.405333-8.533333 484.48 484.48 0 0 0 58.986667 9.962666c40.384 2.858667 59.690667 6.144 111.936 1.066667a492.8 492.8 0 0 0 61.397333-8.768c6.208 3.242667 12.629333 6.442667 19.2 9.642667-42.282667-20.373333-77.162667-42.752-106.133333-65.92zM614.997333 353.173333a233.258667 233.258667 0 0 0-16.064-37.632c1.045333-0.341333 2.304-0.448 3.392-0.768l-1.130666-2.432c-3.456 1.578667-85.098667 39.850667-104.448 135.168-11.925333 58.666667-61.354667 95.808-75.754667 105.536 4.757333 11.904 10.176 24.149333 17.216 36.906667-0.277333 0.256-0.576 0.448-0.853333 0.682667l1.088 1.877333c3.349333-1.962667 82.282667-48.96 100.096-136.512 12.992-63.829333 61.973333-94.912 76.458666-102.826667z" fill="#D66100"></path>
+							<path d="M214.464 490.709333A21.333333 21.333333 0 1 1 212.074667 533.333333C200.32 532.672 170.666667 509.653333 170.666667 509.653333s32-19.605333 43.797333-18.944zM853.333333 426.666667a21.333333 21.333333 0 1 1-42.666666 0c0-11.797333 21.333333-42.666667 21.333333-42.666667s21.333333 30.869333 21.333333 42.666667zM274.944 282.368a21.333333 21.333333 0 0 1-37.866667-19.626667c5.418667-10.474667 38.570667-28.074667 38.570667-28.074666s4.736 37.248-0.704 47.701333zM669.824 267.626667a21.333333 21.333333 0 0 1-31.424-28.864c7.957333-8.661333 44.586667-16.981333 44.586667-16.981334s-5.205333 37.162667-13.162667 45.845334zM799.338667 287.658667a21.269333 21.269333 0 0 1 21.973333 20.672c0.384 11.776-8.853333 21.632-20.650667 21.994666s-43.328-19.989333-43.328-19.989333 30.208-22.293333 42.005334-22.677333zM468.650667 362.666667a21.312 21.312 0 0 1 21.994666 20.672A21.333333 21.333333 0 0 1 469.994667 405.333333c-11.797333 0.362667-43.328-19.989333-43.328-19.989333s30.208-22.293333 41.984-22.677333zM426.709333 446.250667a21.333333 21.333333 0 1 1 42.496 3.84c-1.066667 11.733333-25.088 40.576-25.088 40.576s-18.474667-32.682667-17.408-44.416zM340.672 234.666667a21.312 21.312 0 0 1 21.994667 20.672A21.333333 21.333333 0 0 1 342.016 277.333333c-11.776 0.362667-43.306667-20.010667-43.306667-20.010666s30.186667-22.272 41.962667-22.656zM816.170667 575.509333a21.333333 21.333333 0 1 1-9.066667-41.664c11.52-2.517333 46.229333 11.733333 46.229333 11.733334s-25.621333 27.413333-37.162666 29.930666zM537.877333 319.509333a21.312 21.312 0 1 1-9.066666-41.664c11.52-2.496 46.250667 11.754667 46.250666 11.754667s-25.642667 27.392-37.184 29.909333zM197.504 383.296a21.312 21.312 0 1 1-9.066667-41.664c11.52-2.496 46.229333 11.733333 46.229334 11.733333s-25.621333 27.434667-37.162667 29.930667zM725.312 255.125333A21.376 21.376 0 0 1 704.896 277.333333 21.376 21.376 0 0 1 682.666667 256.917333c-0.469333-11.818667 19.541333-43.541333 19.541333-43.541333s22.613333 29.930667 23.104 41.749333z" fill="#FFF9C4"></path>
 				</div>
 			</div>
 		</div>
@@ -1069,7 +1570,7 @@
 
 						<!-- logo -->
 						<div class="kf-logo">
-							<a href="index.html"><img src="images/logo.png" alt="" /></a>
+							<a href="index.html"><img src="assets/images/dulce-berlin.png" alt="Dulce Berlin Logo" /></a>
 						</div>
 
 					</div>
@@ -1119,72 +1620,74 @@
 
 			<!-- mobile navbar -->
 			<div class="kf-navbar-mobile">
+				<div class="kf-mobile-panel">
 
-				<!-- mobile menu -->
-				<div class="kf-main-menu">
-					<ul>
-						<li><a href="index.html">Inicio</a></li>
-						<li><a href="about.html">Nuestra Historia</a></li>
-						<li><a href="menu-restaurant.html">Menú</a></li>
-						<li><a href="faq.html">Preguntas Frecuentes</a></li>
-						<li><a href="contacts.html">Contacto</a></li>
-					</ul>
-				</div>
+					<!-- mobile menu -->
+					<div class="kf-main-menu">
+						<ul>
+							<li><a href="index.html">Inicio</a></li>
+							<li><a href="about.html">Nuestra Historia</a></li>
+							<li><a href="menu-restaurant.html">Menú</a></li>
+							<li><a href="faq.html">Preguntas Frecuentes</a></li>
+							<li><a href="contacts.html">Contacto</a></li>
+						</ul>
+					</div>
 
-				<!-- mobile topline -->
-				<div class="kf-topline">
-					<div class="row">
-						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<!-- mobile topline -->
+					<div class="kf-topline">
+						<div class="row">
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
-							<!-- mobile actions -->
-							<div class="kf-header-actions">
-								<div class="kf-user-icon" title="Iniciar Sesión">
-									<i class="far fa-user"></i>
+								<!-- mobile actions -->
+								<div class="kf-header-actions">
+									<div class="kf-user-icon" title="Iniciar Sesión">
+										<i class="far fa-user"></i>
+									</div>
+									<div class="kf-lang-icon" title="Cambiar Idioma">
+										<i class="fas fa-globe"></i>
+									</div>
 								</div>
-								<div class="kf-lang-icon" title="Cambiar Idioma">
-									<i class="fas fa-globe"></i>
+
+								<!-- mobile btn -->
+								<a href="reservation.html" class="kf-btn h-btn">
+									<span>Reservar Mesa</span>
+									<i class="fas fa-calendar-check"></i>
+								</a>
+
+							</div>
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+								<!-- social -->
+								<div class="kf-h-social">
+									<a href="facebook.html" target="blank"><i class="fab fa-facebook-f"></i></a>
+									<a href="twitter.html" target="blank"><i class="fab fa-twitter"></i></a>
+									<a href="instagram.html" target="blank"><i class="fab fa-instagram"></i></a>
+									<a href="youtube.html" target="blank"><i class="fab fa-youtube"></i></a>
 								</div>
+
 							</div>
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
-							<!-- mobile btn -->
-							<a href="reservation.html" class="kf-btn h-btn">
-								<span>Reservar Mesa</span>
-								<i class="fas fa-calendar-check"></i>
-							</a>
+								<!-- hours -->
+								<div class="kf-h-group">
+									<i class="far fa-clock"></i>
+									<em>Horario:</em> 08:00 am - 09:00 pm
+								</div>
 
-						</div>
-						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-
-							<!-- social -->
-							<div class="kf-h-social">
-								<a href="facebook.html" target="blank"><i class="fab fa-facebook-f"></i></a>
-								<a href="twitter.html" target="blank"><i class="fab fa-twitter"></i></a>
-								<a href="instagram.html" target="blank"><i class="fab fa-instagram"></i></a>
-								<a href="youtube.html" target="blank"><i class="fab fa-youtube"></i></a>
 							</div>
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
-						</div>
-						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+								<!-- location -->
+								<div class="kf-h-group">
+									<i class="fas fa-map-marker-alt"></i>
+									<em>Ubicación:</em> 55 main street, new york
+								</div>
 
-							<!-- hours -->
-							<div class="kf-h-group">
-								<i class="far fa-clock"></i>
-								<em>Horario:</em> 08:00 am - 09:00 pm
 							</div>
-
-						</div>
-						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-
-							<!-- location -->
-							<div class="kf-h-group">
-								<i class="fas fa-map-marker-alt"></i>
-								<em>Ubicación:</em> 55 main street, new york
-							</div>
-
 						</div>
 					</div>
-				</div>
 
+				</div>
 			</div>
 
 		</header>
@@ -1199,79 +1702,60 @@
 						<div class="swiper-slide">
 
 							<div class="kf-started-item">
-								<div class="slide js-parallax" style="background-image: url(images/started_img7.jpg);"></div>
+								<div class="slide js-parallax" style="background-image: url(assets/images/banner/mesa-compartir.jpg);"></div>
 								<div class="container">
 									<div class="description align-left element-anim-1">
 										<div class="subtitles">
-											Welcome to the Kaffen
+											Bienvenido a Dulce Berlin
 										</div>
-										<h2 class="name text-anim-1" data-splitting="chars">
-											Reserve Your <br>Table Today
-										</h2>
-										<div class="kf-bts">
-											<a href="menu-restaurant.html" class="kf-btn">
-												<span>explore more</span>
-												<i class="fas fa-chevron-right"></i>
-											</a>
-											<a href="reservation.html" class="kf-btn dark-btn">
-												<span>get delivery</span>
-												<i class="fas fa-chevron-right"></i>
-											</a>
-										</div>
-									</div>
+									<h2 class="name text-anim-1" data-splitting="chars">
+										Vive una Experiencia <br>Dulce y Especial
+									</h2>
 								</div>
 							</div>
-
-						</div>
+						</div>						</div>
 						<div class="swiper-slide">
 
 							<div class="kf-started-item">
-								<div class="slide js-parallax" style="background-image: url(images/started_img5.jpg);"></div>
+								<div class="slide js-parallax" style="background-image: url(assets/images/banner/pastel.jpg);"></div>
 								<div class="container">
 									<div class="description align-left element-anim-1">
 										<div class="subtitles">
-											Welcome to the Kaffen
+											Nuestros Postres
 										</div>
-										<h2 class="name text-anim-1" data-splitting="chars">
-											Explore The <br>Lobsters
-										</h2>
-										<div class="kf-bts">
-											<a href="menu-restaurant.html" class="kf-btn">
-												<span>explore more</span>
-												<i class="fas fa-chevron-right"></i>
-											</a>
-											<a href="reservation.html" class="kf-btn dark-btn">
-												<span>get delivery</span>
-												<i class="fas fa-chevron-right"></i>
-											</a>
-										</div>
-									</div>
+									<h2 class="name text-anim-1" data-splitting="chars">
+										Pasteles Artesanales <br>de Clase Mundial
+									</h2>
 								</div>
 							</div>
-
-						</div>
+						</div>						</div>
 						<div class="swiper-slide">
 
 							<div class="kf-started-item">
-								<div class="slide js-parallax" style="background-image: url(images/started_img6.jpg);"></div>
+								<div class="slide js-parallax" style="background-image: url(assets/images/banner/masas.jpg);"></div>
 								<div class="container">
 									<div class="description align-left element-anim-1">
 										<div class="subtitles">
-											Welcome to the Kaffen
+											Panadería Alemana
+										</div>
+									<h2 class="name text-anim-1" data-splitting="chars">
+										Masas Frescas y <br>Deliciosas
+									</H2>
+								</div>
+							</div>
+						</div>						</div>
+						<div class="swiper-slide">
+
+							<div class="kf-started-item">
+								<div class="slide js-parallax" style="background-image: url(assets/images/banner/postres.jpg);"></div>
+								<div class="container">
+									<div class="description align-left element-anim-1">
+										<div class="subtitles">
+											Especialidad de Casa
 										</div>
 										<h2 class="name text-anim-1" data-splitting="chars">
-											Premium <br>Meat Kaffen
+											Postres Alemanes <br>Tradicionales
 										</h2>
-										<div class="kf-bts">
-											<a href="menu-restaurant.html" class="kf-btn">
-												<span>explore more</span>
-												<i class="fas fa-chevron-right"></i>
-											</a>
-											<a href="reservation.html" class="kf-btn dark-btn">
-												<span>get delivery</span>
-												<i class="fas fa-chevron-right"></i>
-											</a>
-										</div>
 									</div>
 								</div>
 							</div>
@@ -1286,7 +1770,17 @@
 			</section>
 
 			<!-- Section Category -->
-			<section class="section kf-category" style="background-image: url(images/category_bg.jpg);">
+			<section class="section kf-category" style="background-color: #FEFCF8;">
+				<div class="kf-category-ornament" aria-hidden="true">
+					<svg class="kf-muffin-svg" viewBox="0 0 297 297" xmlns="http://www.w3.org/2000/svg" role="presentation">
+						<g>
+							<path fill="currentColor" stroke="currentColor" d="M148.5,212.002c-5.458,0-9.884,4.425-9.884,9.883v32.616c0,5.458,4.426,9.884,9.884,9.884c5.458,0,9.884-4.426,9.884-9.884 v-32.616C158.384,216.427,153.958,212.002,148.5,212.002z" />
+							<path fill="currentColor" stroke="currentColor" d="M104.922,220.55c-0.737-5.408-5.71-9.194-11.129-8.457c-5.408,0.737-9.194,5.72-8.457,11.128l4.448,32.616 c0.675,4.955,4.914,8.549,9.78,8.549c0.444,0,0.895-0.03,1.348-0.092c5.408-0.737,9.194-5.72,8.457-11.129L104.922,220.55z" />
+							<path fill="currentColor" stroke="currentColor" d="M203.207,212.093c-5.414-0.739-10.392,3.05-11.129,8.457l-4.447,32.615c-0.737,5.409,3.049,10.392,8.457,11.129 c0.453,0.062,0.903,0.092,1.348,0.092c4.866,0,9.105-3.595,9.78-8.549l4.448-32.616 C212.401,217.813,208.615,212.83,203.207,212.093z" />
+							<path fill="currentColor" stroke="currentColor" d="M289.359,156.654c0-30.362-15.107-62.087-41.448-87.04c-16.82-15.936-36.479-27.493-57.5-34.118 C187.061,15.383,169.548,0,148.5,0s-38.562,15.383-41.911,35.496c-21.021,6.625-40.68,18.183-57.5,34.118 c-26.342,24.953-41.448,56.678-41.448,87.04c0,18.932,12.597,35.007,29.942,40.486l7.808,63.71 C47.835,280.784,66.161,297,86.241,297h124.518c20.08,0,38.406-16.216,40.851-36.149l7.793-63.588 C276.733,191.898,289.359,175.725,289.359,156.654z M148.5,19.767c12.535,0,22.732,10.197,22.732,22.732 c0,12.535-10.197,22.732-22.732,22.732s-22.732-10.197-22.732-22.732C125.768,29.964,135.965,19.767,148.5,19.767z M231.989,258.445c-1.249,10.184-10.972,18.788-21.23,18.788H86.241c-10.259,0-19.981-8.604-21.23-18.788l-7.338-59.877 c10.252-1.711,19.274-7.102,25.654-14.768c7.897,9.375,19.791,15.353,33.07,15.353c13.01,0,24.664-5.946,32.419-15.281 c7.849,9.335,19.644,15.281,32.813,15.281c13.01,0,24.664-5.946,32.419-15.281c6.319,7.515,15.198,12.826,25.289,14.615 L231.989,258.445z M246.86,179.386c-12.676,0-22.989-10.197-22.989-22.731c0-5.459-4.425-9.884-9.883-9.884 c-5.458,0-9.884,4.425-9.884,9.884c0,12.534-10.082,22.731-22.476,22.731c-12.676,0-22.988-10.197-22.988-22.731 c0-5.459-4.426-9.884-9.884-9.884c-5.458,0-9.884,4.425-9.884,9.884c0,12.534-10.082,22.731-22.476,22.731 c-12.601,0-23.245-10.409-23.245-22.731c0-5.459-4.426-9.884-9.884-9.884c-5.458,0-9.884,4.425-9.884,9.884 c0,12.534-10.197,22.731-22.731,22.731c-12.601,0-23.246-10.409-23.246-22.731c0-24.592,13.188-51.766,35.276-72.689 c13.436-12.73,28.928-22.233,45.469-28.142c5.604,16.925,21.567,29.175,40.348,29.175s34.744-12.25,40.348-29.175 c16.542,5.908,32.032,15.411,45.469,28.142c22.089,20.924,35.276,48.098,35.276,72.689 C269.593,169.189,259.396,179.386,246.86,179.386z" />
+						</g>
+					</svg>
+				</div>
 				<div class="container">
 
 					<div class="row">
@@ -1295,60 +1789,63 @@
 							<div class="kf-category-items element-anim-1 scroll-animate" data-animate="active">
 								<div class="kf-category-item">
 									<div class="image kf-image-hover">
-										<a href="menu-restaurant.html"><img src="images/category1.jpg" alt="" /></a>
+										<a href="menu-restaurant.html"><img src="assets/images/K%C3%A4sekuchen%20-%20Cheesecake%20Alem%C3%A1n.jpeg" alt="K&auml;sekuchen tradicional de Dulce Berlin" /></a>
 									</div>
 									<div class="desc">
-										<h5 class="name">Chiken Roll</h5>
+										<h5 class="name">K&auml;sekuchen</h5>
+										<p>Queso fresco batido, notas de vainilla y base crujiente de mantequilla.</p>
 									</div>
 								</div>
 								<div class="kf-category-item">
 									<div class="image kf-image-hover">
-										<a href="menu-restaurant.html"><img src="images/category2.jpg" alt="" /></a>
+										<a href="menu-restaurant.html"><img src="assets/images/Schwarzw%C3%A4lder%20Kirschtorte%20-%20Selva%20Negra%20Alemana.jpeg" alt="Schwarzw&auml;lder Kirschtorte con cerezas y crema Chantilly" /></a>
 									</div>
 									<div class="desc">
-										<h5 class="name">Salad Bowl</h5>
+										<h5 class="name">Schwarzw&auml;lder Kirschtorte</h5>
+										<p>Bizcocho de cacao, cerezas maceradas y Chantilly con un toque de Kirsch.</p>
 									</div>
 								</div>
 								<div class="kf-category-item">
 									<div class="image kf-image-hover">
-										<a href="menu-restaurant.html"><img src="images/category3.jpg" alt="" /></a>
+										<a href="menu-restaurant.html"><img src="assets/images/Br%C3%B6tchen%20-%20Panecillos%20Alemane.jpeg" alt="Br&ouml;tchen artesanales reci&eacute;n horneados" /></a>
 									</div>
 									<div class="desc">
-										<h5 class="name">Lobsters</h5>
+										<h5 class="name">Br&ouml;tchen Artesanales</h5>
+										<p>Panecillos de fermentaci&oacute;n lenta con costra dorada y miga ligera.</p>
 									</div>
 								</div>
 								<div class="kf-category-item">
 									<div class="image kf-image-hover">
-										<a href="menu-restaurant.html"><img src="images/ins_gal1.jpg" alt="" /></a>
+										<a href="menu-restaurant.html"><img src="assets/images/panaderia.jpeg" alt="Selecci&oacute;n de panader&iacute;a alemana de Dulce Berlin" /></a>
 									</div>
 									<div class="desc">
-										<h5 class="name">Italian Burger</h5>
+										<h5 class="name">Panader&iacute;a Tradicional</h5>
+										<p>Pretzels, strudels y boller&iacute;a que horneamos cada ma&ntilde;ana.</p>
 									</div>
 								</div>
 							</div>
 
 						</div>
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-5 offset-lg-1 align-self-center">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-5 offset-lg-1 align-self-center">
 
 							<div class="kf-titles">
 								<div class="kf-subtitle element-anim-1 scroll-animate" data-animate="active">
-									Popular Categories
+									Dulce Berlin Classics
 								</div>
 								<h3 class="kf-title element-anim-1 scroll-animate" data-animate="active">
-									Choose Your Best Food <br>From Categories
+									Sabores ic&oacute;nicos de nuestra panader&iacute;a <br>para cualquier momento del d&iacute;a
 								</h3>
 							</div>
 
 							<div class="kf-text element-anim-1 scroll-animate" data-animate="active">
 								<p>
-									Sed ut perspiciatis unde omnis iste natus error accusantium doloremque laudantium, totam rem
-									aperiam eaque ipsa quae abillo inventore veritatis quasi architecto beatae vitae dicta sunt explicabo.
-									Nemo enim ipsluptatem quia voluptas sit aspernatur aut odit aut fugit sed quia con
+									Celebramos las recetas berlinesas con ingredientes de temporada, masas de fermentaci&oacute;n lenta y rellenos perfumados.
+									Cada pieza se elabora a mano en nuestro obrador para acompa&ntilde;ar tu caf&eacute; o endulzar la sobremesa.
 								</p>
 							</div>
 
 							<a href="menu-restaurant.html" class="kf-btn element-anim-1 scroll-animate" data-animate="active">
-								<span>explore more Category</span>
+								<span>Descubrir el men&uacute; completo</span>
 								<i class="fas fa-chevron-right"></i>
 							</a>
 
@@ -1376,10 +1873,10 @@
 
 							<div class="kf-menu-item-col col-xs-12 col-sm-12 col-md-6 col-lg-4">
 								<div class="kf-menu-item element-anim-1 scroll-animate" data-animate="active">
-									<div>
-										<h5 class="name">Chicken</h5>
-										<div class="subname">Sed ut perspiciatis unde</div>
-										<div class="price"><span>$4.9</span></div>
+									</div>
+
+									<div class="kf-category-items element-anim-1 scroll-animate" data-animate="active">
+										<div class="kf-category-item">
 									</div>
 								</div>
 							</div>
@@ -2449,6 +2946,84 @@
 	<script src="js/skrollr.js"></script>
 	<script src="js/common.js"></script>
 
+	<!-- Preloader Script -->
+	<script>
+		(function () {
+			const preloader = document.querySelector('.kf-preloader');
+			if (!preloader) {
+				return;
+			}
+
+			const percentElement = preloader.querySelector('.kf-preloader-percent');
+			let progress = 0;
+			let completed = false;
+
+			const updatePercent = (value) => {
+				progress = Math.max(progress, Math.min(value, 100));
+				if (percentElement) {
+					percentElement.textContent = `${Math.round(progress)}%`;
+				}
+			};
+
+			updatePercent(8);
+
+			const accelerate = () => {
+				if (completed) {
+					return;
+				}
+				const delta = progress < 60
+					? Math.random() * 8 + 2
+					: progress < 85
+						? Math.random() * 4 + 1
+						: Math.random() * 1.8 + 0.3;
+				const projected = progress + delta;
+				updatePercent(Math.min(projected, 96));
+			};
+
+			const interval = setInterval(accelerate, 180);
+
+			const finishPreloader = () => {
+				if (completed) {
+					return;
+				}
+				completed = true;
+				clearInterval(interval);
+				updatePercent(100);
+				requestAnimationFrame(() => {
+					preloader.classList.add('kf-preloader-hidden');
+					setTimeout(() => preloader.remove(), 900);
+				});
+			};
+
+			const markDomReady = () => {
+				if (completed) {
+					return;
+				}
+				const target = progress < 70 ? 70 : progress;
+				updatePercent(target);
+			};
+
+			if (document.readyState === 'loading') {
+				document.addEventListener('DOMContentLoaded', markDomReady);
+			} else {
+				markDomReady();
+			}
+
+			if (document.readyState === 'complete') {
+				setTimeout(finishPreloader, 250);
+			} else {
+				window.addEventListener('load', () => setTimeout(finishPreloader, 200));
+				document.addEventListener('readystatechange', () => {
+					if (document.readyState === 'complete') {
+						setTimeout(finishPreloader, 200);
+					}
+				});
+			}
+
+			setTimeout(finishPreloader, 10000);
+		})();
+	</script>
+
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-125314689-11"></script>
 	<script>
@@ -2475,10 +3050,8 @@
   </div>
   <!-- bslthemes.com buttons html end -->
 
-	<!-- bslthemes.com buttons assets begin -->
-	<link rel="stylesheet" href="../../bslthms-advanced-btns/assets/style.css">
-  <script src="../../bslthms-advanced-btns/assets/script.js"></script>
-	<!-- bslthemes.com buttons assets end -->
+	<!-- bslthemes.com buttons assets removed - files not found -->
+
 </body>
 
 <!-- Mirrored from bslthemes.com/html/kaffen/index-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Aug 2025 18:16:09 GMT -->
