@@ -1,0 +1,2430 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<!-- Mirrored from bslthemes.com/html/kaffen/index-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Aug 2025 18:16:01 GMT -->
+<head>
+	<title>Kaffen - Cafe & Restaurant HTML Template</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="HandheldFriendly" content="true">
+
+	<link rel="preconnect" href="https://fonts.googleapis.com/">
+	<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Merienda:wght@400;700&amp;family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;family=Oswald:wght@200;300;400;500;600;700&amp;display=swap" rel="stylesheet">
+
+	<!-- BEGIN CSS STYLES -->
+	<link rel="stylesheet" href="styles/bootstrap.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="fonts/font-awesome/css/font-awesome.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="fonts/font-awesome/css/line-awesome.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="styles/animate.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="styles/magnific-popup.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="styles/splitting.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="styles/swiper.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="style.css" type="text/css" media="all" />
+	<!-- END CSS STYLES -->
+
+	<!-- Dulces Berlin minimal palette + typography (scoped to this page) -->
+	<style>
+		/* ========== PALETTE & CSS VARIABLES (Dulce Berlin Brand Colors) ========== */
+		:root {
+			--brand-primary: #C98927; /* Orange-brown - Main accent from logo */
+			--brand-secondary: #FADDA3; /* Soft gold/yellow - Background/highlight from logo */
+			--brand-accent: #934218; /* Deep brown - Contour/emphasis from logo */
+			--brand-accent-dark: #89301C; /* Dark red-brown - Subtitle accent from logo */
+			--text-dark: #1F1B11; /* Logo title color - Primary text */
+			--text-light: #FFFFFF; /* White - For text on dark backgrounds */
+			--neutral-light: #FAF7F2; /* Almost white - Subtle backgrounds */
+			--neutral-dark: #2B2622; /* Dark brown - For dark sections */
+		}
+
+		/* ========== TYPOGRAPHY ========== */
+		body {
+			font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+			color: var(--text-dark);
+		}
+
+		h1, h2, h3, h4, h5, h6, .kf-title, .name, .kf-subtitle {
+			font-family: 'Merienda', Georgia, serif;
+			font-weight: 700;
+			letter-spacing: 0.3px;
+			color: var(--text-dark);
+		}
+
+		.kf-title {
+			color: var(--text-dark) !important;
+		}
+
+		.kf-subtitle {
+			color: var(--brand-primary) !important;
+			font-weight: 600;
+			font-size: 0.95rem;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+		}
+
+		/* ========== HEADER & NAVIGATION ========== */
+		.kf-topline {
+			background-color: var(--neutral-light) !important;
+			border-bottom: 1px solid var(--brand-secondary);
+		}
+
+		.kf-navbar {
+			background-color: #FFFFFF !important;
+			border-bottom: 2px solid var(--brand-secondary);
+		}
+
+		.kf-main-menu ul li > a {
+			color: var(--text-dark) !important;
+			transition: color 0.3s ease;
+		}
+
+		.kf-main-menu ul li > a:hover,
+		.kf-main-menu ul li.active > a {
+			color: var(--brand-primary) !important;
+			font-weight: 600;
+		}
+
+		.kf-main-menu ul li ul li > a {
+			color: var(--text-dark) !important;
+		}
+
+		.kf-main-menu ul li ul li > a:hover {
+			color: var(--brand-primary) !important;
+		}
+
+		.kf-h-group {
+			color: var(--text-dark);
+		}
+
+		.kf-h-group i {
+			color: var(--brand-primary) !important;
+			margin-right: 8px;
+		}
+
+		.kf-h-social a i {
+			color: var(--text-dark);
+			transition: all 0.3s ease;
+		}
+
+		.kf-h-social a:hover i {
+			color: var(--brand-primary) !important;
+			transform: scale(1.2);
+		}
+
+		/* ========== USER & LANGUAGE ICONS ========== */
+		.kf-header-actions {
+			display: flex;
+			align-items: center;
+			gap: 15px;
+		}
+
+		.kf-user-icon,
+		.kf-lang-icon {
+			width: 40px;
+			height: 40px;
+			border-radius: 50%;
+			border: 2px solid var(--brand-secondary);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background: white;
+			transition: all 0.3s ease;
+			cursor: pointer;
+			position: relative;
+		}
+
+		.kf-user-icon i,
+		.kf-lang-icon i {
+			color: var(--brand-primary);
+			font-size: 1.1rem;
+			transition: all 0.3s ease;
+		}
+
+		.kf-user-icon:hover,
+		.kf-lang-icon:hover {
+			border-color: var(--brand-primary);
+			background: var(--brand-secondary);
+			transform: scale(1.1);
+		}
+
+		.kf-user-icon:hover i,
+		.kf-lang-icon:hover i {
+			color: var(--brand-accent);
+		}
+
+		/* Mobile menu button */
+		.kf-menu-btn {
+			order: 3;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			width: 40px;
+			height: 40px;
+			margin: 0 0 0 20px;
+			border: 2px solid var(--brand-primary);
+			border-radius: 10px;
+			background: rgba(250, 221, 163, 0.6);
+			box-shadow: 0 8px 18px rgba(201, 137, 39, 0.2);
+			z-index: 101;
+			position: relative;
+			transition: all 0.3s ease;
+		}
+
+		.kf-menu-btn:hover,
+		.kf-menu-btn:focus {
+			background: #ffffff00;
+			border-color: var(--brand-accent);
+			box-shadow: 0 12px 26px rgba(147, 66, 24, 0.25);
+		}
+
+		.kf-menu-btn:focus {
+			outline: none;
+		}
+
+		.kf-menu-btn:focus-visible {
+			outline: 2px solid var(--brand-accent);
+			outline-offset: 3px;
+		}
+
+		.kf-menu-btn span {
+			position: relative !important;
+			top: auto !important;
+			margin: 0 !important;
+			display: block;
+			width: 20px;
+			height: 2px;
+			background: var(--brand-primary);
+			border-radius: 2px;
+			transition: all 0.3s ease;
+		}
+
+		.kf-menu-btn span:before,
+		.kf-menu-btn span:after {
+			content: '';
+			position: absolute;
+			left: 0;
+			width: 20px;
+			height: 2px;
+			background: var(--brand-primary);
+			border-radius: 2px;
+			transition: all 0.3s ease;
+			top: 0 !important;
+			bottom: auto !important;
+		}
+
+		.kf-menu-btn span:before {
+			transform: translateY(-7px);
+		}
+
+		.kf-menu-btn span:after {
+			transform: translateY(7px);
+		}
+
+		.kf-menu-btn.active {
+			background: rgba(147, 66, 24, 0.15);
+			border-color: var(--brand-accent);
+			box-shadow: 0 12px 24px rgba(147, 66, 24, 0.35);
+		}
+
+		.kf-menu-btn.active span {
+			background: transparent;
+		}
+
+		.kf-menu-btn.active span:before {
+			transform: rotate(45deg);
+			background: var(--brand-accent);
+			left: 0 !important;
+			 top: 0 !important;
+		}
+
+		.kf-menu-btn.active span:after {
+			transform: rotate(-45deg);
+			background: var(--brand-accent);
+			left: 0 !important;
+			 top: 0 !important;
+		}
+
+		/* Mobile Menu Container */
+		.kf-navbar-mobile {
+			background: rgba(250, 221, 163, 0.94);
+			backdrop-filter: blur(12px);
+			box-shadow: inset 0 2px 8px rgba(255, 255, 255, 0.3), 0 20px 35px rgba(31, 27, 17, 0.2);
+			border-top: 4px solid var(--brand-primary);
+			/* leave comfortable space for fixed header */
+			padding: 120px 12px 24px 12px;
+		}
+
+		.kf-navbar-mobile .kf-main-menu {
+			margin: 0 8px 20px 8px;
+			padding: 14px 0;
+			background: rgba(255, 255, 255, 0.96);
+			border-radius: 14px;
+			box-shadow: 0 12px 28px rgba(31, 27, 17, 0.22);
+			overflow: hidden;
+			border: 1px solid rgba(201, 137, 39, 0.2);
+		}
+
+		.kf-navbar-mobile .kf-main-menu ul {
+			list-style: none;
+			margin: 0;
+			padding: 12px 0;
+		}
+
+		.kf-navbar-mobile .kf-main-menu ul li {
+			margin: 0;
+			background: transparent;
+		}
+
+		.kf-navbar-mobile .kf-main-menu ul li + li {
+			border-top: 1px solid rgba(147, 66, 24, 0.12);
+		}
+
+		.kf-navbar-mobile .kf-main-menu ul li a {
+			display: block;
+			color: var(--text-dark) !important;
+			font-weight: 600;
+			font-size: 1.0rem;
+			padding: 12px 20px;
+			transition: all 0.3s ease;
+			text-decoration: none;
+			letter-spacing: 0.3px;
+		}
+
+		.kf-navbar-mobile .kf-main-menu ul li a:hover,
+		.kf-navbar-mobile .kf-main-menu ul li a:focus {
+			background: rgba(201, 137, 39, 0.12);
+			color: var(--brand-primary) !important;
+			padding-left: 26px;
+			font-weight: 700;
+		}
+
+		.kf-navbar-mobile .kf-main-menu ul li:first-child a {
+			border-top: none;
+		}
+
+		.kf-navbar-mobile .kf-main-menu ul li:last-child a {
+			border-bottom: none;
+		}
+
+		.kf-navbar-mobile .kf-topline {
+			border-top: 2px solid rgba(201, 137, 39, 0.2);
+			padding-top: 18px;
+			margin-top: 8px;
+			background: transparent;
+		}
+
+		/* Mobile menu topline actions styling */
+		.kf-navbar-mobile .kf-header-actions {
+			display: flex !important;
+			flex-direction: row;
+			align-items: center;
+			justify-content: center;
+			gap: 12px;
+			margin-bottom: 16px;
+		}
+
+		.kf-navbar-mobile .kf-user-icon,
+		.kf-navbar-mobile .kf-lang-icon {
+			width: 38px;
+			height: 38px;
+			border-radius: 50%;
+			border: 2px solid var(--brand-primary);
+			background: white;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			cursor: pointer;
+			transition: all 0.3s ease;
+		}
+
+		.kf-navbar-mobile .kf-user-icon i,
+		.kf-navbar-mobile .kf-lang-icon i {
+			color: var(--brand-primary);
+			font-size: 1rem;
+		}
+
+		.kf-navbar-mobile .kf-user-icon:hover,
+		.kf-navbar-mobile .kf-lang-icon:hover {
+			border-color: var(--brand-accent);
+			background: var(--brand-secondary);
+			transform: scale(1.08);
+		}
+
+		.kf-navbar-mobile .kf-user-icon:hover i,
+		.kf-navbar-mobile .kf-lang-icon:hover i {
+			color: var(--brand-accent);
+		}
+
+		/* Mobile menu button styling */
+		.kf-navbar-mobile .kf-btn.h-btn {
+			padding: 10px 18px;
+			height: auto;
+			line-height: 1.4;
+			font-size: 0.95rem;
+			width: 100%;
+			margin: 0 0 12px 0;
+			background: var(--brand-primary) !important;
+			border: 2px solid var(--brand-primary) !important;
+			color: white !important;
+			border-radius: 8px;
+			transition: all 0.3s ease;
+		}
+
+		.kf-navbar-mobile .kf-btn.h-btn:hover {
+			background: white !important;
+			color: var(--brand-primary) !important;
+		}
+
+		.kf-navbar-mobile .kf-btn.h-btn span {
+			display: inline;
+		}
+
+		/* ========== BUTTONS ========== */
+		.kf-btn {
+			background: var(--brand-primary) !important;
+			border: 2px solid var(--brand-primary) !important;
+			color: var(--text-light) !important;
+			font-weight: 600;
+			transition: all 0.3s ease;
+		}
+
+		.kf-btn:hover {
+			background: transparent !important;
+			color: var(--brand-primary) !important;
+			border-color: var(--brand-primary) !important;
+		}
+
+		.kf-btn.dark-btn {
+			background: var(--brand-secondary) !important;
+			border-color: var(--brand-primary) !important;
+			color: var(--text-dark) !important;
+		}
+
+		.kf-btn.dark-btn:hover {
+			background: var(--brand-primary) !important;
+			border-color: var(--brand-primary) !important;
+			color: var(--text-light) !important;
+		}
+
+		.h-btn {
+			background: var(--brand-primary) !important;
+			border-color: var(--brand-primary) !important;
+		}
+
+		/* ========== SLIDER & HERO ========== */
+		.kf-started-slider .description {
+			background: rgba(31, 27, 17, 0.85);
+			padding: 40px;
+			border-left: 5px solid var(--brand-primary);
+		}
+
+		.kf-started-item .subtitles {
+			color: var(--brand-secondary);
+			font-weight: 600;
+		}
+
+		.kf-started-item .name {
+			color: var(--text-light);
+		}
+
+		/* ========== SECTIONS & BACKGROUNDS ========== */
+		.section-bg {
+			background-color: var(--neutral-light) !important;
+		}
+
+		.kf-section-transparent {
+			background-color: transparent !important;
+		}
+
+		/* ========== CATEGORY SECTION ========== */
+		.kf-category-item .desc {
+			background: var(--brand-secondary);
+			padding: 15px;
+			text-align: center;
+		}
+
+		.kf-category-item .desc h5 {
+			color: var(--text-dark);
+			margin: 0;
+		}
+
+		.kf-category-item .image {
+			border: 3px solid var(--brand-secondary);
+			transition: border-color 0.3s ease;
+		}
+
+		.kf-category-item .image:hover {
+			border-color: var(--brand-primary);
+		}
+
+		/* ========== MENU ITEMS ========== */
+		.kf-menu-item {
+			padding: 20px;
+			border-bottom: 2px solid var(--brand-secondary);
+			transition: all 0.3s ease;
+		}
+
+		.kf-menu-item:hover {
+			background-color: var(--brand-secondary);
+			border-bottom-color: var(--brand-primary);
+		}
+
+		.kf-menu-item .name {
+			color: var(--text-dark);
+			font-weight: 700;
+		}
+
+		.kf-menu-item .subname {
+			color: #888;
+			font-style: italic;
+			font-size: 0.9rem;
+		}
+
+		.kf-menu-item .price {
+			color: var(--brand-primary) !important;
+			font-weight: 700;
+			font-size: 1.2rem;
+			margin-top: 10px;
+		}
+
+		/* ========== TEAM SECTION ========== */
+		.kf-team-item {
+			background-color: var(--neutral-dark) !important;
+			border: 2px solid var(--brand-accent);
+			transition: all 0.3s ease;
+			overflow: hidden;
+		}
+
+		.kf-team-item:hover {
+			border-color: var(--brand-primary);
+			box-shadow: 0 8px 20px rgba(201, 137, 39, 0.3);
+		}
+
+		.kf-team-item .desc {
+			padding: 20px;
+			text-align: center;
+		}
+
+		.kf-team-item .name {
+			color: var(--text-light);
+			margin-bottom: 5px;
+		}
+
+		.kf-team-item .subname {
+			color: var(--brand-secondary);
+			font-weight: 600;
+		}
+
+		.kf-team-item .info .label {
+			color: var(--brand-primary);
+			font-size: 0.85rem;
+		}
+
+		.kf-team-item .social a i {
+			color: var(--brand-secondary);
+			transition: all 0.3s ease;
+		}
+
+		.kf-team-item .social a:hover i {
+			color: var(--brand-primary);
+			transform: scale(1.2);
+		}
+
+		/* ========== RESERVATION FORM ========== */
+		.kf-reservation-form {
+			background: var(--brand-secondary);
+			border: 3px solid var(--brand-primary);
+			padding: 50px;
+			border-radius: 10px;
+		}
+
+		.kf-reservation-form .kf-subtitle {
+			color: var(--brand-primary);
+		}
+
+		.kf-reservation-form .kf-title {
+			color: var(--text-dark);
+		}
+
+		.kf-field input,
+		.kf-field select {
+			border: 2px solid var(--brand-primary) !important;
+			color: var(--text-dark) !important;
+		}
+
+		.kf-field input:focus,
+		.kf-field select:focus {
+			border-color: var(--brand-accent) !important;
+			box-shadow: 0 0 5px rgba(201, 137, 39, 0.3) !important;
+		}
+
+		.kf-field i {
+			color: var(--brand-primary) !important;
+		}
+
+		.alert-success {
+			background-color: var(--brand-secondary) !important;
+			border-left: 4px solid var(--brand-primary) !important;
+			color: var(--text-dark) !important;
+		}
+
+		/* ========== ABOUT SECTION ========== */
+		.kf-about-2 {
+			background-position: center;
+			background-attachment: fixed;
+		}
+
+		.kf-choose-list ul li .icon img {
+			filter: brightness(1.1);
+		}
+
+		.kf-services-item-2 {
+			background: var(--brand-secondary);
+			padding: 30px;
+			border-left: 4px solid var(--brand-primary);
+			transition: all 0.3s ease;
+			text-align: center;
+		}
+
+		.kf-services-item-2:hover {
+			background: var(--brand-primary);
+			color: var(--text-light);
+			border-left-color: var(--brand-accent);
+		}
+
+		.kf-services-item-2:hover .name {
+			color: var(--text-light);
+		}
+
+		.kf-services-item-2 .name {
+			color: var(--text-dark);
+		}
+
+		.kf-services-item-2 .subname {
+			color: #888;
+			font-size: 0.9rem;
+		}
+
+		/* ========== TESTIMONIALS ========== */
+		.kf-testimonials-carousel .slide-item {
+			background: white;
+			padding: 30px;
+			border: 2px solid var(--brand-secondary);
+			border-radius: 8px;
+			transition: all 0.3s ease;
+			box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+		}
+
+		.kf-testimonials-carousel .slide-item:hover {
+			border-color: var(--brand-primary);
+			box-shadow: 0 8px 20px rgba(201, 137, 39, 0.2);
+		}
+
+		.kf-testimonials-carousel .stars i {
+			color: var(--brand-primary) !important;
+		}
+
+		.kf-testimonials-carousel .text {
+			color: var(--text-dark);
+			font-style: italic;
+		}
+
+		.kf-testimonials-carousel .name {
+			color: var(--text-dark);
+			font-weight: 700;
+			margin-top: 15px;
+		}
+
+		.kf-testimonials-carousel .name em {
+			color: var(--brand-accent);
+			font-style: italic;
+			font-weight: 500;
+		}
+
+		/* ========== NUMBERS SECTION ========== */
+		.kf-numbers-item-2 {
+			background: white;
+			padding: 30px;
+			border: 2px solid var(--brand-secondary);
+			border-radius: 8px;
+			text-align: center;
+			transition: all 0.3s ease;
+			box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+		}
+
+		.kf-numbers-item-2:hover {
+			border-color: var(--brand-primary);
+			box-shadow: 0 8px 20px rgba(201, 137, 39, 0.2);
+			transform: translateY(-5px);
+		}
+
+		.kf-numbers-item-2 .icon {
+			color: var(--brand-primary) !important;
+			font-size: 2.5rem;
+			margin-bottom: 15px;
+		}
+
+		.kf-numbers-item-2 .num {
+			color: var(--brand-primary);
+			font-weight: 700;
+			font-size: 2rem;
+			margin: 10px 0;
+		}
+
+		.kf-numbers-item-2 .name {
+			color: var(--text-dark);
+		}
+
+		.kf-numbers-item-2 .subname {
+			color: #888;
+			font-size: 0.9rem;
+		}
+
+		/* ========== CTA SECTION ========== */
+		.kf-cta {
+			background-position: center;
+			background-attachment: fixed;
+			background-color: rgba(31, 27, 17, 0.8);
+			background-blend-mode: overlay;
+		}
+
+		.kf-cta .kf-subtitle {
+			color: var(--brand-secondary);
+		}
+
+		.kf-cta .kf-title {
+			color: var(--text-light);
+		}
+
+		/* ========== BLOG SECTION ========== */
+		.kf-blog-grid-item {
+			background: white;
+			border: 2px solid var(--brand-secondary);
+			border-radius: 8px;
+			transition: all 0.3s ease;
+			overflow: hidden;
+			box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+		}
+
+		.kf-blog-grid-item:hover {
+			border-color: var(--brand-primary);
+			box-shadow: 0 8px 20px rgba(201, 137, 39, 0.2);
+			transform: translateY(-5px);
+		}
+
+		.kf-blog-grid-item .image {
+			border-bottom: 3px solid var(--brand-primary);
+		}
+
+		.kf-blog-grid-item .desc {
+			padding: 20px;
+		}
+
+		.kf-blog-grid-item .name {
+			color: var(--text-dark);
+		}
+
+		.kf-blog-grid-item .kf-date,
+		.kf-blog-grid-item .kf-comm {
+			color: #888;
+			font-size: 0.85rem;
+			margin-top: 10px;
+		}
+
+		.kf-blog-grid-item .kf-date i,
+		.kf-blog-grid-item .kf-comm i {
+			color: var(--brand-primary) !important;
+			margin-right: 5px;
+		}
+
+		/* ========== INSTAGRAM CAROUSEL ========== */
+		.kf-insta-carousel .image {
+			border: 2px solid var(--brand-secondary);
+			transition: all 0.3s ease;
+		}
+
+		.kf-insta-carousel .image:hover {
+			border-color: var(--brand-primary);
+		}
+
+		.kf-insta-carousel i {
+			color: var(--brand-primary) !important;
+		}
+
+		/* ========== BRANDS SECTION ========== */
+		.kf-brands-item {
+			padding: 20px;
+			border: 2px solid var(--brand-secondary);
+			border-radius: 8px;
+			transition: all 0.3s ease;
+			background: white;
+		}
+
+		.kf-brands-item:hover {
+			border-color: var(--brand-primary);
+			box-shadow: 0 4px 12px rgba(201, 137, 39, 0.25);
+		}
+
+		/* ========== FOOTER ========== */
+		.kf-footer {
+			background-color: var(--neutral-dark) !important;
+			border-top: 3px solid var(--brand-primary);
+		}
+
+		.kf-footer h5 {
+			color: var(--brand-secondary);
+			font-weight: 700;
+			margin-bottom: 20px;
+		}
+
+		.kf-footer ul li {
+			color: #CCC;
+			transition: all 0.3s ease;
+		}
+
+		.kf-footer ul li:hover {
+			color: var(--brand-primary);
+		}
+
+		.kf-footer ul li i {
+			color: var(--brand-primary) !important;
+			margin-right: 10px;
+		}
+
+		.kf-footer ul li em {
+			color: var(--brand-secondary);
+			font-weight: 600;
+		}
+
+		.kf-footer .kf-f-gallery a {
+			border: 2px solid var(--brand-accent);
+			transition: all 0.3s ease;
+		}
+
+		.kf-footer .kf-f-gallery a:hover {
+			border-color: var(--brand-primary);
+		}
+
+		.kf-copyright {
+			color: #AAA;
+			border-top: 1px solid var(--brand-accent);
+			padding-top: 30px;
+			margin-top: 30px;
+		}
+
+		/* ========== INTERACTIVE EFFECTS ========== */
+		::selection {
+			background: var(--brand-primary);
+			color: var(--text-light);
+		}
+
+		::-webkit-scrollbar {
+			width: 10px;
+		}
+
+		::-webkit-scrollbar-track {
+			background: var(--neutral-light);
+		}
+
+		::-webkit-scrollbar-thumb {
+			background: var(--brand-primary);
+			border-radius: 5px;
+		}
+
+		::-webkit-scrollbar-thumb:hover {
+			background: var(--brand-accent);
+		}
+
+		/* ========== SWIPER CONTROLS ========== */
+		.swiper-button-next,
+		.swiper-button-prev {
+			color: var(--brand-primary) !important;
+			background: rgba(250, 221, 163, 0.95) !important;
+			width: 50px !important;
+			height: 50px !important;
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			transition: all 0.3s ease;
+		}
+
+		.swiper-button-next:hover,
+		.swiper-button-prev:hover {
+			background: var(--brand-accent) !important;
+			color: var(--text-light) !important;
+			transform: scale(1.1);
+		}
+
+		.swiper-pagination-bullet {
+			background: var(--brand-secondary) !important;
+		}
+
+		.swiper-pagination-bullet-active {
+			background: var(--brand-primary) !important;
+		}
+
+		/* ========== RESPONSIVE ADJUSTMENTS ========== */
+		/* Mobile First - Base styles (320px+) */
+		.kf-navbar .align-right {
+			display: flex;
+			align-items: center;
+			justify-content: flex-end;
+			gap: 10px;
+		}
+
+		.kf-navbar .col-xs-12.col-sm-6.col-md-3.col-lg-3.align-right {
+			justify-content: flex-end;
+		}
+
+		/* Hide desktop menu on mobile */
+		@media (max-width: 1024px) {
+			.kf-navbar .kf-main-menu {
+				display: none;
+			}
+
+			.kf-navbar .kf-header-actions {
+				display: none !important;
+			}
+
+			.kf-topline .kf-h-group,
+			.kf-topline .kf-h-social {
+				font-size: 0.85rem;
+			}
+		}
+
+		/* Tablet styles (768px+) */
+		@media (min-width: 768px) and (max-width: 1024px) {
+			.kf-topline .col-md-4 {
+				flex: 0 0 33.333333%;
+			}
+
+			.kf-h-group {
+				font-size: 0.9rem;
+			}
+		}
+
+		/* Desktop styles (1024px+) */
+		@media (min-width: 1024px) {
+			.kf-menu-btn {
+				display: none;
+			}
+
+			.kf-navbar-mobile {
+				display: none;
+			}
+		}
+
+		/* General mobile adjustments */
+		@media (max-width: 768px) {
+			.kf-reservation-form,
+			.kf-services-item-2 {
+				padding: 20px;
+			}
+
+			.kf-title {
+				font-size: 1.8rem;
+			}
+
+			.kf-subtitle {
+				font-size: 0.85rem;
+			}
+
+			.kf-topline {
+				padding: 10px 0;
+			}
+
+			.kf-topline .align-center,
+			.kf-topline .align-right {
+				display: none;
+			}
+
+			.kf-navbar {
+				padding: 15px 0;
+			}
+
+			.kf-logo img {
+				max-height: 50px;
+			}
+		}
+	</style>
+
+</head>
+
+<body>
+	<div class="bg">
+
+		<!-- Preloader -->
+		<div class="preloader">
+			<div class="centrize full-width">
+				<div class="vertical-center">
+					<div class="spinner-logo">
+						<img src="images/logo.png" alt="" />
+						<div class="spinner-dot">
+							<div class="spinner-line"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Header -->
+		<header class="kf-header">
+
+			<!-- topline -->
+			<div class="kf-topline">
+				<div class="row">
+					<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+
+						<!-- hours -->
+						<div class="kf-h-group">
+							<i class="far fa-clock"></i>
+							<em>Horario:</em> 08:00 am - 09:00 pm
+						</div>
+
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 align-center">
+
+						<!-- social -->
+						<div class="kf-h-social">
+							<a href="facebook.html" target="blank"><i class="fab fa-facebook-f"></i></a>
+							<a href="twitter.html" target="blank"><i class="fab fa-twitter"></i></a>
+							<a href="instagram.html" target="blank"><i class="fab fa-instagram"></i></a>
+							<a href="youtube.html" target="blank"><i class="fab fa-youtube"></i></a>
+						</div>
+
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 align-right">
+
+						<!-- location -->
+						<div class="kf-h-group">
+							<i class="fas fa-map-marker-alt"></i>
+							<em>Ubicación:</em> 55 main street, new york
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+			<!-- navbar -->
+			<div class="kf-navbar">
+				<div class="row">
+					<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+
+						<!-- logo -->
+						<div class="kf-logo">
+							<a href="index.html"><img src="images/logo.png" alt="" /></a>
+						</div>
+
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 align-center">
+
+						<!-- main menu -->
+						<div class="kf-main-menu">
+							<ul>
+								<li class="active"><a href="index.html">Inicio</a></li>
+								<li><a href="about.html">Nuestra Historia</a></li>
+								<li><a href="menu-restaurant.html">Menú</a></li>
+								<li><a href="faq.html">Preguntas Frecuentes</a></li>
+								<li><a href="contacts.html">Contacto</a></li>
+							</ul>
+						</div>
+
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 align-right">
+
+						<!-- header actions -->
+						<div class="kf-header-actions">
+							<!-- user icon -->
+							<div class="kf-user-icon" title="Iniciar Sesión">
+								<i class="far fa-user"></i>
+							</div>
+
+							<!-- language icon -->
+							<div class="kf-lang-icon" title="Cambiar Idioma (ES/EN/DE)">
+								<i class="fas fa-globe"></i>
+							</div>
+
+							<!-- reservation btn -->
+							<a href="reservation.html" class="kf-btn h-btn">
+								<span>Reservar Mesa</span>
+								<i class="fas fa-calendar-check"></i>
+							</a>
+						</div>
+
+						<!-- menu btn -->
+						<a href="#" class="kf-menu-btn" aria-label="Abrir menú de navegación">
+							<span></span>
+						</a>
+
+					</div>
+				</div>
+			</div>
+
+			<!-- mobile navbar -->
+			<div class="kf-navbar-mobile">
+
+				<!-- mobile menu -->
+				<div class="kf-main-menu">
+					<ul>
+						<li><a href="index.html">Inicio</a></li>
+						<li><a href="about.html">Nuestra Historia</a></li>
+						<li><a href="menu-restaurant.html">Menú</a></li>
+						<li><a href="faq.html">Preguntas Frecuentes</a></li>
+						<li><a href="contacts.html">Contacto</a></li>
+					</ul>
+				</div>
+
+				<!-- mobile topline -->
+				<div class="kf-topline">
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+							<!-- mobile actions -->
+							<div class="kf-header-actions">
+								<div class="kf-user-icon" title="Iniciar Sesión">
+									<i class="far fa-user"></i>
+								</div>
+								<div class="kf-lang-icon" title="Cambiar Idioma">
+									<i class="fas fa-globe"></i>
+								</div>
+							</div>
+
+							<!-- mobile btn -->
+							<a href="reservation.html" class="kf-btn h-btn">
+								<span>Reservar Mesa</span>
+								<i class="fas fa-calendar-check"></i>
+							</a>
+
+						</div>
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+							<!-- social -->
+							<div class="kf-h-social">
+								<a href="facebook.html" target="blank"><i class="fab fa-facebook-f"></i></a>
+								<a href="twitter.html" target="blank"><i class="fab fa-twitter"></i></a>
+								<a href="instagram.html" target="blank"><i class="fab fa-instagram"></i></a>
+								<a href="youtube.html" target="blank"><i class="fab fa-youtube"></i></a>
+							</div>
+
+						</div>
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+							<!-- hours -->
+							<div class="kf-h-group">
+								<i class="far fa-clock"></i>
+								<em>Horario:</em> 08:00 am - 09:00 pm
+							</div>
+
+						</div>
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+							<!-- location -->
+							<div class="kf-h-group">
+								<i class="fas fa-map-marker-alt"></i>
+								<em>Ubicación:</em> 55 main street, new york
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</header>
+
+		<!-- Wrapper -->
+		<div class="wrapper">
+
+			<!-- Section Started Slider -->
+			<section class="section kf-started-slider">
+				<div class="swiper-container">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide">
+
+							<div class="kf-started-item">
+								<div class="slide js-parallax" style="background-image: url(images/started_img7.jpg);"></div>
+								<div class="container">
+									<div class="description align-left element-anim-1">
+										<div class="subtitles">
+											Welcome to the Kaffen
+										</div>
+										<h2 class="name text-anim-1" data-splitting="chars">
+											Reserve Your <br>Table Today
+										</h2>
+										<div class="kf-bts">
+											<a href="menu-restaurant.html" class="kf-btn">
+												<span>explore more</span>
+												<i class="fas fa-chevron-right"></i>
+											</a>
+											<a href="reservation.html" class="kf-btn dark-btn">
+												<span>get delivery</span>
+												<i class="fas fa-chevron-right"></i>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+						<div class="swiper-slide">
+
+							<div class="kf-started-item">
+								<div class="slide js-parallax" style="background-image: url(images/started_img5.jpg);"></div>
+								<div class="container">
+									<div class="description align-left element-anim-1">
+										<div class="subtitles">
+											Welcome to the Kaffen
+										</div>
+										<h2 class="name text-anim-1" data-splitting="chars">
+											Explore The <br>Lobsters
+										</h2>
+										<div class="kf-bts">
+											<a href="menu-restaurant.html" class="kf-btn">
+												<span>explore more</span>
+												<i class="fas fa-chevron-right"></i>
+											</a>
+											<a href="reservation.html" class="kf-btn dark-btn">
+												<span>get delivery</span>
+												<i class="fas fa-chevron-right"></i>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+						<div class="swiper-slide">
+
+							<div class="kf-started-item">
+								<div class="slide js-parallax" style="background-image: url(images/started_img6.jpg);"></div>
+								<div class="container">
+									<div class="description align-left element-anim-1">
+										<div class="subtitles">
+											Welcome to the Kaffen
+										</div>
+										<h2 class="name text-anim-1" data-splitting="chars">
+											Premium <br>Meat Kaffen
+										</h2>
+										<div class="kf-bts">
+											<a href="menu-restaurant.html" class="kf-btn">
+												<span>explore more</span>
+												<i class="fas fa-chevron-right"></i>
+											</a>
+											<a href="reservation.html" class="kf-btn dark-btn">
+												<span>get delivery</span>
+												<i class="fas fa-chevron-right"></i>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+					<div class="swiper-button-prev"></div>
+					<div class="swiper-button-next"></div>
+
+				</div>
+			</section>
+
+			<!-- Section Category -->
+			<section class="section kf-category" style="background-image: url(images/category_bg.jpg);">
+				<div class="container">
+
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+
+							<div class="kf-category-items element-anim-1 scroll-animate" data-animate="active">
+								<div class="kf-category-item">
+									<div class="image kf-image-hover">
+										<a href="menu-restaurant.html"><img src="images/category1.jpg" alt="" /></a>
+									</div>
+									<div class="desc">
+										<h5 class="name">Chiken Roll</h5>
+									</div>
+								</div>
+								<div class="kf-category-item">
+									<div class="image kf-image-hover">
+										<a href="menu-restaurant.html"><img src="images/category2.jpg" alt="" /></a>
+									</div>
+									<div class="desc">
+										<h5 class="name">Salad Bowl</h5>
+									</div>
+								</div>
+								<div class="kf-category-item">
+									<div class="image kf-image-hover">
+										<a href="menu-restaurant.html"><img src="images/category3.jpg" alt="" /></a>
+									</div>
+									<div class="desc">
+										<h5 class="name">Lobsters</h5>
+									</div>
+								</div>
+								<div class="kf-category-item">
+									<div class="image kf-image-hover">
+										<a href="menu-restaurant.html"><img src="images/ins_gal1.jpg" alt="" /></a>
+									</div>
+									<div class="desc">
+										<h5 class="name">Italian Burger</h5>
+									</div>
+								</div>
+							</div>
+
+						</div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-5 offset-lg-1 align-self-center">
+
+							<div class="kf-titles">
+								<div class="kf-subtitle element-anim-1 scroll-animate" data-animate="active">
+									Popular Categories
+								</div>
+								<h3 class="kf-title element-anim-1 scroll-animate" data-animate="active">
+									Choose Your Best Food <br>From Categories
+								</h3>
+							</div>
+
+							<div class="kf-text element-anim-1 scroll-animate" data-animate="active">
+								<p>
+									Sed ut perspiciatis unde omnis iste natus error accusantium doloremque laudantium, totam rem
+									aperiam eaque ipsa quae abillo inventore veritatis quasi architecto beatae vitae dicta sunt explicabo.
+									Nemo enim ipsluptatem quia voluptas sit aspernatur aut odit aut fugit sed quia con
+								</p>
+							</div>
+
+							<a href="menu-restaurant.html" class="kf-btn element-anim-1 scroll-animate" data-animate="active">
+								<span>explore more Category</span>
+								<i class="fas fa-chevron-right"></i>
+							</a>
+
+						</div>
+					</div>
+
+				</div>
+			</section>
+
+			<!-- Section Menu -->
+			<section class="section kf-menu-classic section-bg">
+				<div class="container">
+
+					<div class="kf-titles align-center">
+						<div class="kf-subtitle element-anim-1 scroll-animate" data-animate="active">
+							Choose Best Menus
+						</div>
+						<h3 class="kf-title element-anim-1 scroll-animate" data-animate="active">
+							Kaffen Popular Foods Menu
+						</h3>
+					</div>
+
+					<div class="kf-menu-items" style="background-image: url(images/menu_logo.png);">
+						<div class="row">
+
+							<div class="kf-menu-item-col col-xs-12 col-sm-12 col-md-6 col-lg-4">
+								<div class="kf-menu-item element-anim-1 scroll-animate" data-animate="active">
+									<div>
+										<h5 class="name">Chicken</h5>
+										<div class="subname">Sed ut perspiciatis unde</div>
+										<div class="price"><span>$4.9</span></div>
+									</div>
+								</div>
+							</div>
+
+							<div class="kf-menu-item-col col-xs-12 col-sm-12 col-md-6 col-lg-4">
+								<div class="kf-menu-item element-anim-1 scroll-animate" data-animate="active">
+									<div>
+										<h5 class="name">Salad Bowl</h5>
+										<div class="subname">Sed ut perspiciatis unde</div>
+										<div class="price"><span>$199</span></div>
+									</div>
+								</div>
+							</div>
+
+							<div class="kf-menu-item-col col-xs-12 col-sm-12 col-md-6 col-lg-4">
+								<div class="kf-menu-item element-anim-1 scroll-animate" data-animate="active">
+									<div>
+										<h5 class="name">Barista Pouring Syrup</h5>
+										<div class="subname">2/3 espresso, 1/3 streamed milk</div>
+										<div class="price">$3.5</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="kf-menu-item-col col-xs-12 col-sm-12 col-md-6 col-lg-4">
+								<div class="kf-menu-item element-anim-1 scroll-animate" data-animate="active">
+									<div>
+										<h5 class="name">Smoothie</h5>
+										<div class="subname">Sed ut perspiciatis unde</div>
+										<div class="price"><span>$55.9</span></div>
+									</div>
+								</div>
+							</div>
+
+							<div class="kf-menu-item-col col-xs-12 col-sm-12 col-md-6 col-lg-4">
+								<div class="kf-menu-item element-anim-1 scroll-animate" data-animate="active">
+									<div>
+										<h5 class="name">Gin Trifles</h5>
+										<div class="subname">Sed ut perspiciatis unde</div>
+										<div class="price"><span>$37.5</span></div>
+									</div>
+								</div>
+							</div>
+
+							<div class="kf-menu-item-col col-xs-12 col-sm-12 col-md-6 col-lg-4">
+								<div class="kf-menu-item element-anim-1 scroll-animate" data-animate="active">
+									<div>
+										<h5 class="name">Quesadillas</h5>
+										<div class="subname">Sed ut perspiciatis unde</div>
+										<div class="price"><span>$4.9</span></div>
+									</div>
+								</div>
+							</div>
+
+							<div class="kf-menu-item-col col-xs-12 col-sm-12 col-md-6 col-lg-4">
+								<div class="kf-menu-item element-anim-1 scroll-animate" data-animate="active">
+									<div>
+										<h5 class="name">Italian Burger</h5>
+										<div class="subname">Tomatoes, sausage, ground, onions, cheese</div>
+										<div class="price">$12.8</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="kf-menu-item-col col-xs-12 col-sm-12 col-md-6 col-lg-4">
+								<div class="kf-menu-item element-anim-1 scroll-animate" data-animate="active">
+									<div>
+										<h5 class="name">Chicken Burger</h5>
+										<div class="subname">Ground chicken breast, mustard, paprika</div>
+										<div class="price">$17.5</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="kf-menu-item-col col-xs-12 col-sm-12 col-md-6 col-lg-4">
+								<div class="kf-menu-item element-anim-1 scroll-animate" data-animate="active">
+									<div>
+										<h5 class="name">Sea Fish</h5>
+										<div class="subname">Sed ut perspiciatis unde</div>
+										<div class="price"><span>$79.0</span></div>
+									</div>
+								</div>
+							</div>
+
+							<div class="kf-menu-item-col col-xs-12 col-sm-12 col-md-6 col-lg-4">
+								<div class="kf-menu-item element-anim-1 scroll-animate" data-animate="active">
+									<div>
+										<h5 class="name">Okonomiyaki</h5>
+										<div class="subname">Sed ut perspiciatis unde</div>
+										<div class="price"><span>$99.9</span></div>
+									</div>
+								</div>
+							</div>
+
+							<div class="kf-menu-item-col col-xs-12 col-sm-12 col-md-6 col-lg-4">
+								<div class="kf-menu-item element-anim-1 scroll-animate" data-animate="active">
+									<div>
+										<h5 class="name">Benedict</h5>
+										<div class="subname">Sed ut perspiciatis unde</div>
+										<div class="price"><span>$68.5</span></div>
+									</div>
+								</div>
+							</div>
+
+							<div class="kf-menu-item-col col-xs-12 col-sm-12 col-md-6 col-lg-4">
+								<div class="kf-menu-item element-anim-1 scroll-animate" data-animate="active">
+									<div>
+										<h5 class="name">Milk Cream</h5>
+										<div class="subname">2/3 espresso, 1/3 streamed milk</div>
+										<div class="price">$7.5</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+				</div>
+			</section>
+
+			<!-- Section Team -->
+			<section class="section kf-team kf-section-transparent">
+				<div class="container">
+
+					<div class="kf-titles align-center">
+						<div class="kf-subtitle element-anim-1 scroll-animate" data-animate="active">
+							Experience Team Member
+						</div>
+						<h3 class="kf-title element-anim-1 scroll-animate" data-animate="active">
+							Meet Our Professional Chefs
+						</h3>
+					</div>
+
+					<div class="kf-team-items row">
+
+						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
+							<div class="kf-team-item element-anim-1 scroll-animate" data-animate="active" style="background-color: #090c0f;">
+								<div class="desc">
+									<h5 class="name">Anthony J. Bowman</h5>
+									<div class="subname">Senior Chefs</div>
+								</div>
+								<div class="image kf-image-hover">
+									<img src="images/team1.jpg" alt="" />
+									<div class="info">
+										<div class="label">bowmankf@gmail.com</div>
+										<div class="label">+012 (345) 678 99</div>
+									</div>
+									<div class="social">
+										<a href="#"><i class="fab fa-facebook-f"></i></a>
+										<a href="#"><i class="fab fa-twitter"></i></a>
+										<a href="#"><i class="fab fa-linkedin"></i></a>
+										<a href="#"><i class="fab fa-youtube"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
+							<div class="kf-team-item element-anim-1 scroll-animate" data-animate="active" style="background-color: #090c0f;">
+								<div class="desc">
+									<h5 class="name">Kenny V. Gonzalez</h5>
+									<div class="subname">Senior Chefs</div>
+								</div>
+								<div class="image kf-image-hover">
+									<img src="images/team2.jpg" alt="" />
+									<div class="info">
+										<div class="label">gonzalezkf@gmail.com</div>
+										<div class="label">+012 (345) 678 99</div>
+									</div>
+									<div class="social">
+										<a href="#"><i class="fab fa-facebook-f"></i></a>
+										<a href="#"><i class="fab fa-twitter"></i></a>
+										<a href="#"><i class="fab fa-linkedin"></i></a>
+										<a href="#"><i class="fab fa-youtube"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
+							<div class="kf-team-item element-anim-1 scroll-animate" data-animate="active" style="background-color: #090c0f;">
+								<div class="desc">
+									<h5 class="name">Joseph M. Lawrence</h5>
+									<div class="subname">Senior Chefs</div>
+								</div>
+								<div class="image kf-image-hover">
+									<img src="images/team3.jpg" alt="" />
+									<div class="info">
+										<div class="label">lawrencekf@gmail.com</div>
+										<div class="label">+012 (345) 678 99</div>
+									</div>
+									<div class="social">
+										<a href="#"><i class="fab fa-facebook-f"></i></a>
+										<a href="#"><i class="fab fa-twitter"></i></a>
+										<a href="#"><i class="fab fa-linkedin"></i></a>
+										<a href="#"><i class="fab fa-youtube"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
+							<div class="kf-team-item element-anim-1 scroll-animate" data-animate="active" style="background-color: #090c0f;">
+								<div class="desc">
+									<h5 class="name">Charles K. Smith</h5>
+									<div class="subname">Senior Chefs</div>
+								</div>
+								<div class="image kf-image-hover">
+									<img src="images/team4.jpg" alt="" />
+									<div class="info">
+										<div class="label">smithkf@gmail.com</div>
+										<div class="label">+012 (345) 678 99</div>
+									</div>
+									<div class="social">
+										<a href="#"><i class="fab fa-facebook-f"></i></a>
+										<a href="#"><i class="fab fa-twitter"></i></a>
+										<a href="#"><i class="fab fa-linkedin"></i></a>
+										<a href="#"><i class="fab fa-youtube"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+			</section>
+
+			<!-- Section Reservation -->
+			<section class="section kf-reservation kf-section-no-margin">
+				<div class="container">
+
+					<div class="kf-reservation-form element-anim-1 scroll-animate" data-animate="active">
+
+						<div class="image-left" style="background-image: url(images/reservation5.jpg);"></div>
+						<div class="image-right" style="background-image: url(images/reservation6.jpg);"></div>
+
+						<div class="kf-titles align-center">
+							<div class="kf-subtitle">
+								Booking Table
+							</div>
+							<h3 class="kf-title">
+								Make Your Reservation
+							</h3>
+						</div>
+
+						<form id="rform" method="post">
+							<div class="row">
+								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+									<div class="kf-field">
+										<input type="text" name="name" placeholder="Full Name" />
+										<i class="far fa-user"></i>
+									</div>
+								</div>
+								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+									<div class="kf-field">
+										<input type="email" name="email" placeholder="Email Address" />
+										<i class="fas fa-at"></i>
+									</div>
+								</div>
+								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+									<div class="kf-field">
+										<input type="tel" name="tel" placeholder="Phone Number" />
+										<i class="fas fa-mobile-alt"></i>
+									</div>
+								</div>
+								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+									<div class="kf-field">
+										<select name="persons">
+											<option>1 Person</option>
+											<option>2 Persons</option>
+											<option>3 Persons</option>
+											<option>4 Persons</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+									<div class="kf-field">
+										<input type="date" name="date" />
+										<i class="far fa-calendar-alt"></i>
+									</div>
+								</div>
+								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+									<div class="kf-field">
+										<input type="text" name="time" placeholder="Time" />
+										<i class="far fa-clock"></i>
+									</div>
+								</div>
+								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+									<div class="kf-bts">
+										<a href="#" class="kf-btn" onclick="$('#rform').submit(); return false;">
+											<span>booking table</span>
+											<i class="fas fa-chevron-right"></i>
+										</a>
+									</div>
+								</div>
+							</div>
+						</form>
+						<div class="alert-success" style="display: none;">
+							<p>Thanks, your message is sent successfully.</p>
+						</div>
+
+					</div>
+
+				</div>
+			</section>
+
+			<!-- Section About-2 -->
+			<section class="section kf-about-2" style="background-image: url(images/category_bg.jpg);">
+				<div class="container">
+
+					<div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-5 align-self-center">
+
+							<div class="kf-titles">
+								<div class="kf-subtitle element-anim-1 scroll-animate" data-animate="active">
+									About Kaffen
+								</div>
+								<h3 class="kf-title element-anim-1 scroll-animate" data-animate="active">
+									Have Nice & Enjoyable <br>Time With Our Foods
+								</h3>
+							</div>
+
+							<div class="kf-text element-anim-1 scroll-animate" data-animate="active">
+								<p>
+									Sed ut perspiciatis unde omnis iste natus error voluptate accusantium doloremque
+									laudantium, totam rem aperiam eaque ipsa quae abillo inventore veritatis
+								</p>
+							</div>
+
+							<div class="kf-choose-list">
+								<ul>
+									<li class="element-anim-1 scroll-animate" data-animate="active">
+										<div class="icon">
+											<img src="images/choose_icon2.png" alt="" />
+										</div>
+										<div class="desc">
+											<h5 class="name">100% ISO Certification</h5>
+											<div class="subname">Sed ut perspiciatis unde omnis iste natus error voluptate accusantium doloremque</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+
+							<a href="about.html" class="kf-btn element-anim-1 scroll-animate" data-animate="active">
+								<span>explore more us</span>
+								<i class="fas fa-chevron-right"></i>
+							</a>
+
+						</div>
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 offset-lg-1 align-self-center">
+
+							<div class="kf-services-items-2 row">
+
+								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+									<div class="kf-services-item-2 element-anim-1 scroll-animate" data-animate="active">
+										<div class="image">
+											<img src="images/service_icon1.png" alt="" />
+										</div>
+										<div class="desc">
+											<h5 class="name">Birthday Cakes</h5>
+											<div class="subname">Sed ut perspiciatis unde</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+									<div class="kf-services-item-2 element-anim-1 scroll-animate" data-animate="active">
+										<div class="image">
+											<img src="images/service_icon2.png" alt="" />
+										</div>
+										<div class="desc">
+											<h5 class="name">Fresh Foods</h5>
+											<div class="subname">Sed ut perspiciatis unde</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+									<div class="kf-services-item-2 element-anim-1 scroll-animate" data-animate="active">
+										<div class="image">
+											<img src="images/service_icon3.png" alt="" />
+										</div>
+										<div class="desc">
+											<h5 class="name">Skills Chefs</h5>
+											<div class="subname">Sed ut perspiciatis unde</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+									<div class="kf-services-item-2 element-anim-1 scroll-animate" data-animate="active">
+										<div class="image">
+											<img src="images/service_icon4.png" alt="" />
+										</div>
+										<div class="desc">
+											<h5 class="name">Organic Juice</h5>
+											<div class="subname">Sed ut perspiciatis unde</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+
+						</div>
+					</div>
+
+				</div>
+			</section>
+
+			<!-- Section Testimonials Carousel -->
+			<section class="section kf-testimonials kf-testimonials-2 section-bg" style="background-image: url(images/testimonials_bg2.jpg);">
+				<div class="container">
+
+					<div class="kf-titles align-center">
+						<div class="kf-subtitle element-anim-1 scroll-animate" data-animate="active">
+							Customer Feedback
+						</div>
+						<h3 class="kf-title element-anim-1 scroll-animate" data-animate="active">
+							What Our Clients Say
+						</h3>
+					</div>
+
+					<div class="kf-testimonials-carousel">
+						<div class="swiper-container">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide">
+
+									<div class="slide-item element-anim-1 scroll-animate" data-animate="active">
+										<div class="image">
+											<img src="images/rev1.jpg" alt="" />
+										</div>
+										<div class="desc">
+											<div class="stars">
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+											</div>
+											<div class="text">
+												Sed ut perspiciatis unde omnis natus error luptatem accusantium doloremque laudantium
+												totam remriam eaque quae abillo
+											</div>
+											<h5 class="name">Frederick S. France <em>Web Deigner</em></h5>
+										</div>
+									</div>
+
+								</div>
+								<div class="swiper-slide">
+
+									<div class="slide-item element-anim-1 scroll-animate" data-animate="active">
+										<div class="image">
+											<img src="images/rev2.jpg" alt="" />
+										</div>
+										<div class="desc">
+											<div class="stars">
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+											</div>
+											<div class="text">
+												Sed ut perspiciatis unde omnis natus error luptatem accusantium doloremque laudantium
+												totam remriam eaque quae abillo
+											</div>
+											<h5 class="name">James M. London <em>Lawyer</em></h5>
+										</div>
+									</div>
+
+								</div>
+								<div class="swiper-slide">
+
+									<div class="slide-item element-anim-1 scroll-animate" data-animate="active">
+										<div class="image">
+											<img src="images/rev3.jpg" alt="" />
+										</div>
+										<div class="desc">
+											<div class="stars">
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+											</div>
+											<div class="kf-text">
+												Sed ut perspiciatis unde omnis natus error luptatem accusantium doloremque laudantium
+												totam remriam eaque quae abillo
+											</div>
+											<h5 class="name">Olivia D. New York <em>Dentist</em></h5>
+										</div>
+									</div>
+
+								</div>
+								<div class="swiper-slide">
+
+									<div class="slide-item element-anim-1 scroll-animate" data-animate="active">
+										<div class="image">
+											<img src="images/rev1.jpg" alt="" />
+										</div>
+										<div class="desc">
+											<div class="stars">
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+											</div>
+											<div class="kf-text">
+												Sed ut perspiciatis unde omnis natus error luptatem accusantium doloremque laudantium
+												totam remriam eaque quae abillo
+											</div>
+											<h5 class="name">Frederick S. France <em>Web Deigner</em></h5>
+										</div>
+									</div>
+
+								</div>
+								<div class="swiper-slide">
+
+									<div class="slide-item element-anim-1 scroll-animate" data-animate="active">
+										<div class="image">
+											<img src="images/rev2.jpg" alt="" />
+										</div>
+										<div class="desc">
+											<div class="stars">
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+											</div>
+											<div class="kf-text">
+												Sed ut perspiciatis unde omnis natus error luptatem accusantium doloremque laudantium
+												totam remriam eaque quae abillo
+											</div>
+											<h5 class="name">James M. London <em>Lawyer</em></h5>
+										</div>
+									</div>
+
+								</div>
+								<div class="swiper-slide">
+
+									<div class="slide-item element-anim-1 scroll-animate" data-animate="active">
+										<div class="image">
+											<img src="images/rev3.jpg" alt="" />
+										</div>
+										<div class="desc">
+											<div class="stars">
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+											</div>
+											<div class="kf-text">
+												Sed ut perspiciatis unde omnis natus error luptatem accusantium doloremque laudantium
+												totam remriam eaque quae abillo
+											</div>
+											<h5 class="name">Olivia D. New York <em>Dentist</em></h5>
+										</div>
+									</div>
+
+								</div>
+							</div>
+
+							<div class="swiper-pagination"></div>
+
+						</div>
+					</div>
+
+				</div>
+			</section>
+
+			<!-- Section Video -->
+			<div class="section kf-video kf-video-full">
+
+				<div class="kf-video-item kf-parallax" style="background-image: url(images/video_bg.jpg);">
+          <iframe class="js-video-iframe" data-src="https://www.youtube.com/embed/Gu6z6kIukgg?showinfo=0&amp;rel=0&amp;autoplay=1"></iframe>
+          <div class="play"><i class="fas fa-play"></i></div>
+				</div>
+
+			</div>
+
+			<!-- Section Numbers-2 -->
+			<section class="section kf-numbers-2 section-bg">
+				<div class="container">
+
+					<div class="kf-numbers-items-2 row">
+
+						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
+							<div class="kf-numbers-item-2 element-anim-1 scroll-animate" data-animate="active">
+								<div class="icon"><i class="las la-gem"></i></div>
+								<div class="num">256+</div>
+								<div class="desc">
+									<h5 class="name">Premium Clients</h5>
+									<div class="subname">Sed ut perspiciatis unde</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
+							<div class="kf-numbers-item-2 element-anim-1 scroll-animate" data-animate="active">
+								<div class="icon"><i class="las la-user-tie"></i></div>
+								<div class="num">36+</div>
+								<div class="desc">
+									<h5 class="name">Professional Chefs</h5>
+									<div class="subname">Sed ut perspiciatis unde</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
+							<div class="kf-numbers-item-2 element-anim-1 scroll-animate" data-animate="active">
+								<div class="icon"><i class="las la-trophy"></i></div>
+								<div class="num">753+</div>
+								<div class="desc">
+									<h5 class="name">Winning Awards</h5>
+									<div class="subname">Sed ut perspiciatis unde</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
+							<div class="kf-numbers-item-2 element-anim-1 scroll-animate" data-animate="active">
+								<div class="icon"><i class="lar la-grin-stars"></i></div>
+								<div class="num">100+</div>
+								<div class="desc">
+									<h5 class="name">5 Star Reviews</h5>
+									<div class="subname">Sed ut perspiciatis unde</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+			</section>
+
+			<!-- Section CTA -->
+			<section class="section kf-cta kf-parallax" style="background-image: url(images/cta_bg.jpg);">
+				<div class="container">
+
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-8">
+
+							<div class="kf-titles">
+								<div class="kf-subtitle element-anim-1 scroll-animate" data-animate="active">
+									Need a Table On Coffee House
+								</div>
+								<h3 class="kf-title element-anim-1 scroll-animate" data-animate="active">
+									Booking Table For Your & Family Members
+								</h3>
+							</div>
+
+						</div>
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 align-self-center align-right">
+
+							<a href="reservation.html" class="kf-btn element-anim-1 scroll-animate" data-animate="active">
+								<span>booking table</span>
+								<i class="fas fa-chevron-right"></i>
+							</a>
+
+						</div>
+					</div>
+
+				</div>
+			</section>
+
+			<!-- Section Latest Blog -->
+			<section class="section kf-latest-blog section-bg">
+				<div class="container">
+
+					<div class="kf-titles align-center">
+						<div class="kf-subtitle element-anim-1 scroll-animate" data-animate="active">
+							Get Every Single Update
+						</div>
+						<h3 class="kf-title element-anim-1 scroll-animate" data-animate="active">
+							Read Some Latest Blog & News
+						</h3>
+					</div>
+
+					<div class="kf-blog-grid-items row">
+
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+							<div class="kf-blog-grid-item element-anim-1 scroll-animate" data-animate="active">
+								<div class="image kf-image-hover">
+									<a href="blog-single.html"><img src="images/latest_blog1.jpg" alt="" /></a>
+								</div>
+								<div class="desc">
+									<h5 class="name">SWR React Hooks With Next Increm Ental Static Regeneration</h5>
+									<div class="kf-date"><i class="far fa-calendar-alt"></i>25 Sep 2021</div>
+									<div class="kf-comm"><i class="far fa-comments"></i>Comments (7)</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+							<div class="kf-blog-grid-item element-anim-1 scroll-animate" data-animate="active">
+								<div class="image kf-image-hover">
+									<a href="blog-single.html"><img src="images/latest_blog2.jpg" alt="" /></a>
+								</div>
+								<div class="desc">
+									<h5 class="name">Decisions For Building Flexible Components DevTools Browser</h5>
+									<div class="kf-date"><i class="far fa-calendar-alt"></i>25 Sep 2021</div>
+									<div class="kf-comm"><i class="far fa-comments"></i>Comments (7)</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+							<div class="kf-blog-grid-item element-anim-1 scroll-animate" data-animate="active">
+								<div class="image kf-image-hover">
+									<a href="blog-single.html"><img src="images/latest_blog3.jpg" alt="" /></a>
+								</div>
+								<div class="desc">
+									<h5 class="name">SWR React Hooks With Next Increm Ental Static Regeneration</h5>
+									<div class="kf-date"><i class="far fa-calendar-alt"></i>25 Sep 2021</div>
+									<div class="kf-comm"><i class="far fa-comments"></i>Comments (7)</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="align-center">
+
+						<a href="blog-grid.html" class="kf-btn element-anim-1 scroll-animate" data-animate="active">
+							<span>view all</span>
+							<i class="fas fa-chevron-right"></i>
+						</a>
+
+					</div>
+
+				</div>
+			</section>
+
+			<!-- Section Insta Carousel -->
+			<div class="section kf-insta-carousel element-anim-1 scroll-animate" data-animate="active">
+				<div class="container">
+					<div class="swiper-container">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide">
+
+								<div class="slide-item">
+									<div class="image kf-image-hover">
+										<a href="instagram.html" target="blank">
+											<img src="images/ins_gal1.jpg" alt="" />
+											<i class="fab fa-instagram"></i>
+										</a>
+									</div>
+								</div>
+
+							</div>
+							<div class="swiper-slide">
+
+								<div class="slide-item">
+									<div class="image kf-image-hover">
+										<a href="instagram.html" target="blank">
+											<img src="images/ins_gal2.jpg" alt="" />
+											<i class="fab fa-instagram"></i>
+										</a>
+									</div>
+								</div>
+
+							</div>
+							<div class="swiper-slide">
+
+								<div class="slide-item">
+									<div class="image kf-image-hover">
+										<a href="instagram.html" target="blank">
+											<img src="images/ins_gal3.jpg" alt="" />
+											<i class="fab fa-instagram"></i>
+										</a>
+									</div>
+								</div>
+
+							</div>
+							<div class="swiper-slide">
+
+								<div class="slide-item">
+									<div class="image kf-image-hover">
+										<a href="instagram.html" target="blank">
+											<img src="images/ins_gal4.jpg" alt="" />
+											<i class="fab fa-instagram"></i>
+										</a>
+									</div>
+								</div>
+
+							</div>
+							<div class="swiper-slide">
+
+								<div class="slide-item">
+									<div class="image kf-image-hover">
+										<a href="instagram.html" target="blank">
+											<img src="images/ins_gal5.jpg" alt="" />
+											<i class="fab fa-instagram"></i>
+										</a>
+									</div>
+								</div>
+
+							</div>
+							<div class="swiper-slide">
+
+								<div class="slide-item">
+									<div class="image kf-image-hover">
+										<a href="instagram.html" target="blank">
+											<img src="images/ins_gal6.jpg" alt="" />
+											<i class="fab fa-instagram"></i>
+										</a>
+									</div>
+								</div>
+
+							</div>
+							<div class="swiper-slide">
+
+								<div class="slide-item">
+									<div class="image kf-image-hover">
+										<a href="instagram.html" target="blank">
+											<img src="images/ins_gal1.jpg" alt="" />
+											<i class="fab fa-instagram"></i>
+										</a>
+									</div>
+								</div>
+
+							</div>
+							<div class="swiper-slide">
+
+								<div class="slide-item">
+									<div class="image kf-image-hover">
+										<a href="instagram.html" target="blank">
+											<img src="images/ins_gal2.jpg" alt="" />
+											<i class="fab fa-instagram"></i>
+										</a>
+									</div>
+								</div>
+
+							</div>
+							<div class="swiper-slide">
+
+								<div class="slide-item">
+									<div class="image kf-image-hover">
+										<a href="instagram.html" target="blank">
+											<img src="images/ins_gal3.jpg" alt="" />
+											<i class="fab fa-instagram"></i>
+										</a>
+									</div>
+								</div>
+
+							</div>
+							<div class="swiper-slide">
+
+								<div class="slide-item">
+									<div class="image kf-image-hover">
+										<a href="instagram.html" target="blank">
+											<img src="images/ins_gal4.jpg" alt="" />
+											<i class="fab fa-instagram"></i>
+										</a>
+									</div>
+								</div>
+
+							</div>
+							<div class="swiper-slide">
+
+								<div class="slide-item">
+									<div class="image kf-image-hover">
+										<a href="instagram.html" target="blank">
+											<img src="images/ins_gal5.jpg" alt="" />
+											<i class="fab fa-instagram"></i>
+										</a>
+									</div>
+								</div>
+
+							</div>
+							<div class="swiper-slide">
+
+								<div class="slide-item">
+									<div class="image kf-image-hover">
+										<a href="instagram.html" target="blank">
+											<img src="images/ins_gal6.jpg" alt="" />
+											<i class="fab fa-instagram"></i>
+										</a>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Section Brands -->
+			<div class="section kf-brands">
+				<div class="container">
+
+					<div class="kf-brands-items row">
+
+						<div class="col-xs-12 col-sm-12 col-md-4 col-lg-2">
+							<div class="kf-brands-item element-anim-1 scroll-animate" data-animate="active">
+								<div class="image">
+									<img src="images/brand1.png" alt="" />
+								</div>
+							</div>
+						</div>
+
+						<div class="col-xs-12 col-sm-12 col-md-4 col-lg-2">
+							<div class="kf-brands-item element-anim-1 scroll-animate" data-animate="active">
+								<div class="image">
+									<img src="images/brand2.png" alt="" />
+								</div>
+							</div>
+						</div>
+
+						<div class="col-xs-12 col-sm-12 col-md-4 col-lg-2">
+							<div class="kf-brands-item element-anim-1 scroll-animate" data-animate="active">
+								<div class="image">
+									<img src="images/brand3.png" alt="" />
+								</div>
+							</div>
+						</div>
+
+						<div class="col-xs-12 col-sm-12 col-md-4 col-lg-2">
+							<div class="kf-brands-item element-anim-1 scroll-animate" data-animate="active">
+								<div class="image">
+									<img src="images/brand4.png" alt="" />
+								</div>
+							</div>
+						</div>
+
+						<div class="col-xs-12 col-sm-12 col-md-4 col-lg-2">
+							<div class="kf-brands-item element-anim-1 scroll-animate" data-animate="active">
+								<div class="image">
+									<img src="images/brand5.png" alt="" />
+								</div>
+							</div>
+						</div>
+
+						<div class="col-xs-12 col-sm-12 col-md-4 col-lg-2">
+							<div class="kf-brands-item element-anim-1 scroll-animate" data-animate="active">
+								<div class="image">
+									<img src="images/brand6.png" alt="" />
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+
+		<!-- Footer -->
+	  <div class="kf-footer">
+	  	<div class="container">
+	  		<div class="row">
+	  			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
+
+	  				<!-- logo -->
+	  				<div class="kf-logo element-anim-1 scroll-animate" data-animate="active">
+	  					<a href="index.html"><img src="images/logo.png" alt="" /></a>
+	  				</div>
+
+	  			</div>
+	  			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
+
+	  				<!-- hours -->
+	  				<div class="kf-f-hours element-anim-1 scroll-animate" data-animate="active">
+	  					<h5>Working Hours</h5>
+	  					<ul>
+	  						<li>
+	  							Sunday - Thursday
+	  							<em>08:00 am - 09:00pm</em>
+	  						</li>
+	  						<li>
+	  							Only Friday
+	  							<em>03:00 pm - 09:00pm</em>
+	  						</li>
+	  						<li>
+	  							<strong>Saturday Close</strong>
+	  						</li>
+	  					</ul>
+	  				</div>
+
+	  			</div>
+	  			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
+
+	  				<!-- contact -->
+	  				<div class="kf-f-contact element-anim-1 scroll-animate" data-animate="active">
+	  					<h5>Contact Us</h5>
+	  					<ul>
+	  						<li>
+	  							<i class="las la-map-marker"></i>
+	  							<em>Location :</em>
+	  							55 Main Street, New York
+	  						</li>
+	  						<li>
+	  							<i class="las la-envelope-open-text"></i>
+	  							<em>Email Address :</em>
+	  							kaffendev@gmail.com
+	  						</li>
+	  						<li>
+	  							<i class="las la-phone"></i>
+	  							<em>Phone Number :</em>
+	  							+012 (345) 678 99
+	  						</li>
+	  					</ul>
+	  				</div>
+
+	  			</div>
+	  			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
+
+	  				<!-- gallery -->
+	  				<div class="kf-f-gallery element-anim-1 scroll-animate" data-animate="active">
+	  					<h5>Gallery</h5>
+	  					<ul>
+	  						<li>
+	  							<a href="images/grid_gal1.jpg" class="kf-image-hover has-popup-image"><img src="images/grid_gal1.jpg" alt="" /></a>
+	  						</li>
+	  						<li>
+	  							<a href="images/grid_gal2.jpg" class="kf-image-hover has-popup-image"><img src="images/grid_gal2.jpg" alt="" /></a>
+	  						</li>
+	  						<li>
+	  							<a href="images/grid_gal3.jpg" class="kf-image-hover has-popup-image"><img src="images/grid_gal3.jpg" alt="" /></a>
+	  						</li>
+	  						<li>
+	  							<a href="images/grid_gal4.jpg" class="kf-image-hover has-popup-image"><img src="images/grid_gal4.jpg" alt="" /></a>
+	  						</li>
+	  						<li>
+	  							<a href="images/grid_gal5.jpg" class="kf-image-hover has-popup-image"><img src="images/grid_gal5.jpg" alt="" /></a>
+	  						</li>
+	  						<li>
+	  							<a href="images/grid_gal6.html" class="kf-image-hover has-popup-image"><img src="images/grid_gal1.jpg" alt="" /></a>
+	  						</li>
+	  					</ul>
+	  				</div>
+
+	  			</div>
+	  		</div>
+	  		<div class="row">
+	  			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 align-center">
+
+	  				<!-- copyright -->
+	  				<div class="kf-copyright element-anim-1 scroll-animate" data-animate="active">
+	  					Copyright © 2022 Kaffen. All Rights Reserved.
+	  				</div>
+
+	  			</div>
+	  		</div>
+	  	</div>
+	  </div>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="js/jquery.min.js"></script>
+	<script src="js/jquery.validate.min.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<script src="js/swiper.js"></script>
+	<script src="js/splitting.js"></script>
+	<script src="js/jquery.paroller.min.js"></script>
+	<script src="js/parallax.js"></script>
+	<script src="js/magnific-popup.js"></script>
+	<script src="js/imagesloaded.pkgd.js"></script>
+	<script src="js/isotope.pkgd.js"></script>
+	<script src="js/jquery.scrolla.js"></script>
+	<script src="js/skrollr.js"></script>
+	<script src="js/common.js"></script>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-125314689-11"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-125314689-11');
+	</script>
+
+	<!-- bslthemes.com buttons html begin -->
+  <div class="bsl-popup" data-theme="kaffen" data-category="html">
+    <div class="bsl-popup__buttons"></div>
+    <div class="bsl-popup__content bsl-popup__content-related">
+      <div class="bsl-popup__menu"></div>
+      <div class="bsl-popup__tabs">
+        <div class="bsl-popup__tab bsl-popup__tab-demo"></div>
+        <div class="bsl-popup__tab bsl-popup__tab-all"></div>
+        <div class="bsl-popup__tab bsl-popup__tab-related"></div>
+				<div class="bsl-popup__tab bsl-popup__tab-version"></div>
+      </div>
+    </div>
+    <div class="bsl-popup__content bsl-popup__content-help"></div>
+  </div>
+  <!-- bslthemes.com buttons html end -->
+
+	<!-- bslthemes.com buttons assets begin -->
+	<link rel="stylesheet" href="../../bslthms-advanced-btns/assets/style.css">
+  <script src="../../bslthms-advanced-btns/assets/script.js"></script>
+	<!-- bslthemes.com buttons assets end -->
+</body>
+
+<!-- Mirrored from bslthemes.com/html/kaffen/index-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Aug 2025 18:16:09 GMT -->
+</html>

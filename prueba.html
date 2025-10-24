@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Dulce Berlín | Panadería y Pastelería Alemana</title>
+<meta name="description" content="Panadería y pastelería alemana en Bogotá. Pide por WhatsApp o paga en línea con Wompi. Únete a DulcePoints y acumula puntos."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+<style>
+:root{
+  --brand:#d62828; /* rojo */
+  --whats:#25D366;
+  --text:#1f2937
+}
+html,body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;color:var(--text)}
+.navbar{box-shadow:0 2px 10px rgba(0,0,0,.06)}
+.subnav{position:sticky;top:56px;z-index:1020;background:#fff;border-bottom:1px solid #eee}
+.subnav .nav-link{border-radius:999px}
+.subnav .nav-link.active{background:var(--brand);color:#fff}
+.hero{min-height:80vh}
+@media (max-width: 768px){ .hero{min-height:65vh} }
+.carousel-home .carousel-item>img{height:100%;width:100%;object-fit:cover}
+.carousel-caption{top:12%;left:6%;text-align:left;text-shadow:0 3px 16px rgba(0,0,0,.5)}
+.btn-brand{background:var(--brand);color:#fff;border:none}
+.btn-outline-brand{border:2px solid var(--brand);color:var(--brand)}
+.qty-btn{width:32px;height:32px;display:inline-flex;align-items:center;justify-content:center;border:1px solid #ddd;border-radius:6px;background:#fff}
+.qty-input{width:44px;text-align:center;border:1px solid #ddd;border-radius:6px;height:32px}
+.line-price{min-width:90px;text-align:right}
+footer{background:#111;color:#eee}footer a{color:#fff;text-decoration:none}
+.badge-pill{border-radius:999px;background:#f7f7f7;border:1px solid #eee;padding:.25rem .6rem}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="navbar navbar-expand-lg bg-white sticky-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="/">Dulce Berlín</a>
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nb"><span class="navbar-toggler-icon"></span></button>
+    <div id="nb" class="collapse navbar-collapse">
+      <ul class="navbar-nav ms-auto align-items-lg-center">
+        <li class="nav-item"><a class="nav-link" href="#destacados">Destacados</a></li>
+        <li class="nav-item"><a class="nav-link" href="#panaderia">Panadería</a></li>
+        <li class="nav-item"><a class="nav-link" href="#pasteleria">Pastelería</a></li>
+        <li class="nav-item"><a class="nav-link" href="#domicilios">Domicilios</a></li>
+        <li class="nav-item"><a class="nav-link" href="#mis-puntos">Mis puntos</a></li>
+        <li class="nav-item">
+          <a class="btn btn-sm ms-lg-2 btn-brand" href="#mis-puntos">Únete a DulcePoints</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- SUBNAV -->
+<div class="subnav">
+  <div class="container py-2">
+    <ul class="nav nav-pills gap-2 justify-content-between justify-content-md-start">
+      <li class="nav-item"><a class="nav-link active" href="#hero">Inicio</a></li>
+      <li class="nav-item"><a class="nav-link" href="#destacados">Destacados</a></li>
+      <li class="nav-item"><a class="nav-link" href="#panaderia">Panadería</a></li>
+      <li class="nav-item"><a class="nav-link" href="#pasteleria">Pastelería</a></li>
+      <li class="nav-item"><a class="nav-link" href="#domicilios">Domicilios</a></li>
+      <li class="nav-item"><a class="nav-link" href="#mis-puntos">Mis puntos</a></li>
+      <li class="nav-item ms-md-auto"><a class="nav-link" style="background:#25D366;color:#fff" target="_blank" rel="noopener" href="https://wa.me/573102244351?text=Hola%20Dulce%20Berl%C3%ADn%2C%20quiero%20hacer%20un%20pedido.">WhatsApp</a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- HERO CAROUSEL -->
+<div id="hero" class="carousel slide carousel-home hero" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#hero" data-bs-slide-to="0" class="active"></button>
+    <button type="button" data-bs-target="#hero" data-bs-slide-to="1"></button>
+    <button type="button" data-bs-target="#hero" data-bs-slide-to="2"></button>
+    <button type="button" data-bs-target="#hero" data-bs-slide-to="3"></button>
+  </div>
+  <div class="carousel-inner h-100">
+    <div class="carousel-item active h-100">
+      <img src="https://images.unsplash.com/photo-1599785209796-9e3f7e2d1c21?q=80&w=1600&auto=format&fit=crop" alt="Selva Negra" class="w-100 h-100">
+      <div class="carousel-caption">
+        <h1 class="display-5 fw-bold">2× puntos en Selva Negra</h1>
+        <p>Tradición alemana, amor bogotano.</p>
+        <button class="btn btn-lg btn-brand" data-action="pedir" data-item="selv">Pedir a domicilio</button>
+      </div>
+    </div>
+    <div class="carousel-item h-100">
+      <img src="https://images.unsplash.com/photo-1551022370-1b5e93f25b2b?q=80&w=1600&auto=format&fit=crop" alt="Käsekuchen" class="w-100 h-100">
+      <div class="carousel-caption">
+        <h2 class="h1 fw-bold">Käsekuchen de guanábana</h2>
+        <p>Cheesecake alemán con toque tropical.</p>
+        <button class="btn btn-lg btn-brand" data-action="pedir" data-item="kaeg">Ordenar ahora</button>
+      </div>
+    </div>
+    <div class="carousel-item h-100">
+      <img src="https://images.unsplash.com/photo-1606313563431-0a0f5aa83175?q=80&w=1600&auto=format&fit=crop" alt="Apfelstrudel" class="w-100 h-100">
+      <div class="carousel-caption">
+        <h2 class="h1 fw-bold">Apfelstrudel</h2>
+        <p>Manzana y canela, hojaldrado perfecto.</p>
+        <button class="btn btn-lg btn-brand" data-action="pedir" data-item="apfl">Quiero uno</button>
+      </div>
+    </div>
+    <div class="carousel-item h-100">
+      <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=1600&auto=format&fit=crop" alt="Roggenbrot" class="w-100 h-100">
+      <div class="carousel-caption">
+        <h2 class="h1 fw-bold">Roggenbrot (centeno)</h2>
+        <p>Masa madre, sabor profundo.</p>
+        <button class="btn btn-lg btn-brand" data-action="pedir" data-item="rogg">Pedir pan</button>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#hero" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
+  <button class="carousel-control-next" type="button" data-bs-target="#hero" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
+</div>
+
+<!-- DESTACADOS / PANADERÍA / PASTELERÍA / DOMICILIOS -->
+<section id="destacados" class="container py-5">
+  <div class="d-flex align-items-center gap-2 mb-2">
+    <h2 class="fw-800 mb-0">Destacados</h2>
+    <span class="badge-pill">Acumula 2× pts</span>
+  </div>
+  <div class="row g-3" id="grid-destacados"></div>
+</section>
+
+<section id="panaderia" class="container py-4">
+  <h2 class="fw-800 mb-3">Panadería</h2>
+  <div class="row g-3" id="grid-panaderia"></div>
+</section>
+
+<section id="pasteleria" class="container py-4">
+  <h2 class="fw-800 mb-3">Pastelería</h2>
+  <div class="row g-3" id="grid-pasteleria"></div>
+</section>
+
+<section id="domicilios" class="container py-4">
+  <h2 class="fw-800 mb-2">Domicilios</h2>
+  <p>Haz tu pedido por <a target="_blank" rel="noopener" href="https://wa.me/573102244351?text=Hola%20Dulce%20Berl%C3%ADn%2C%20quiero%20hacer%20un%20pedido.">WhatsApp</a> o compra en línea con Wompi desde el carrito.</p>
+  <button class="btn btn-outline-brand" data-action="pedir">Abrir carrito</button>
+</section>
+
+<!-- MIS PUNTOS -->
+<section id="mis-puntos" class="container py-5">
+  <h2 class="fw-800 mb-3">Mis puntos — DulcePoints</h2>
+
+  <!-- Auth -->
+  <div id="lp-auth" class="row g-3">
+    <div class="col-12 col-lg-6">
+      <div class="border rounded-3 p-3 h-100">
+        <h5 class="fw-bold">Regístrate</h5>
+        <form id="loyaltyForm" class="row g-2">
+          <div class="col-md-6"><label class="form-label">Nombre</label><input required name="nombre" class="form-control"/></div>
+          <div class="col-md-6"><label class="form-label">Apellido</label><input required name="apellido" class="form-control"/></div>
+          <div class="col-md-6"><label class="form-label">Correo</label><input required type="email" name="correo" class="form-control"/></div>
+          <div class="col-md-6"><label class="form-label">Celular</label><input required name="celular" class="form-control"/></div>
+          <div class="col-12"><button class="btn btn-brand w-100" type="submit">Crear cuenta (+100 pts)</button></div>
+        </form>
+      </div>
+    </div>
+    <div class="col-12 col-lg-6">
+      <div class="border rounded-3 p-3 h-100">
+        <h5 class="fw-bold">Ingresar</h5>
+        <form id="lp-login" class="row g-2">
+          <div class="col-md-6"><label class="form-label">Correo</label><input required type="email" name="email" class="form-control"/></div>
+          <div class="col-md-6"><label class="form-label">Celular</label><input required name="phone" class="form-control"/></div>
+          <div class="col-12"><button class="btn btn-outline-brand w-100" type="submit">Ingresar</button></div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dashboard -->
+  <div id="lp-dash" class="row g-3" style="display:none">
+    <div class="col-12 col-lg-4">
+      <div class="border rounded-3 p-3 h-100">
+        <h5 class="fw-bold mb-2">Tu perfil</h5>
+        <div><strong id="lp-name">—</strong></div>
+        <div class="text-muted"><span id="lp-email">—</span></div>
+        <hr>
+        <div class="h5 mb-3">Puntos: <span id="lp-points">0 pts</span></div>
+        <button id="lp-logout" class="btn btn-sm btn-secondary">Cerrar sesión</button>
+      </div>
+    </div>
+    <div class="col-12 col-lg-4">
+      <div class="border rounded-3 p-3 h-100">
+        <h5 class="fw-bold">Redime</h5>
+        <div class="d-grid gap-2">
+          <button class="btn btn-outline-brand" data-redeem="5000">Cupón $5.000 (200 pts)</button>
+          <button class="btn btn-outline-brand" data-redeem="10000">Cupón $10.000 (350 pts)</button>
+          <button class="btn btn-outline-brand" data-redeem="20000">Cupón $20.000 (600 pts)</button>
+        </div>
+        <small class="text-muted d-block mt-2">Presenta el cupón en WhatsApp o en caja.</small>
+      </div>
+    </div>
+    <div class="col-12 col-lg-4">
+      <div class="border rounded-3 p-3 h-100">
+        <h5 class="fw-bold">Movimientos</h5>
+        <ul class="list-group" id="lp-history"></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODAL CARRITO -->
+<div class="modal fade" id="modal-cart" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Tu pedido</h5>
+        <button class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <!-- catálogo -->
+        <div class="mb-3">
+          <h6 class="mb-2">Agregar productos</h6>
+          <div class="row g-2" id="catalog"></div>
+        </div>
+        <hr>
+        <!-- carrito -->
+        <div id="cartLines"><p class="text-muted mb-0">Aún no has agregado productos.</p></div>
+      </div>
+      <div class="modal-footer d-block">
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+          <div>
+            <div>Subtotal: <strong id="cartSubtotal">$ 0</strong></div>
+            <small class="text-muted">El envío se confirma por WhatsApp según tu dirección.</small>
+          </div>
+          <div class="d-flex gap-2">
+            <button class="btn btn-outline-secondary" id="btnClear">Vaciar</button>
+            <a class="btn" style="background:#25D366;color:#fff" id="btnCheckoutWA" target="_blank" rel="noopener">Finalizar por WhatsApp</a>
+            <button class="btn btn-success" id="btnCheckoutPay">Pagar en línea</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="mt-5">
+  <div class="container py-4 d-flex justify-content-between flex-wrap gap-2">
+    <div>© <span id="y"></span> Dulce Berlín — Bogotá</div>
+    <div>
+      <a href="https://www.instagram.com/dulcberlin/" target="_blank" rel="noopener">Instagram</a> ·
+      <a href="https://www.facebook.com/dulceberlin" target="_blank" rel="noopener">Facebook</a> ·
+      <a href="https://www.tiktok.com/@dulceberlin" target="_blank" rel="noopener">TikTok</a>
+    </div>
+  </div>
+</footer>
+
+<!-- LIBS -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
+<script>if(!window.jQuery){document.write('<script src="/jquery.min.js"><\\/script>');}</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+(function($){
+  if(!$){console.error('jQuery no cargó');return;}
+  $('#y').text(new Date().getFullYear());
+
+  // ===== CATÁLOGO =====
+  const catalog = [
+    { id:'selv', name:'Schwarzwälder (Selva Negra)', price:26900 },
+    { id:'kaes', name:'Käsekuchen',                  price:22900 },
+    { id:'kaeg', name:'Käsekuchen (guanábana)',      price:23900 },
+    { id:'apfl', name:'Apfelstrudel',                 price:18900 },
+    { id:'rogg', name:'Roggenbrot (750 g)',           price:15900 },
+    { id:'brot', name:'Brötchen (6 und.)',            price: 6900 }
+  ];
+  const destacadosIds = ['selv','kaeg','rogg'];
+
+  function card(p){
+    return `<div class="col-12 col-sm-6 col-lg-4">
+      <div class="border rounded-3 p-3 h-100">
+        <div class="fw-semibold mb-1">${p.name}</div>
+        <div class="text-muted mb-2">$ ${p.price.toLocaleString('es-CO')}</div>
+        <div class="d-grid"><button class="btn btn-outline-brand" data-add="${p.id}">Agregar</button></div>
+      </div>
+    </div>`;
+  }
+  $('#grid-destacados').html(destacadosIds.map(id=>card(catalog.find(p=>p.id===id))).join(''));
+  $('#grid-panaderia').html(['rogg','brot'].map(id=>card(catalog.find(p=>p.id===id))).join(''));
+  $('#grid-pasteleria').html(['selv','kaes','kaeg','apfl'].map(id=>card(catalog.find(p=>p.id===id))).join(''));
+
+  // ===== CARRITO =====
+  const cart = new Map();
+  function addItem(pid, qty=1){
+    const p = catalog.find(x=>x.id===pid); if(!p) return;
+    const prev = cart.get(pid) || { ...p, qty:0 };
+    prev.qty += qty; cart.set(pid, prev); renderCart();
+  }
+  function changeQty(pid, delta){
+    const it = cart.get(pid); if(!it) return;
+    it.qty += delta; if(it.qty<=0) cart.delete(pid); else cart.set(pid, it); renderCart();
+  }
+  function clearCart(){ cart.clear(); renderCart(); }
+  function cartSubtotal(){ let s=0; cart.forEach(it=>s+=it.qty*it.price); return s; }
+
+  function renderCatalog(){
+    const $cat = $('#catalog').empty();
+    catalog.forEach(p=>{
+      const col = $(card(p));
+      col.find('[data-add]').on('click', ()=> addItem(p.id,1));
+      $cat.append(col);
+    });
+  }
+  function renderCart(){
+    const $lines = $('#cartLines').empty();
+    if(cart.size===0){ $lines.append('<p class="text-muted mb-0">Aún no has agregado productos.</p>'); }
+    else{
+      cart.forEach((it,pid)=>{
+        const line = $(`<div class="d-flex align-items-center justify-content-between py-2 border-bottom">
+          <div class="me-2 flex-grow-1"><div class="fw-semibold">${it.name}</div><small class="text-muted">$ ${it.price.toLocaleString('es-CO')} c/u</small></div>
+          <div class="d-flex align-items-center gap-1">
+            <button class="qty-btn" data-dec="${pid}">−</button>
+            <input class="qty-input" value="${it.qty}" readonly>
+            <button class="qty-btn" data-inc="${pid}">+</button>
+          </div>
+          <div class="line-price ms-3 fw-semibold">$ ${(it.qty*it.price).toLocaleString('es-CO')}</div>
+        </div>`);
+        line.find('[data-dec]').on('click', ()=> changeQty(pid,-1));
+        line.find('[data-inc]').on('click', ()=> changeQty(pid,+1));
+        $lines.append(line);
+      });
+    }
+    $('#cartSubtotal').text('$ ' + cartSubtotal().toLocaleString('es-CO'));
+    buildWhatsLink();
+  }
+
+  // Abrir carrito desde botones
+  $(document).on('click','[data-action="pedir"]', function(){
+    const pid = $(this).data('item'); if(pid) addItem(pid,1);
+    renderCatalog(); renderCart();
+    new bootstrap.Modal(document.getElementById('modal-cart')).show();
+  });
+  $('#btnClear').on('click', clearCart);
+
+  // ===== WHATSAPP CHECKOUT =====
+  function buildWhatsLink(){
+    const lines = [];
+    cart.forEach(it=>lines.push(`• ${it.name} x${it.qty} — $ ${(it.qty*it.price).toLocaleString('es-CO')}`));
+    const subtotal = cartSubtotal();
+    const u = getUser() || {};
+    const msg = `Hola Dulce Berlín, quiero confirmar este pedido:%0A${lines.join('%0A')}%0A%0ATotal: $ ${subtotal.toLocaleString('es-CO')}`
+      + (u?.name ? `%0ACliente: ${encodeURIComponent(u.name)}`:'')
+      + (u?.phone ? `%0ACelular: ${encodeURIComponent(u.phone)}`:'');
+    $('#btnCheckoutWA').attr('href', `https://wa.me/573102244351?text=${msg}`);
+  }
+
+  // ===== DULCEPOINTS =====
+  function getUser(){ try{ return JSON.parse(localStorage.getItem('db:loyaltyUser')||'null'); }catch(_){ return null; } }
+  function setUser(u){ localStorage.setItem('db:loyaltyUser', JSON.stringify(u)); }
+  function addHistory(row){
+    const list = JSON.parse(localStorage.getItem('db:loyaltyHistory')||'[]');
+    list.unshift({...row, ts: Date.now()});
+    localStorage.setItem('db:loyaltyHistory', JSON.stringify(list.slice(0,50)));
+  }
+  function renderLp(){
+    const u = getUser();
+    if(!u){ $('#lp-auth').show(); $('#lp-dash').hide(); return; }
+    $('#lp-name').text(u.name||'—'); $('#lp-email').text(u.email||'—'); $('#lp-points').text((u.points||0).toLocaleString('es-CO')+' pts');
+    const hist = JSON.parse(localStorage.getItem('db:loyaltyHistory')||'[]');
+    const $h = $('#lp-history').empty();
+    if(hist.length===0){ $h.append('<li class="list-group-item">Sin movimientos todavía.</li>'); }
+    else{
+      hist.forEach(r=>{
+        const d = new Date(r.ts);
+        const lab = r.type==='earn' ? 'Ganas' : (r.type==='redeem' ? 'Redimes' : 'Pedido');
+        $h.append(`<li class="list-group-item d-flex justify-content-between"><span>${lab} — ${r.note||''}<br><small class="text-muted">${d.toLocaleString()}</small></span><strong>${r.type==='earn'?'+':'-'}${(r.pts||0).toLocaleString('es-CO')} pts</strong></li>`);
+      });
+    }
+    $('#lp-auth').hide(); $('#lp-dash').show();
+  }
+  $('#loyaltyForm').on('submit', function(e){
+    e.preventDefault();
+    const f = Object.fromEntries(new FormData(this).entries());
+    const u = { name:(f.nombre+' '+f.apellido).trim(), email:f.correo.trim().toLowerCase(), phone:f.celular.trim(), points:100 };
+    setUser(u); addHistory({type:'earn', pts:100, note:'Bienvenida DulcePoints'}); renderLp(); alert('¡Bienvenido/a! +100 pts');
+  });
+  $('#lp-login').on('submit', function(e){
+    e.preventDefault();
+    const f = Object.fromEntries(new FormData(this).entries());
+    const u = getUser();
+    if(!u) return alert('Regístrate primero.');
+    if(u.email !== f.email.toLowerCase().trim() || (u.phone||'').trim() !== f.phone.trim()) return alert('Correo o celular no coinciden.');
+    renderLp(); alert('Ingreso correcto.');
+  });
+  $('#lp-logout').on('click', ()=>{ localStorage.removeItem('db:loyaltyUser'); renderLp(); });
+
+  // Redención (con cupón)
+  const redeemCosts = { 5000:200, 10000:350, 20000:600 }; // valor: puntos requeridos
+  $(document).on('click','[data-redeem]', function(){
+    const value = Number($(this).data('redeem'));
+    const ptsNeed = redeemCosts[value];
+    const u = getUser();
+    if(!u) return alert('Ingresa a tu cuenta primero.');
+    if((u.points||0) < ptsNeed) return alert(`Necesitas ${ptsNeed} pts.`);
+    u.points -= ptsNeed; setUser(u);
+    const code = 'DB-CUP-' + Math.random().toString(36).slice(2,8).toUpperCase();
+    addHistory({type:'redeem', pts:ptsNeed, note:`Cupón ${code} por $${value.toLocaleString('es-CO')}`});
+    renderLp();
+    alert(`Cupón generado: ${code}\nValor: $${value.toLocaleString('es-CO')}\nMuéstralo en WhatsApp o en caja.`);
+  });
+
+  // ===== PAGO EN LÍNEA (WOMPI) =====
+  async function createPayment(payload){
+    const r = await fetch('/api/payments/create', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify(payload)
+    });
+    if(!r.ok) throw new Error('No se pudo iniciar el pago.');
+    return r.json();
+  }
+  async function verifyPayment(reference){
+    const r = await fetch('/api/payments/verify?reference=' + encodeURIComponent(reference));
+    return r.json();
+  }
+
+  $('#btnCheckoutPay').on('click', async function(){
+    if(cart.size===0){ alert('Tu carrito está vacío.'); return; }
+    const u = getUser() || {};
+    const items = []; cart.forEach((it,id)=>items.push({ id, name:it.name, price:it.price, qty:it.qty }));
+    const payload = {
+      items, subtotal: cartSubtotal(),
+      customer: { name:u?.name||'', email:u?.email||'', phone:u?.phone||'' },
+      successUrl: location.origin + location.pathname + '?wompi_status=success',
+      failureUrl: location.origin + location.pathname + '?wompi_status=failure',
+      pendingUrl: location.origin + location.pathname + '?wompi_status=pending'
+    };
+    try{
+      const data = await createPayment(payload);
+      sessionStorage.setItem('lastPaymentReference', data.reference);
+      location.href = data.checkoutUrl;
+    }catch(e){ console.error(e); alert('Error iniciando el pago.'); }
+  });
+
+  (async function verifyAfterReturn(){
+    const p = new URLSearchParams(location.search);
+    if(!p.has('wompi_status')) return;
+    const ref = sessionStorage.getItem('lastPaymentReference'); if(!ref) return;
+    try{
+      const data = await verifyPayment(ref);
+      if(data.status === 'APPROVED'){
+        const pts = Math.floor((data.amountInCents/100)/1000);
+        const u = getUser(); if(u){ u.points=(u.points||0)+pts; setUser(u); addHistory({type:'order',pts, note:'Compra online Wompi'}); addHistory({type:'earn',pts, note:'Acumulación por compra'}); renderLp(); }
+        alert(`¡Pago aprobado! +${pts} pts`);
+        cart.clear(); renderCart();
+      }else if(data.status === 'DECLINED'){ alert('El pago fue rechazado.'); }
+      else{ alert('Pago pendiente. Te notificaremos al aprobarse.'); }
+      history.replaceState({}, '', location.pathname);
+    }catch(e){ console.error(e); }
+  })();
+
+  // Inicial
+  renderCatalog(); renderCart(); renderLp();
+
+  // Tests mínimos (no cambiar)
+  console.assert(!!window.jQuery, 'TEST FAIL: jQuery no está');
+  console.assert(typeof bootstrap?.Modal === 'function', 'TEST FAIL: Bootstrap no está');
+  console.assert(typeof cart !== 'undefined', 'TEST FAIL: carrito no existe');
+})(window.jQuery);
+</script>
+</body>
+</html>
