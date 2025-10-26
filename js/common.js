@@ -4,13 +4,15 @@
 	'use strict';
 
 	var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-	(function(){
+	// Limit chat loading to production domains so local previews do not trigger 400 errors.
+	var tawkAllowedHosts=["dulceberlin.com","www.dulceberlin.com"];
+	if(tawkAllowedHosts.indexOf(window.location.hostname)!==-1){
 	var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
 	s1.async=true;
 	s1.src='https://embed.tawk.to/62961d197b967b1179922b9c/1g4d7oaso';
 	s1.charset='UTF-8';
 	s1.setAttribute('crossorigin','*');
 	s0.parentNode.insertBefore(s1,s0);
-	})();
+	}else{console.info("Tawk chat disabled for host",window.location.hostname);}
 
 } )( jQuery );

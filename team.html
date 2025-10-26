@@ -24,6 +24,50 @@
 	<link rel="stylesheet" href="style.css" type="text/css" media="all" />
 	<!-- END CSS STYLES -->
 
+	<!-- Dulce Berlin palette + Team section theming (scoped to this page) -->
+	<style>
+		/* Brand palette variables */
+		:root {
+			--brand-primary: #C98927;
+			--brand-secondary: #FADDA3;
+			--brand-accent: #934218;
+			--brand-accent-dark: #89301C;
+			--text-dark: #1F1B11;
+			--text-light: #FFFFFF;
+			--neutral-light: #FAF7F2;
+			--neutral-dark: #2B2622;
+		}
+
+		/* Team cards */
+		.kf-team-item {
+			background-color: var(--neutral-dark) !important;
+			border: 2px solid var(--brand-accent);
+			transition: all 0.3s ease;
+			overflow: hidden;
+		}
+		.kf-team-item:hover {
+			border-color: var(--brand-primary);
+			box-shadow: 0 8px 20px rgba(201, 137, 39, 0.3);
+		}
+		.kf-team-item .desc { padding: 20px; text-align: center; }
+		.kf-team-item .name { color: var(--text-light); margin-bottom: 5px; }
+		.kf-team-item .subname { color: var(--brand-secondary); font-weight: 600; }
+		.kf-team-item .info .label { color: var(--brand-primary); font-size: 0.85rem; }
+		.kf-team-item .social a i { color: var(--brand-secondary); transition: all 0.3s ease; }
+		.kf-team-item .social a:hover i { color: var(--brand-primary); transform: scale(1.2); }
+
+		/* Team section on light background */
+		.section.kf-team.kf-section-transparent { background: #FEFCF8; }
+		.section.kf-team.kf-section-transparent .kf-subtitle { color: var(--brand-primary); }
+		.section.kf-team.kf-section-transparent .kf-title { color: var(--text-dark); }
+		.section.kf-team.kf-section-transparent .kf-team-item { background: #ffffff !important; border-color: var(--brand-accent); }
+		.section.kf-team.kf-section-transparent .kf-team-item .name { color: var(--text-dark); }
+		.section.kf-team.kf-section-transparent .kf-team-item .subname { color: var(--brand-primary); font-weight: 700; }
+		.section.kf-team.kf-section-transparent .kf-team-item .info .label { color: var(--text-dark); }
+		.section.kf-team.kf-section-transparent .kf-team-item .social a i { color: var(--brand-accent); }
+		.section.kf-team.kf-section-transparent .kf-team-item .social a:hover i { color: var(--brand-primary); }
+	</style>
+
 </head>
 
 <body>
@@ -74,7 +118,7 @@
 						<!-- location -->
 						<div class="kf-h-group">
 							<i class="fas fa-map-marker-alt"></i>
-							<em>Location :</em> 55 main street, new york
+							<em>Location :</em> Bogotá, Colombia
 						</div>
 
 					</div>
@@ -235,7 +279,7 @@
 							<!-- location -->
 							<div class="kf-h-group">
 								<i class="fas fa-map-marker-alt"></i>
-								<em>Location :</em> 55 main street, new york
+								<em>Location :</em> Bogotá, Colombia
 							</div>
 
 						</div>
@@ -262,7 +306,7 @@
 			</section>
 
 			<!-- Section Team -->
-			<section class="section kf-team section-bg">
+			<section class="section kf-team kf-section-transparent">
 				<div class="container">
 
 					<div class="kf-titles align-center">
@@ -276,17 +320,17 @@
 
 					<div class="kf-team-items row">
 
-						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
+						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 							<div class="kf-team-item element-anim-1 scroll-animate" data-animate="active">
 								<div class="desc">
-									<h5 class="name">Anthony J. Bowman</h5>
-									<div class="subname">Senior Chefs</div>
+									<h5 class="name">Jose</h5>
+									<div class="subname">Chef</div>
 								</div>
 								<div class="image kf-image-hover">
-									<img src="images/team1.jpg" alt="" />
+									<img src="images/team1.jpg" alt="Chef Jose" />
 									<div class="info">
-										<div class="label">bowmankf@gmail.com</div>
-										<div class="label">+012 (345) 678 99</div>
+										<div class="label">info@dulceberlin.com</div>
+										<div class="label">+49 (030) 123 456</div>
 									</div>
 									<div class="social">
 										<a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -296,19 +340,18 @@
 									</div>
 								</div>
 							</div>
-						</div>
 
-						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
+						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 							<div class="kf-team-item element-anim-1 scroll-animate" data-animate="active">
 								<div class="desc">
-									<h5 class="name">Kenny V. Gonzalez</h5>
-									<div class="subname">Senior Chefs</div>
+									<h5 class="name">Daylin</h5>
+									<div class="subname">Chef</div>
 								</div>
 								<div class="image kf-image-hover">
-									<img src="images/team2.jpg" alt="" />
+									<img src="images/team2.jpg" alt="Chef Daylin" />
 									<div class="info">
-										<div class="label">gonzalezkf@gmail.com</div>
-										<div class="label">+012 (345) 678 99</div>
+										<div class="label">info@dulceberlin.com</div>
+										<div class="label">+49 (030) 123 456</div>
 									</div>
 									<div class="social">
 										<a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -318,141 +361,8 @@
 									</div>
 								</div>
 							</div>
-						</div>
 
-						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
-							<div class="kf-team-item element-anim-1 scroll-animate" data-animate="active">
-								<div class="desc">
-									<h5 class="name">Joseph M. Lawrence</h5>
-									<div class="subname">Senior Chefs</div>
-								</div>
-								<div class="image kf-image-hover">
-									<img src="images/team3.jpg" alt="" />
-									<div class="info">
-										<div class="label">lawrencekf@gmail.com</div>
-										<div class="label">+012 (345) 678 99</div>
-									</div>
-									<div class="social">
-										<a href="#"><i class="fab fa-facebook-f"></i></a>
-										<a href="#"><i class="fab fa-twitter"></i></a>
-										<a href="#"><i class="fab fa-linkedin"></i></a>
-										<a href="#"><i class="fab fa-youtube"></i></a>
-									</div>
-								</div>
-							</div>
 						</div>
-
-						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
-							<div class="kf-team-item element-anim-1 scroll-animate" data-animate="active">
-								<div class="desc">
-									<h5 class="name">Charles K. Smith</h5>
-									<div class="subname">Senior Chefs</div>
-								</div>
-								<div class="image kf-image-hover">
-									<img src="images/team4.jpg" alt="" />
-									<div class="info">
-										<div class="label">smithkf@gmail.com</div>
-										<div class="label">+012 (345) 678 99</div>
-									</div>
-									<div class="social">
-										<a href="#"><i class="fab fa-facebook-f"></i></a>
-										<a href="#"><i class="fab fa-twitter"></i></a>
-										<a href="#"><i class="fab fa-linkedin"></i></a>
-										<a href="#"><i class="fab fa-youtube"></i></a>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
-							<div class="kf-team-item element-anim-1 scroll-animate" data-animate="active">
-								<div class="desc">
-									<h5 class="name">Richard A. White</h5>
-									<div class="subname">Senior Chefs</div>
-								</div>
-								<div class="image kf-image-hover">
-									<img src="images/team5.jpg" alt="" />
-									<div class="info">
-										<div class="label">whitekf@gmail.com</div>
-										<div class="label">+012 (345) 678 99</div>
-									</div>
-									<div class="social">
-										<a href="#"><i class="fab fa-facebook-f"></i></a>
-										<a href="#"><i class="fab fa-twitter"></i></a>
-										<a href="#"><i class="fab fa-linkedin"></i></a>
-										<a href="#"><i class="fab fa-youtube"></i></a>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
-							<div class="kf-team-item element-anim-1 scroll-animate" data-animate="active">
-								<div class="desc">
-									<h5 class="name">David M. Seward</h5>
-									<div class="subname">Senior Chefs</div>
-								</div>
-								<div class="image kf-image-hover">
-									<img src="images/team6.jpg" alt="" />
-									<div class="info">
-										<div class="label">sewardkf@gmail.com</div>
-										<div class="label">+012 (345) 678 99</div>
-									</div>
-									<div class="social">
-										<a href="#"><i class="fab fa-facebook-f"></i></a>
-										<a href="#"><i class="fab fa-twitter"></i></a>
-										<a href="#"><i class="fab fa-linkedin"></i></a>
-										<a href="#"><i class="fab fa-youtube"></i></a>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
-							<div class="kf-team-item element-anim-1 scroll-animate" data-animate="active">
-								<div class="desc">
-									<h5 class="name">Julio N. Williams</h5>
-									<div class="subname">Senior Chefs</div>
-								</div>
-								<div class="image kf-image-hover">
-									<img src="images/team7.jpg" alt="" />
-									<div class="info">
-										<div class="label">williamskf@gmail.com</div>
-										<div class="label">+012 (345) 678 99</div>
-									</div>
-									<div class="social">
-										<a href="#"><i class="fab fa-facebook-f"></i></a>
-										<a href="#"><i class="fab fa-twitter"></i></a>
-										<a href="#"><i class="fab fa-linkedin"></i></a>
-										<a href="#"><i class="fab fa-youtube"></i></a>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
-							<div class="kf-team-item element-anim-1 scroll-animate" data-animate="active">
-								<div class="desc">
-									<h5 class="name">Christopher K. Dixon</h5>
-									<div class="subname">Senior Chefs</div>
-								</div>
-								<div class="image kf-image-hover">
-									<img src="images/team8.jpg" alt="" />
-									<div class="info">
-										<div class="label">dixonkf@gmail.com</div>
-										<div class="label">+012 (345) 678 99</div>
-									</div>
-									<div class="social">
-										<a href="#"><i class="fab fa-facebook-f"></i></a>
-										<a href="#"><i class="fab fa-twitter"></i></a>
-										<a href="#"><i class="fab fa-linkedin"></i></a>
-										<a href="#"><i class="fab fa-youtube"></i></a>
-									</div>
-								</div>
-							</div>
-						</div>
-
-					</div>
 
 				</div>
 			</section>
@@ -754,7 +664,7 @@
 	  						<li>
 	  							<i class="las la-map-marker"></i>
 	  							<em>Location :</em>
-	  							55 Main Street, New York
+		  						Bogotá, Colombia
 	  						</li>
 	  						<li>
 	  							<i class="las la-envelope-open-text"></i>

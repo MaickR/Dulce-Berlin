@@ -340,97 +340,33 @@
 			color: var(--brand-accent);
 		}
 
-		/* Mobile menu button */
-		.kf-menu-btn {
-			order: 3;
-			display: inline-flex;
-			align-items: center;
-			justify-content: center;
-			width: 40px;
-			height: 40px;
-			margin: 0 20px;
-			border: 2px solid var(--brand-primary);
-			border-radius: 10px;
-			background: rgba(250, 221, 163, 0.6);
-			box-shadow: 0 8px 18px rgba(201, 137, 39, 0.2);
-			z-index: 101;
-			position: relative;
-			transition: all 0.3s ease;
+		/* Uniform height for product cards */
+		.kf-menu-items .row {
+			display: flex;
+			flex-wrap: wrap;
 		}
 
-		.kf-menu-btn:hover,
-		.kf-menu-btn:focus {
-			background: #ffffff00;
-			border-color: var(--brand-accent);
-			box-shadow: 0 12px 26px rgba(147, 66, 24, 0.25);
+		.kf-menu-items .row > [class*="col-"] {
+			display: flex;
 		}
 
-		.kf-menu-btn:focus {
-			outline: none;
+		.kf-menu-items .row > [class*="col-"] .kf-menu-item.element-anim-1.scroll-animate {
+			width: 100%;
+			display: flex;
+			align-items: stretch;
 		}
 
-		.kf-menu-btn:focus-visible {
-			outline: 2px solid var(--brand-accent);
-			outline-offset: 3px;
+		.kf-menu-items .row > [class*="col-"] .kf-menu-item.element-anim-1.scroll-animate .desc {
+			display: flex;
+			flex-direction: column;
+			flex: 1;
 		}
 
-		.kf-menu-btn span {
-			position: relative !important;
-			top: auto !important;
-			margin: 0 !important;
-			display: block;
-			width: 20px;
-			height: 2px;
-			background: var(--brand-primary);
-			border-radius: 2px;
-			transition: all 0.3s ease;
+		.kf-menu-items .row > [class*="col-"] .kf-menu-item.element-anim-1.scroll-animate .price-actions-wrapper {
+			margin-top: auto;
 		}
 
-		.kf-menu-btn span:before,
-		.kf-menu-btn span:after {
-			content: '';
-			position: absolute;
-			left: 0;
-			width: 20px;
-			height: 2px;
-			background: var(--brand-primary);
-			border-radius: 2px;
-			transition: all 0.3s ease;
-			top: 0 !important;
-			bottom: auto !important;
-		}
-
-		.kf-menu-btn span:before {
-			transform: translateY(-7px);
-		}
-
-		.kf-menu-btn span:after {
-			transform: translateY(7px);
-		}
-
-		.kf-menu-btn.active {
-			background: rgba(147, 66, 24, 0.15);
-			border-color: var(--brand-accent);
-			box-shadow: 0 12px 24px rgba(147, 66, 24, 0.35);
-		}
-
-		.kf-menu-btn.active span {
-			background: transparent;
-		}
-
-		.kf-menu-btn.active span:before {
-			transform: rotate(45deg);
-			background: var(--brand-accent);
-			left: 0 !important;
-			 top: 0 !important;
-		}
-
-		.kf-menu-btn.active span:after {
-			transform: rotate(-45deg);
-			background: var(--brand-accent);
-			left: 0 !important;
-			 top: 0 !important;
-		}
+		/* Menu button styling moved to style.css to avoid forcing inline colors */
 
 		/* Mobile navigation overlay */
 		.kf-navbar-mobile {
@@ -443,16 +379,20 @@
 			justify-content: center;
 			align-items: flex-start;
 			padding: 110px 18px 48px;
-			background: radial-gradient(circle at top, rgba(250, 221, 163, 0.9) 0%, rgba(250, 221, 163, 0.75) 45%, rgba(250, 221, 163, 0.6) 100%);
-			backdrop-filter: blur(14px);
-			transition: opacity 0.3s ease, transform 0.35s ease;
+			background: radial-gradient(circle at top, rgba(250, 221, 163, 0.92) 0%, rgba(250, 221, 163, 0.78) 35%, rgba(250, 221, 163, 0.65) 70%);
+			backdrop-filter: blur(16px);
+			-webkit-backdrop-filter: blur(16px);
+			transition: opacity 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), 
+						transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+						visibility 0.35s ease;
 			opacity: 0;
 			visibility: hidden;
 			pointer-events: none;
-			transform: translateY(-24px);
+			transform: translateY(-30px);
 			overflow-y: auto;
 			-webkit-overflow-scrolling: touch;
 			z-index: 95;
+			will-change: opacity, transform;
 		}
 
 		.kf-navbar-mobile:before {
@@ -471,19 +411,52 @@
 		.kf-mobile-panel {
 			width: 100%;
 			max-width: 420px;
-			background: rgba(255, 255, 255, 0.98);
-			border-radius: 18px;
-			border: 1px solid rgba(201, 137, 39, 0.28);
-			box-shadow: 0 22px 36px rgba(31, 27, 17, 0.22);
+			background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 249, 244, 0.96) 100%);
+			border-radius: 24px;
+			border: 2px solid var(--brand-primary);
+			box-shadow: 0 28px 48px rgba(31, 27, 17, 0.28), 
+						0 0 1px rgba(201, 137, 39, 0.4) inset;
+			backdrop-filter: blur(8px);
 			overflow: hidden;
 			display: flex;
 			flex-direction: column;
 			gap: 0;
+			animation: kf-mobile-panel-enter 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+			transform-origin: top center;
+		}
+
+		@keyframes kf-mobile-panel-enter {
+			from {
+				opacity: 0;
+				transform: translateY(-20px) scale(0.95);
+			}
+			to {
+				opacity: 1;
+				transform: translateY(0) scale(1);
+			}
+		}
+
+		/* Scroll behavior improvements */
+		.kf-navbar-mobile::-webkit-scrollbar {
+			width: 6px;
+		}
+
+		.kf-navbar-mobile::-webkit-scrollbar-track {
+			background: transparent;
+		}
+
+		.kf-navbar-mobile::-webkit-scrollbar-thumb {
+			background: rgba(201, 137, 39, 0.3);
+			border-radius: 3px;
+		}
+
+		.kf-navbar-mobile::-webkit-scrollbar-thumb:hover {
+			background: rgba(201, 137, 39, 0.5);
 		}
 
 		.kf-navbar-mobile .kf-main-menu {
 			margin: 0;
-			padding: 12px 0;
+			padding: 8px 0;
 			background: transparent;
 			border-radius: 0;
 			box-shadow: none;
@@ -493,12 +466,13 @@
 		.kf-navbar-mobile .kf-main-menu ul {
 			list-style: none;
 			margin: 0;
-			padding: 12px 0;
+			padding: 8px 0;
 		}
 
 		.kf-navbar-mobile .kf-main-menu ul li {
 			margin: 0;
 			background: transparent;
+			transition: all 0.3s ease;
 		}
 
 		.kf-navbar-mobile .kf-main-menu ul li + li {
@@ -510,18 +484,39 @@
 			color: var(--text-dark) !important;
 			font-weight: 600;
 			font-size: 1.0rem;
-			padding: 12px 20px;
+			padding: 14px 24px;
 			transition: all 0.3s ease;
 			text-decoration: none;
 			letter-spacing: 0.3px;
+			position: relative;
+		}
+
+		.kf-navbar-mobile .kf-main-menu ul li a::before {
+			content: '';
+			position: absolute;
+			left: 24px;
+			top: 50%;
+			width: 6px;
+			height: 6px;
+			background: var(--brand-primary);
+			border-radius: 50%;
+			transform: translateY(-50%) scale(0);
+			transition: all 0.3s ease;
+			opacity: 0;
 		}
 
 		.kf-navbar-mobile .kf-main-menu ul li a:hover,
 		.kf-navbar-mobile .kf-main-menu ul li a:focus {
-			background: rgba(201, 137, 39, 0.12);
+			background: linear-gradient(90deg, rgba(201, 137, 39, 0.08) 0%, transparent 100%);
 			color: var(--brand-primary) !important;
-			padding-left: 26px;
+			padding-left: 40px;
 			font-weight: 700;
+		}
+
+		.kf-navbar-mobile .kf-main-menu ul li a:hover::before,
+		.kf-navbar-mobile .kf-main-menu ul li a:focus::before {
+			transform: translateY(-50%) scale(1);
+			opacity: 1;
 		}
 
 		.kf-navbar-mobile .kf-main-menu ul li:first-child a {
@@ -533,12 +528,23 @@
 		}
 
 		.kf-navbar-mobile .kf-topline {
-			padding: 22px 20px 24px;
-			background: rgba(255, 255, 255, 0.96);
-			border-top: 1px solid rgba(201, 137, 39, 0.2);
+			padding: 24px 20px 28px;
+			background: linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(250, 221, 163, 0.12) 100%);
+			border-top: 2px solid var(--brand-secondary);
 			display: flex;
 			flex-direction: column;
 			gap: 18px;
+			position: relative;
+		}
+
+		.kf-navbar-mobile .kf-topline::before {
+			content: '';
+			position: absolute;
+			top: -2px;
+			left: 24px;
+			right: 24px;
+			height: 2px;
+			background: linear-gradient(90deg, var(--brand-primary), transparent);
 		}
 
 		/* Mobile menu topline actions styling */
@@ -547,46 +553,51 @@
 			flex-wrap: wrap;
 			align-items: center;
 			justify-content: center;
-			gap: 12px;
+			gap: 14px;
 			margin-bottom: 8px;
 		}
 
 		.kf-navbar-mobile .kf-user-icon,
 		.kf-navbar-mobile .kf-lang-icon {
-			width: 38px;
-			height: 38px;
+			width: 44px;
+			height: 44px;
 			border-radius: 50%;
-			border: 2px solid var(--brand-primary);
-			background: white;
+			border: 2.5px solid var(--brand-primary);
+			background: linear-gradient(135deg, rgba(250, 221, 163, 0.2), rgba(255, 255, 255, 0.8));
 			display: flex;
 			align-items: center;
 			justify-content: center;
 			cursor: pointer;
 			transition: all 0.3s ease;
+			position: relative;
+			box-shadow: 0 4px 12px rgba(201, 137, 39, 0.15);
 		}
 
 		.kf-navbar-mobile .kf-user-icon i,
 		.kf-navbar-mobile .kf-lang-icon i {
 			color: var(--brand-primary);
-			font-size: 1rem;
+			font-size: 1.1rem;
+			transition: all 0.3s ease;
 		}
 
 		.kf-navbar-mobile .kf-user-icon:hover,
 		.kf-navbar-mobile .kf-lang-icon:hover {
 			border-color: var(--brand-accent);
-			background: var(--brand-secondary);
-			transform: scale(1.08);
+			background: linear-gradient(135deg, var(--brand-secondary), rgba(250, 221, 163, 0.6));
+			transform: scale(1.1) rotateZ(-5deg);
+			box-shadow: 0 8px 20px rgba(147, 66, 24, 0.25);
 		}
 
 		.kf-navbar-mobile .kf-user-icon:hover i,
 		.kf-navbar-mobile .kf-lang-icon:hover i {
 			color: var(--brand-accent);
+			transform: scale(1.2);
 		}
 
 		.kf-navbar-mobile .kf-topline .row {
 			display: flex;
 			flex-direction: column;
-			gap: 14px;
+			gap: 16px;
 			margin: 0;
 		}
 
@@ -598,96 +609,175 @@
 		.kf-navbar-mobile .kf-h-group {
 			display: flex;
 			align-items: center;
-			gap: 12px;
-			padding: 14px 16px;
-			border-radius: 14px;
-			background: rgba(250, 221, 163, 0.28);
-			border: 1px solid rgba(201, 137, 39, 0.24);
+			gap: 14px;
+			padding: 16px 18px;
+			border-radius: 16px;
+			background: linear-gradient(135deg, rgba(250, 221, 163, 0.18) 0%, rgba(201, 137, 39, 0.08) 100%);
+			border: 1.5px solid rgba(201, 137, 39, 0.24);
 			color: var(--text-dark);
 			font-weight: 500;
 			justify-content: flex-start;
+			transition: all 0.3s ease;
+			position: relative;
+			overflow: hidden;
+		}
+
+		.kf-navbar-mobile .kf-h-group::before {
+			content: '';
+			position: absolute;
+			left: 0;
+			top: 0;
+			bottom: 0;
+			width: 4px;
+			background: linear-gradient(180deg, var(--brand-primary), var(--brand-secondary));
+		}
+
+		.kf-navbar-mobile .kf-h-group:hover {
+			background: linear-gradient(135deg, rgba(250, 221, 163, 0.28) 0%, rgba(201, 137, 39, 0.16) 100%);
+			border-color: var(--brand-primary);
+			box-shadow: 0 6px 16px rgba(201, 137, 39, 0.18);
+			transform: translateY(-2px);
 		}
 
 		.kf-navbar-mobile .kf-h-group i {
-			width: 38px;
-			height: 38px;
+			width: 40px;
+			height: 40px;
 			display: flex;
 			align-items: center;
 			justify-content: center;
 			border-radius: 50%;
-			background: var(--brand-primary);
+			background: linear-gradient(135deg, var(--brand-primary), var(--brand-accent));
 			color: var(--text-light);
 			font-size: 1rem;
-			box-shadow: 0 6px 18px rgba(201, 137, 39, 0.35);
+			box-shadow: 0 6px 16px rgba(201, 137, 39, 0.35);
+			flex-shrink: 0;
+			transition: all 0.3s ease;
+		}
+
+		.kf-navbar-mobile .kf-h-group:hover i {
+			transform: scale(1.1) rotate(-5deg);
+			box-shadow: 0 8px 20px rgba(201, 137, 39, 0.45);
 		}
 
 		.kf-navbar-mobile .kf-h-group em {
 			font-style: normal;
-			font-weight: 600;
+			font-weight: 700;
 			color: var(--brand-accent);
+			text-transform: uppercase;
+			font-size: 0.85rem;
+			letter-spacing: 0.5px;
 		}
 
 		.kf-navbar-mobile .kf-h-social {
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			gap: 16px;
-			padding: 8px 0 4px;
+			gap: 12px;
+			padding: 12px 0 8px;
+			flex-wrap: wrap;
 		}
 
 		.kf-navbar-mobile .kf-h-social a {
-			width: 38px;
-			height: 38px;
+			width: 44px;
+			height: 44px;
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			border-radius: 50%;
-			border: 1px solid rgba(201, 137, 39, 0.22);
-			background: rgba(250, 221, 163, 0.32);
+			border-radius: 12px;
+			border: 2px solid transparent;
+			background: linear-gradient(135deg, rgba(201, 137, 39, 0.12), rgba(250, 221, 163, 0.08));
 			transition: all 0.3s ease;
+			position: relative;
+			overflow: hidden;
+		}
+
+		.kf-navbar-mobile .kf-h-social a::before {
+			content: '';
+			position: absolute;
+			inset: 0;
+			background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
+			opacity: 0;
+			transition: opacity 0.3s ease;
+			z-index: 1;
 		}
 
 		.kf-navbar-mobile .kf-h-social a i {
 			color: var(--brand-accent);
-			font-size: 0.95rem;
+			font-size: 1.1rem;
+			position: relative;
+			z-index: 2;
+			transition: all 0.3s ease;
 		}
 
 		.kf-navbar-mobile .kf-h-social a:hover {
-			background: var(--brand-primary);
 			border-color: var(--brand-primary);
-			transform: translateY(-2px);
+			box-shadow: 0 8px 20px rgba(201, 137, 39, 0.3), inset 0 0 1px rgba(201, 137, 39, 0.2);
+			transform: translateY(-3px) scale(1.08);
+		}
+
+		.kf-navbar-mobile .kf-h-social a:hover::before {
+			opacity: 1;
 		}
 
 		.kf-navbar-mobile .kf-h-social a:hover i {
 			color: var(--text-light);
+			transform: rotate(12deg) scale(1.15);
 		}
 
 		/* Mobile menu button styling */
 		.kf-navbar-mobile .kf-btn.h-btn {
-			padding: 10px 18px;
+			padding: 14px 22px;
 			height: auto;
 			line-height: 1.4;
 			font-size: 0.95rem;
 			width: 100%;
-			margin: 0 0 12px 0;
-			background: var(--brand-primary) !important;
+			margin: 0 0 14px 0;
+			background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-accent) 100%) !important;
 			border: 2px solid var(--brand-primary) !important;
 			color: white !important;
-			border-radius: 8px;
+			border-radius: 12px;
 			transition: all 0.3s ease;
+			font-weight: 700;
+			letter-spacing: 0.5px;
+			text-transform: uppercase;
+			position: relative;
+			overflow: hidden;
+			box-shadow: 0 8px 20px rgba(147, 66, 24, 0.25);
+		}
+
+		.kf-navbar-mobile .kf-btn.h-btn::before {
+			content: '';
+			position: absolute;
+			inset: 0;
+			background: rgba(255, 255, 255, 0.2);
+			opacity: 0;
+			transition: opacity 0.3s ease;
 		}
 
 		.kf-navbar-mobile .kf-btn.h-btn:hover {
-			background: white !important;
+			background: linear-gradient(135deg, var(--text-light) 0%, var(--brand-secondary) 100%) !important;
 			color: var(--brand-primary) !important;
+			transform: translateY(-3px);
+			box-shadow: 0 12px 28px rgba(147, 66, 24, 0.35);
+			border-color: var(--brand-accent) !important;
+		}
+
+		.kf-navbar-mobile .kf-btn.h-btn:hover::before {
+			opacity: 1;
 		}
 
 		.kf-navbar-mobile .kf-btn.h-btn span {
 			display: inline;
+			position: relative;
 		}
 
 		.kf-navbar-mobile .kf-btn.h-btn i {
 			margin-left: 10px;
+			transition: transform 0.3s ease;
+		}
+
+		.kf-navbar-mobile .kf-btn.h-btn:hover i {
+			transform: translateX(4px);
 		}
 
 		/* ========== BUTTONS ========== */
@@ -774,10 +864,15 @@
 		}
 
 		.kf-started-slider .description {
-			background: rgba(31, 27, 17, 0.85);
+			background: transparent;
 			padding: 40px;
-			border-left: 5px solid var(--brand-primary);
-			max-width: 600px;
+			max-width: 100%;
+			text-align: center;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			width: 100%;
 		}
 
 		.kf-started-item .subtitles {
@@ -785,14 +880,23 @@
 			font-weight: 600;
 			font-size: 1rem;
 			margin-bottom: 15px;
+			text-transform: uppercase;
+			letter-spacing: 2px;
+			text-align: center;
 		}
 
 		.kf-started-item .name {
 			color: var(--text-light);
 			font-size: 2.5rem;
 			font-weight: 700;
-			line-height: 1.2;
+			line-height: 1.3;
 			margin-bottom: 25px;
+			max-width: 600px;
+			word-spacing: 0.1em;
+			text-align: center;
+			margin-left: auto;
+			margin-right: auto;
+			width: 100%;
 		}
 
 		.kf-started-item .kf-bts {
@@ -802,31 +906,80 @@
 		}
 
 		/* Responsive styles for slider */
-		@media (max-width: 768px) {
+		@media (max-width: 480px) {
+			/* Center entire menu item card on phones */
+			.kf-menu-items .row > [class*="col-"] .kf-menu-item.element-anim-1.scroll-animate {
+				align-items: center;
+				text-align: center;
+			}
+
+			/* Center inner description block */
+			.kf-menu-items .row > [class*="col-"] .kf-menu-item.element-anim-1.scroll-animate .desc {
+				align-items: center;
+			}
 			.kf-started-item {
-				min-height: 400px;
+				min-height: 350px;
 			}
 
 			.kf-started-item .description {
-				padding: 30px;
-				background: rgba(31, 27, 17, 0.9);
+				padding: 20px 16px;
 			}
 
 			.kf-started-slider .description {
-				padding: 30px;
-				max-width: 100%;
+				padding: 20px 16px;
 			}
 
 			.kf-started-item .name {
-				font-size: 1.8rem;
+				font-size: 1.4rem;
+				margin-bottom: 15px;
 			}
 
 			.kf-started-item .subtitles {
-				font-size: 0.9rem;
+				font-size: 0.75rem;
+				letter-spacing: 1.5px;
+				margin-bottom: 10px;
 			}
 
 			.kf-started-item .kf-bts {
 				flex-direction: column;
+				gap: 10px;
+			}
+
+			.kf-started-item .kf-bts a {
+				width: 100%;
+				text-align: center;
+				font-size: 0.9rem;
+				padding: 10px 16px;
+			}
+		}
+
+		@media (min-width: 481px) and (max-width: 768px) {
+			.kf-started-item {
+				min-height: 420px;
+			}
+
+			.kf-started-item .description {
+				padding: 28px 24px;
+			}
+
+			.kf-started-slider .description {
+				padding: 28px 24px;
+			}
+
+			.kf-started-item .name {
+				font-size: 1.8rem;
+				margin-bottom: 18px;
+			}
+
+			.kf-started-item .subtitles {
+				font-size: 0.85rem;
+				letter-spacing: 1.8px;
+				margin-bottom: 12px;
+			}
+
+			.kf-started-item .kf-bts {
+				flex-direction: column;
+				gap: 12px;
 			}
 
 			.kf-started-item .kf-bts a {
@@ -840,8 +993,23 @@
 				min-height: 500px;
 			}
 
+			.kf-started-item .description {
+				padding: 35px 32px;
+			}
+
+			.kf-started-slider .description {
+				padding: 35px 32px;
+			}
+
 			.kf-started-item .name {
 				font-size: 2rem;
+				margin-bottom: 22px;
+			}
+
+			.kf-started-item .subtitles {
+				font-size: 0.95rem;
+				letter-spacing: 2px;
+				margin-bottom: 15px;
 			}
 		}
 
@@ -850,8 +1018,28 @@
 				min-height: 600px;
 			}
 
+			.kf-started-item .description {
+				padding: 40px;
+			}
+
+			.kf-started-slider .description {
+
+			/* Category caption adjustments for tablets */
+			.kf-category-item .desc {
+				padding: 12px 14px;
+			}
+				padding: 40px;
+			}
+
 			.kf-started-item .name {
 				font-size: 2.8rem;
+				margin-bottom: 25px;
+			}
+
+			.kf-started-item .subtitles {
+				font-size: 1rem;
+				letter-spacing: 2px;
+				margin-bottom: 15px;
 			}
 		}
 
@@ -903,13 +1091,43 @@
 
 		.kf-category-item .desc {
 			background: var(--brand-secondary);
-			padding: 15px;
+			padding: 14px 16px;
 			text-align: center;
+			width: 100%;
+			max-width: 100%;
+			box-sizing: border-box;
+			overflow: hidden;
+		}
+
+		.kf-category-item .desc * {
+			margin: 0;
 		}
 
 		.kf-category-item .desc h5 {
 			color: var(--text-dark);
-			margin: 0;
+			font-weight: 700;
+			line-height: 1.25;
+			font-size: clamp(0.95rem, 2.4vw, 1.15rem);
+			overflow-wrap: anywhere;
+			word-break: break-word;
+			-hyphens: auto;
+			hyphens: auto;
+		}
+
+		.kf-category-item .desc p,
+		.kf-category-item .desc span {
+			color: var(--text-dark);
+			line-height: 1.25;
+			font-size: clamp(0.85rem, 2vw, 1rem);
+			overflow-wrap: anywhere;
+			word-break: break-word;
+		}
+
+		/* Ensure images fit container to avoid caption overflow */
+		.kf-category-item .image img {
+			display: block;
+			width: 100%;
+			height: auto;
 		}
 
 		.kf-category-item .image {
@@ -919,6 +1137,58 @@
 
 		.kf-category-item .image:hover {
 			border-color: var(--brand-primary);
+		}
+
+		.kf-image-hover .desc {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(31, 27, 17, 0.88);
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+			padding: 20px;
+			opacity: 0;
+			transform: scale(0.95);
+			transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+			pointer-events: none;
+			box-sizing: border-box;
+		}
+
+		.kf-image-hover:hover .desc {
+			opacity: 1;
+			transform: scale(1);
+			pointer-events: auto;
+		}
+
+		.kf-image-hover .desc .name {
+			color: var(--text-light);
+			font-size: clamp(1rem, 4vw, 1.5rem);
+			font-weight: 700;
+			line-height: 1.3;
+			margin: 0;
+			transition: all 0.3s ease;
+		}
+
+		.kf-image-hover:hover .desc .name {
+			transform: translateY(-5px);
+		}
+
+		.kf-image-hover .desc .subname {
+			color: var(--brand-secondary);
+			font-size: clamp(0.8rem, 3vw, 1rem);
+			font-weight: 600;
+			margin-top: 8px;
+			transition: all 0.3s ease;
+			transition-delay: 0.05s;
+		}
+
+		.kf-image-hover:hover .desc .subname {
+			transform: translateY(5px);
 		}
 
 		@media (max-width: 1024px) {
@@ -956,6 +1226,26 @@
 			.kf-category-ornament svg {
 				animation-duration: 7.5s;
 			}
+
+			/* Small phones */
+			.kf-category-item .desc {
+				padding: 10px 12px;
+			}
+
+			.kf-category-item .desc h5 {
+				font-size: 0.95rem;
+			}
+		}
+
+		/* Ultra small phones (<=360px) */
+		@media (max-width: 360px) {
+			.kf-category-item .desc {
+				padding: 8px 10px;
+			}
+
+			.kf-category-item .desc h5 {
+				font-size: 0.9rem;
+			}
 		}
 
 		/* ========== MENU ITEMS ========== */
@@ -963,6 +1253,10 @@
 			padding: 20px;
 			border-bottom: 2px solid var(--brand-secondary);
 			transition: all 0.3s ease;
+			display: flex;
+			flex-direction: row;
+			gap: 20px;
+			align-items: stretch;
 		}
 
 		.kf-menu-item:hover {
@@ -970,65 +1264,330 @@
 			border-bottom-color: var(--brand-primary);
 		}
 
+		.kf-menu-item .image {
+			flex: 0 0 auto;
+			width: 120px;
+			height: 120px;
+			order: 1;
+		}
+
+		.kf-menu-item .image img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			border-radius: 6px;
+		}
+
+		.kf-menu-item .desc {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			flex: 1;
+			order: 2;
+			padding: 0;
+			margin: 0;
+			gap: 16px;
+		}
+
 		.kf-menu-item .name {
 			color: var(--text-dark);
 			font-weight: 700;
+			font-size: clamp(1rem, 2.5vw, 1.15rem);
+			margin-bottom: 8px;
+			line-height: 1.3;
 		}
 
 		.kf-menu-item .subname {
 			color: #888;
 			font-style: italic;
-			font-size: 0.9rem;
+			font-size: clamp(0.85rem, 2vw, 0.95rem);
+			margin-bottom: 12px;
+			line-height: 1.3;
+			flex-grow: 1;
+		}
+
+		.kf-menu-item .price-actions-wrapper {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 16px;
+			width: 100%;
+			margin: 18px 0 0;
+			padding-top: 14px;
+			border-top: 1px solid rgba(31, 27, 17, 0.08);
+			align-self: stretch;
+			flex-wrap: nowrap;
 		}
 
 		.kf-menu-item .price {
 			color: var(--brand-primary) !important;
 			font-weight: 700;
-			font-size: 1.2rem;
-			margin-top: 10px;
+			font-size: clamp(1.1rem, 2.8vw, 1.35rem);
+			margin: 0;
+			order: 1;
+			flex: 1 1 auto;
+			margin-right: auto;
 		}
 
-		/* ========== TEAM SECTION ========== */
-		.kf-team-item {
-			background-color: var(--neutral-dark) !important;
-			border: 2px solid var(--brand-accent);
-			transition: all 0.3s ease;
-			overflow: hidden;
+		.kf-menu-item .kf-menu-actions {
+			display: flex;
+			gap: 10px;
+			align-items: center;
+			margin: 0;
+			order: 2;
+			justify-content: flex-end;
+			margin-left: auto;
+			flex-shrink: 0;
 		}
 
-		.kf-team-item:hover {
-			border-color: var(--brand-primary);
-			box-shadow: 0 8px 20px rgba(201, 137, 39, 0.3);
+		.kf-menu-item .kf-menu-action {
+			width: 40px;
+			height: 40px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			border: 2px solid var(--brand-primary);
+			border-radius: 8px;
+			background: linear-gradient(135deg, rgba(201, 137, 39, 0.12), rgba(201, 137, 39, 0.08));
+			color: var(--brand-primary);
+			transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+			font-size: 1.1rem;
 		}
 
-		.kf-team-item .desc {
-			padding: 20px;
-			text-align: center;
-		}
-
-		.kf-team-item .name {
+		.kf-menu-item .kf-menu-action:hover {
+			background: linear-gradient(135deg, var(--brand-primary), rgba(201, 137, 39, 0.88));
 			color: var(--text-light);
-			margin-bottom: 5px;
+			transform: scale(1.12) translateY(-2px);
+			box-shadow: 0 8px 20px rgba(201, 137, 39, 0.35);
 		}
 
-		.kf-team-item .subname {
-			color: var(--brand-secondary);
-			font-weight: 600;
-		}
-
-		.kf-team-item .info .label {
-			color: var(--brand-primary);
-			font-size: 0.85rem;
-		}
-
-		.kf-team-item .social a i {
-			color: var(--brand-secondary);
+		.kf-menu-item .kf-menu-action i {
 			transition: all 0.3s ease;
 		}
 
-		.kf-team-item .social a:hover i {
-			color: var(--brand-primary);
-			transform: scale(1.2);
+		.kf-menu-item .kf-menu-action:hover i {
+			transform: scale(1.15);
+		}
+
+		/* Responsive adjustments for menu items */
+		@media (max-width: 768px) {
+			.kf-menu-item {
+				padding: 16px;
+				gap: 16px;
+			}
+
+			.kf-menu-item .image {
+				width: 110px;
+				height: 110px;
+			}
+
+			.kf-menu-item .price-actions-wrapper {
+				gap: 14px;
+				margin-top: 10px;
+			}
+
+			.kf-menu-item .kf-menu-actions {
+				gap: 8px;
+			}
+
+			.kf-menu-item .kf-menu-action {
+				width: 38px;
+				height: 38px;
+				border: 1.5px solid var(--brand-primary);
+				font-size: 1rem;
+			}
+		}
+
+		@media (max-width: 480px) {
+			.kf-menu-item {
+				padding: 14px;
+				gap: 12px;
+				flex-direction: column;
+			}
+
+			.kf-menu-item .image {
+				width: 100%;
+				height: 200px;
+				order: 1;
+			}
+
+			.kf-menu-item .desc {
+				order: 2;
+			}
+
+			.kf-menu-item .name {
+				margin-bottom: 6px;
+			}
+
+			.kf-menu-item .subname {
+				margin-bottom: 10px;
+			}
+
+			.kf-menu-item .price-actions-wrapper {
+				flex-direction: initial;
+				align-items: baseline; /* center price + actions within the same container on phones */
+				gap: 10px;
+			}
+
+			.kf-menu-item .price {
+				text-align: center;
+			}
+
+			.kf-menu-item .kf-menu-actions {
+				justify-content: center;
+			}
+
+			.kf-menu-item .kf-menu-actions {
+				gap: 8px;
+				margin-top: 9px;
+			}
+
+			.kf-menu-item .kf-menu-action {
+				width: 36px;
+				height: 36px;
+				border: 1.5px solid var(--brand-primary);
+				font-size: 0.95rem;
+			}
+		}
+
+		@media (max-width: 360px) {
+			.kf-menu-item {
+				padding: 12px;
+				gap: 10px;
+			}
+
+			.kf-menu-item .image {
+				width: 100%;
+				height: 180px;
+			}
+
+			.kf-menu-item .price-actions-wrapper {
+				gap: 10px;
+			}
+
+			.kf-menu-item .kf-menu-actions {
+				gap: 7px;
+				margin-top: 8px;
+			}
+
+			.kf-menu-item .kf-menu-action {
+				width: 34px;
+				height: 34px;
+				border: 1.5px solid var(--brand-primary);
+				font-size: 0.9rem;
+			}
+		}
+
+		/* ========== ABOUT SECTION (KF-CHOOSE-2) ========== */
+		.section.kf-choose.kf-choose-2 {
+			padding: clamp(72px, 11vw, 140px) 0;
+		}
+
+		.section.kf-choose.kf-choose-2 .container {
+			padding-left: clamp(20px, 4vw, 50px);
+			padding-right: clamp(20px, 4vw, 50px);
+		}
+
+		.section.kf-choose.kf-choose-2 .col-lg-5 {
+			padding-left: clamp(30px, 6vw, 80px);
+			padding-right: clamp(24px, 5vw, 60px);
+		}
+
+		.section.kf-choose.kf-choose-2 .kf-titles { 
+			margin-bottom: clamp(20px, 5vw, 44px); 
+		}
+		
+		.section.kf-choose.kf-choose-2 .kf-subtitle { 
+			color: var(--brand-primary); 
+			font-weight: 600; 
+			letter-spacing: 1px; 
+			text-transform: uppercase; 
+		}
+		
+		.section.kf-choose.kf-choose-2 .kf-title { 
+			color: var(--text-dark);
+			font-size: clamp(1.8rem, 4vw, 2.4rem);
+			line-height: 1.3;
+		}
+
+		.section.kf-choose.kf-choose-2 .kf-text p { 
+			color: rgba(31,27,17,.82); 
+			font-size: clamp(1rem, 2.2vw, 1.1rem); 
+			line-height: 1.8; 
+			margin-bottom: clamp(24px, 5vw, 36px);
+		}
+
+		.section.kf-choose.kf-choose-2 .kf-choose-list .name { 
+			font-family: 'Merienda', Georgia, serif; 
+			color: var(--text-dark);
+			font-size: clamp(1.1rem, 2.5vw, 1.25rem);
+		}
+		
+		.section.kf-choose.kf-choose-2 .kf-choose-list .subname { 
+			color: rgba(31,27,17,.75);
+			font-size: clamp(0.9rem, 2vw, 1rem);
+			line-height: 1.6;
+		}
+		
+		.section.kf-choose.kf-choose-2 .kf-choose-list .icon img { filter: none; }
+
+		.section.kf-choose.kf-choose-2 .kf-choose-image img { 
+			border-radius: 14px; 
+			box-shadow: 0 18px 40px rgba(31,27,17,.1); 
+		}
+
+		.section.kf-choose.kf-choose-2 .kf-btn { 
+			background: var(--brand-primary); 
+			border-color: var(--brand-primary); 
+			color: #fff !important;
+			margin-top: clamp(20px, 4vw, 32px);
+		}
+		
+		.section.kf-choose.kf-choose-2 .kf-btn:hover { 
+			background: var(--brand-accent); 
+			border-color: var(--brand-accent); 
+		}
+
+		/* Responsive adjustments for tablets and phones */
+		@media (max-width: 992px) {
+			.section.kf-choose.kf-choose-2 .col-lg-5 {
+				padding-left: clamp(24px, 5vw, 40px);
+				padding-right: clamp(24px, 5vw, 40px);
+				margin-bottom: clamp(40px, 8vw, 60px);
+			}
+		}
+
+		@media (max-width: 768px) {
+			.section.kf-choose.kf-choose-2 .container {
+				padding-left: clamp(18px, 4vw, 32px);
+				padding-right: clamp(18px, 4vw, 32px);
+			}
+
+			.section.kf-choose.kf-choose-2 .col-lg-5 {
+				padding-left: clamp(20px, 4vw, 28px);
+				padding-right: clamp(20px, 4vw, 28px);
+				margin-bottom: clamp(36px, 7vw, 50px);
+			}
+
+			.section.kf-choose.kf-choose-2 .kf-title {
+				margin-bottom: clamp(16px, 4vw, 24px);
+			}
+		}
+
+		@media (max-width: 480px) {
+			.section.kf-choose.kf-choose-2 .container {
+				padding-left: 16px;
+				padding-right: 16px;
+			}
+
+			.section.kf-choose.kf-choose-2 .col-lg-5 {
+				padding-left: 18px;
+				padding-right: 18px;
+			}
+
+			.section.kf-choose.kf-choose-2 .kf-choose-list ul li {
+				margin-bottom: 24px;
+			}
 		}
 
 		/* ========== RESERVATION FORM ========== */
@@ -1415,6 +1974,166 @@
 			}
 		}
 
+		/* MOBILE PANEL RESPONSIVE - Ultra small screens (320px) */
+		@media (max-width: 360px) {
+			.kf-navbar-mobile {
+				padding: 80px 8px 32px;
+			}
+
+			.kf-mobile-panel {
+				max-width: 100%;
+				border-radius: 16px;
+				border: 1.5px solid var(--brand-primary);
+			}
+
+			.kf-navbar-mobile .kf-main-menu ul li a {
+				font-size: 0.9rem;
+				padding: 10px 16px;
+				letter-spacing: 0.2px;
+			}
+
+			.kf-navbar-mobile .kf-main-menu ul li a:hover,
+			.kf-navbar-mobile .kf-main-menu ul li a:focus {
+				padding-left: 28px;
+				font-weight: 600;
+			}
+
+			.kf-navbar-mobile .kf-main-menu ul li a::before {
+				width: 5px;
+				height: 5px;
+				left: 16px;
+			}
+
+			.kf-navbar-mobile .kf-topline {
+				padding: 16px 14px 20px;
+				gap: 14px;
+			}
+
+			.kf-navbar-mobile .kf-header-actions {
+				gap: 10px;
+			}
+
+			.kf-navbar-mobile .kf-user-icon,
+			.kf-navbar-mobile .kf-lang-icon {
+				width: 40px;
+				height: 40px;
+				border: 2px solid var(--brand-primary);
+				font-size: 0.9rem;
+			}
+
+			.kf-navbar-mobile .kf-user-icon i,
+			.kf-navbar-mobile .kf-lang-icon i {
+				font-size: 0.95rem;
+			}
+
+			.kf-navbar-mobile .kf-h-social {
+				gap: 8px;
+			}
+
+			.kf-navbar-mobile .kf-h-social a {
+				width: 38px;
+				height: 38px;
+				border-radius: 8px;
+				font-size: 0.85rem;
+			}
+
+			.kf-navbar-mobile .kf-h-group {
+				padding: 12px 14px;
+				font-size: 0.85rem;
+				gap: 10px;
+			}
+
+			.kf-navbar-mobile .kf-h-group i {
+				font-size: 0.95rem;
+				min-width: 16px;
+			}
+
+			.kf-navbar-mobile .kf-h-group em {
+				font-size: 0.8rem;
+				font-weight: 600;
+			}
+
+			.kf-navbar-mobile .kf-h-group em + * {
+				font-size: 0.8rem;
+			}
+
+			.kf-navbar-mobile .kf-btn.h-btn {
+				padding: 10px 14px;
+				font-size: 0.85rem;
+				gap: 8px;
+			}
+
+			.kf-navbar-mobile .kf-btn.h-btn i {
+				font-size: 0.9rem;
+			}
+
+			.kf-topline .row {
+				gap: 12px !important;
+			}
+		}
+
+		/* Small mobile screens (361px - 480px) */
+		@media (min-width: 361px) and (max-width: 480px) {
+			.kf-navbar-mobile {
+				padding: 90px 12px 40px;
+			}
+
+			.kf-mobile-panel {
+				max-width: 100%;
+				border-radius: 20px;
+			}
+
+			.kf-navbar-mobile .kf-main-menu ul li a {
+				font-size: 0.95rem;
+				padding: 12px 20px;
+			}
+
+			.kf-navbar-mobile .kf-main-menu ul li a:hover,
+			.kf-navbar-mobile .kf-main-menu ul li a:focus {
+				padding-left: 36px;
+			}
+
+			.kf-navbar-mobile .kf-topline {
+				padding: 20px 18px 24px;
+				gap: 16px;
+			}
+
+			.kf-navbar-mobile .kf-header-actions {
+				gap: 12px;
+			}
+
+			.kf-navbar-mobile .kf-user-icon,
+			.kf-navbar-mobile .kf-lang-icon {
+				width: 42px;
+				height: 42px;
+			}
+
+			.kf-navbar-mobile .kf-h-social {
+				gap: 10px;
+			}
+
+			.kf-navbar-mobile .kf-h-social a {
+				width: 40px;
+				height: 40px;
+				border-radius: 10px;
+			}
+
+			.kf-navbar-mobile .kf-h-group {
+				padding: 14px 16px;
+				font-size: 0.9rem;
+				gap: 12px;
+			}
+
+			.kf-navbar-mobile .kf-btn.h-btn {
+				padding: 12px 16px;
+				font-size: 0.9rem;
+			}
+
+			.kf-topline .row {
+				gap: 14px !important;
+			}
+		}
+
 		/* ========== RESPONSIVE ADJUSTMENTS ========== */
 		/* Mobile First - Base styles (320px+) */
 		.kf-navbar .align-right {
@@ -1569,7 +2288,7 @@
 						<!-- location -->
 						<div class="kf-h-group">
 							<i class="fas fa-map-marker-alt"></i>
-							<em>Ubicación:</em> 55 main street, new york
+							<em>Ubicación:</em> Bogotá, Colombia
 						</div>
 
 					</div>
@@ -1693,7 +2412,7 @@
 								<!-- location -->
 								<div class="kf-h-group">
 									<i class="fas fa-map-marker-alt"></i>
-									<em>Ubicación:</em> 55 main street, new york
+									<em>Ubicación:</em> Bogotá, Colombia
 								</div>
 
 							</div>
@@ -1886,7 +2605,7 @@
 						</h3>
 					</div>
 
-					<div class="kf-menu-items kf-menu-items-light" style="background-color: rgba(255,250,244,0.96); background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(255, 244, 233, 0.92)), url(assets/images/dulce-berlin.png); background-size: cover, 240px auto; background-position: center, right 40px center; background-repeat: no-repeat, no-repeat;">
+					<div class="kf-menu-items kf-menu-items-light" style="background-color: rgba(255,250,244,0.96); background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(255, 244, 233, 0.92)), url(assets/images/dulce-berlin.png); background-size: cover, 360px auto; background-position: center, center center; background-repeat: no-repeat, no-repeat;">
 						<div class="row">
 
 							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
@@ -1897,10 +2616,12 @@
 									<div class="desc">
 										<h5 class="name">Käsekuchen</h5>
 										<div class="subname">Cheesecake tradicional de Berlín.</div>
-										<div class="price">$&nbsp;22.900</div>
-										<div class="kf-menu-actions">
-											<a href="#" class="kf-menu-action kf-favorite" title="Agregar a favoritos"><i class="far fa-heart"></i></a>
-											<a href="https://wa.me/573102244351?text=Hola%20Dulce%20Berl%C3%ADn%2C%20quiero%20ordenar:%20Käsekuchen%20(1x%20$22.900)" target="_blank" class="kf-menu-action kf-cart" title="Ordenar por WhatsApp"><i class="fas fa-shopping-cart"></i></a>
+										<div class="price-actions-wrapper">
+											<div class="price">$&nbsp;22.900</div>
+											<div class="kf-menu-actions">
+												<a href="#" class="kf-menu-action kf-favorite" title="Agregar a favoritos"><i class="far fa-heart"></i></a>
+												<a href="https://wa.me/573102244351?text=Hola%20Dulce%20Berl%C3%ADn%2C%20quiero%20ordenar:%20Käsekuchen%20(1x%20$22.900)" target="_blank" class="kf-menu-action kf-cart" title="Ordenar por WhatsApp"><i class="fas fa-shopping-cart"></i></a>
+											</div>
 										</div>
 									</div>
 								</div>
@@ -1914,10 +2635,12 @@
 									<div class="desc">
 										<h5 class="name">Schwarzwälder (Selva Negra)</h5>
 										<div class="subname">Bizcocho de cacao, cerezas y Chantilly.</div>
-										<div class="price">$&nbsp;26.900</div>
-										<div class="kf-menu-actions">
-											<a href="#" class="kf-menu-action kf-favorite" title="Agregar a favoritos"><i class="far fa-heart"></i></a>
-											<a href="https://wa.me/573102244351?text=Hola%20Dulce%20Berlín%2C%20quiero%20ordenar:%20Schwarzwälder%20(1x%20$26.900)" target="_blank" class="kf-menu-action kf-cart" title="Ordenar por WhatsApp"><i class="fas fa-shopping-cart"></i></a>
+										<div class="price-actions-wrapper">
+											<div class="price">$&nbsp;26.900</div>
+											<div class="kf-menu-actions">
+												<a href="#" class="kf-menu-action kf-favorite" title="Agregar a favoritos"><i class="far fa-heart"></i></a>
+												<a href="https://wa.me/573102244351?text=Hola%20Dulce%20Berlín%2C%20quiero%20ordenar:%20Schwarzwälder%20(1x%20$26.900)" target="_blank" class="kf-menu-action kf-cart" title="Ordenar por WhatsApp"><i class="fas fa-shopping-cart"></i></a>
+											</div>
 										</div>
 									</div>
 								</div>
@@ -1931,10 +2654,12 @@
 									<div class="desc">
 										<h5 class="name">Apfelstrudel</h5>
 										<div class="subname">Manzana y canela, hojaldrado perfecto.</div>
-										<div class="price">$&nbsp;18.900</div>
-										<div class="kf-menu-actions">
-											<a href="#" class="kf-menu-action kf-favorite" title="Agregar a favoritos"><i class="far fa-heart"></i></a>
-											<a href="https://wa.me/573102244351?text=Hola%20Dulce%20Berlín%2C%20quiero%20ordenar:%20Apfelstrudel%20(1x%20$18.900)" target="_blank" class="kf-menu-action kf-cart" title="Ordenar por WhatsApp"><i class="fas fa-shopping-cart"></i></a>
+										<div class="price-actions-wrapper">
+											<div class="price">$&nbsp;18.900</div>
+											<div class="kf-menu-actions">
+												<a href="#" class="kf-menu-action kf-favorite" title="Agregar a favoritos"><i class="far fa-heart"></i></a>
+												<a href="https://wa.me/573102244351?text=Hola%20Dulce%20Berlín%2C%20quiero%20ordenar:%20Apfelstrudel%20(1x%20$18.900)" target="_blank" class="kf-menu-action kf-cart" title="Ordenar por WhatsApp"><i class="fas fa-shopping-cart"></i></a>
+											</div>
 										</div>
 									</div>
 								</div>
@@ -1948,10 +2673,12 @@
 									<div class="desc">
 										<h5 class="name">Br&ouml;tchen (6 unidades)</h5>
 										<div class="subname">Panecillos de masa madre con semillas.</div>
-										<div class="price">$&nbsp;6.900</div>
-										<div class="kf-menu-actions">
-											<a href="#" class="kf-menu-action kf-favorite" title="Agregar a favoritos"><i class="far fa-heart"></i></a>
-											<a href="https://wa.me/573102244351?text=Hola%20Dulce%20Berl%C3%ADn%2C%20quiero%20ordenar:%20Br%C3%B6tchen%20(6%20und.%201x%20%246.900)" target="_blank" class="kf-menu-action kf-cart" title="Ordenar por WhatsApp"><i class="fas fa-shopping-cart"></i></a>
+										<div class="price-actions-wrapper">
+											<div class="price">$&nbsp;6.900</div>
+											<div class="kf-menu-actions">
+												<a href="#" class="kf-menu-action kf-favorite" title="Agregar a favoritos"><i class="far fa-heart"></i></a>
+												<a href="https://wa.me/573102244351?text=Hola%20Dulce%20Berl%C3%ADn%2C%20quiero%20ordenar:%20Br%C3%B6tchen%20(6%20und.%201x%20%246.900)" target="_blank" class="kf-menu-action kf-cart" title="Ordenar por WhatsApp"><i class="fas fa-shopping-cart"></i></a>
+											</div>
 										</div>
 									</div>
 								</div>
@@ -1965,10 +2692,12 @@
 									<div class="desc">
 										<h5 class="name">Roggenbrot (750 g)</h5>
 										<div class="subname">Pan de centeno, masa madre, sabor profundo.</div>
-										<div class="price">$&nbsp;15.900</div>
-										<div class="kf-menu-actions">
-											<a href="#" class="kf-menu-action kf-favorite" title="Agregar a favoritos"><i class="far fa-heart"></i></a>
-											<a href="https://wa.me/573102244351?text=Hola%20Dulce%20Berlín%2C%20quiero%20ordenar:%20Roggenbrot%20750g%20(1x%20$15.900)" target="_blank" class="kf-menu-action kf-cart" title="Ordenar por WhatsApp"><i class="fas fa-shopping-cart"></i></a>
+										<div class="price-actions-wrapper">
+											<div class="price">$&nbsp;15.900</div>
+											<div class="kf-menu-actions">
+												<a href="#" class="kf-menu-action kf-favorite" title="Agregar a favoritos"><i class="far fa-heart"></i></a>
+												<a href="https://wa.me/573102244351?text=Hola%20Dulce%20Berlín%2C%20quiero%20ordenar:%20Roggenbrot%20750g%20(1x%20$15.900)" target="_blank" class="kf-menu-action kf-cart" title="Ordenar por WhatsApp"><i class="fas fa-shopping-cart"></i></a>
+											</div>
 										</div>
 									</div>
 								</div>
@@ -1982,10 +2711,12 @@
 									<div class="desc">
 										<h5 class="name">Käsekuchen Guanabana</h5>
 										<div class="subname">Cheesecake alemán con toque tropical.</div>
-										<div class="price">$&nbsp;23.900</div>
-										<div class="kf-menu-actions">
-											<a href="#" class="kf-menu-action kf-favorite" title="Agregar a favoritos"><i class="far fa-heart"></i></a>
-											<a href="https://wa.me/573102244351?text=Hola%20Dulce%20Berlín%2C%20quiero%20ordenar:%20Käsekuchen%20Guanabana%20(1x%20$23.900)" target="_blank" class="kf-menu-action kf-cart" title="Ordenar por WhatsApp"><i class="fas fa-shopping-cart"></i></a>
+										<div class="price-actions-wrapper">
+											<div class="price">$&nbsp;23.900</div>
+											<div class="kf-menu-actions">
+												<a href="#" class="kf-menu-action kf-favorite" title="Agregar a favoritos"><i class="far fa-heart"></i></a>
+												<a href="https://wa.me/573102244351?text=Hola%20Dulce%20Berlín%2C%20quiero%20ordenar:%20Käsekuchen%20Guanabana%20(1x%20$23.900)" target="_blank" class="kf-menu-action kf-cart" title="Ordenar por WhatsApp"><i class="fas fa-shopping-cart"></i></a>
+											</div>
 										</div>
 									</div>
 								</div>
@@ -1997,113 +2728,68 @@
 				</div>
 			</section>
 
-			<!-- Section Team -->
-			<section class="section kf-team kf-section-transparent">
-				<div class="container">
+		<!-- Section About-2 (Sobre nosotros) -->
+		<section class="section kf-choose kf-choose-2" style="background: linear-gradient(150deg, #f9f5ef 0%, #f0e6da 100%);">
+			<div class="container">
 
-					<div class="kf-titles align-center">
-						<div class="kf-subtitle element-anim-1 scroll-animate" data-animate="active">
-							Experience Team Member
-						</div>
-						<h3 class="kf-title element-anim-1 scroll-animate" data-animate="active">
-							Meet Our Professional Chefs
-						</h3>
-					</div>
+					<div class="row">
+						<div class="px-2 col-xs-12 col-sm-12 col-md-12 col-lg-5 align-self-center">
 
-					<div class="kf-team-items row">
-
-						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
-							<div class="kf-team-item element-anim-1 scroll-animate" data-animate="active" style="background-color: #090c0f;">
-								<div class="desc">
-									<h5 class="name">Anthony J. Bowman</h5>
-									<div class="subname">Senior Chefs</div>
+							<div class="kf-titles">
+								<div class="kf-subtitle element-anim-1 scroll-animate" data-animate="active">
+									Sobre nosotros
 								</div>
-								<div class="image kf-image-hover">
-									<img src="images/team1.jpg" alt="" />
-									<div class="info">
-										<div class="label">bowmankf@gmail.com</div>
-										<div class="label">+012 (345) 678 99</div>
-									</div>
-									<div class="social">
-										<a href="#"><i class="fab fa-facebook-f"></i></a>
-										<a href="#"><i class="fab fa-twitter"></i></a>
-										<a href="#"><i class="fab fa-linkedin"></i></a>
-										<a href="#"><i class="fab fa-youtube"></i></a>
-									</div>
-								</div>
+								<h3 class="kf-title element-anim-1 scroll-animate" data-animate="active">
+									Dulce Berlin, tradición artesanal
+								</h3>
 							</div>
-						</div>
 
-						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
-							<div class="kf-team-item element-anim-1 scroll-animate" data-animate="active" style="background-color: #090c0f;">
-								<div class="desc">
-									<h5 class="name">Kenny V. Gonzalez</h5>
-									<div class="subname">Senior Chefs</div>
-								</div>
-								<div class="image kf-image-hover">
-									<img src="images/team2.jpg" alt="" />
-									<div class="info">
-										<div class="label">gonzalezkf@gmail.com</div>
-										<div class="label">+012 (345) 678 99</div>
-									</div>
-									<div class="social">
-										<a href="#"><i class="fab fa-facebook-f"></i></a>
-										<a href="#"><i class="fab fa-twitter"></i></a>
-										<a href="#"><i class="fab fa-linkedin"></i></a>
-										<a href="#"><i class="fab fa-youtube"></i></a>
-									</div>
-								</div>
+							<div class="kf-text element-anim-1 scroll-animate" data-animate="active">
+								<p>
+									Nacimos de la pasión por la panadería y la repostería europea. Trabajamos con procesos lentos, ingredientes honestos y mucho cariño para que cada bocado te transporte.
+								</p>
 							</div>
-						</div>
 
-						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
-							<div class="kf-team-item element-anim-1 scroll-animate" data-animate="active" style="background-color: #090c0f;">
-								<div class="desc">
-									<h5 class="name">Joseph M. Lawrence</h5>
-									<div class="subname">Senior Chefs</div>
-								</div>
-								<div class="image kf-image-hover">
-									<img src="images/team3.jpg" alt="" />
-									<div class="info">
-										<div class="label">lawrencekf@gmail.com</div>
-										<div class="label">+012 (345) 678 99</div>
-									</div>
-									<div class="social">
-										<a href="#"><i class="fab fa-facebook-f"></i></a>
-										<a href="#"><i class="fab fa-twitter"></i></a>
-										<a href="#"><i class="fab fa-linkedin"></i></a>
-										<a href="#"><i class="fab fa-youtube"></i></a>
-									</div>
-								</div>
+							<div class="kf-choose-list">
+								<ul>
+									<li class="element-anim-1 scroll-animate" data-animate="active">
+										<div class="icon">
+											<img src="images/choose_icon1.png" alt="Ingredientes de origen" />
+										</div>
+										<div class="desc">
+											<h5 class="name">Ingredientes de origen</h5>
+											<div class="subname">Harinas seleccionadas, mantequilla y cacao real. Sin atajos, sin artificios.</div>
+										</div>
+									</li>
+									<li class="element-anim-1 scroll-animate" data-animate="active">
+										<div class="icon">
+											<img src="images/choose_icon2.png" alt="Hecho a mano cada día" />
+										</div>
+										<div class="desc">
+											<h5 class="name">Hecho a mano cada día</h5>
+											<div class="subname">Masas laminadas, fermentaciones largas y recetas de autor.</div>
+										</div>
+									</li>
+								</ul>
 							</div>
-						</div>
 
-						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
-							<div class="kf-team-item element-anim-1 scroll-animate" data-animate="active" style="background-color: #090c0f;">
-								<div class="desc">
-									<h5 class="name">Charles K. Smith</h5>
-									<div class="subname">Senior Chefs</div>
-								</div>
-								<div class="image kf-image-hover">
-									<img src="images/team4.jpg" alt="" />
-									<div class="info">
-										<div class="label">smithkf@gmail.com</div>
-										<div class="label">+012 (345) 678 99</div>
-									</div>
-									<div class="social">
-										<a href="#"><i class="fab fa-facebook-f"></i></a>
-										<a href="#"><i class="fab fa-twitter"></i></a>
-										<a href="#"><i class="fab fa-linkedin"></i></a>
-										<a href="#"><i class="fab fa-youtube"></i></a>
-									</div>
-								</div>
+							<a href="menu-restaurant.html" class="kf-btn element-anim-1 scroll-animate" data-animate="active">
+								<span>ver menú</span>
+								<i class="fas fa-chevron-right"></i>
+							</a>
+
+						</div>
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 offset-lg-1">
+
+							<div class="kf-choose-image element-anim-1 scroll-animate" data-animate="active">
+								<img src="images/about_img2.jpg" alt="Dulce Berlin - nuestro obrador" />
 							</div>
-						</div>
 
+						</div>
 					</div>
 
 				</div>
-			</section>
+		</section>
 
 			<!-- Section Reservation -->
 			<section class="section kf-reservation kf-section-no-margin">
@@ -2868,11 +3554,11 @@
 	  				<div class="kf-f-contact element-anim-1 scroll-animate" data-animate="active">
 	  					<h5>Contact Us</h5>
 	  					<ul>
-	  						<li>
-	  							<i class="las la-map-marker"></i>
-	  							<em>Location :</em>
-	  							55 Main Street, New York
-	  						</li>
+			  				<li>
+			  					<i class="las la-map-marker"></i>
+			  					<em>Location :</em>
+			  					Bogotá, Colombia
+			  				</li>
 	  						<li>
 	  							<i class="las la-envelope-open-text"></i>
 	  							<em>Email Address :</em>

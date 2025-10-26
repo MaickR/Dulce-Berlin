@@ -1,0 +1,512 @@
+/**
+ * ========================================
+ * Dulce Berlin - Mobile Panel Styles
+ * Improved UX/UI Version 2.0
+ * ========================================
+ * 
+ * Este archivo contiene los estilos optimizados
+ * para el menú desplegable móvil (kf-mobile-panel)
+ * del sitio web de Dulce Berlin.
+ * 
+ * Características:
+ * - Gradientes elegantes y coherentes
+ * - Animaciones suaves y naturales
+ * - Iconografía mejorada
+ * - Paleta de colores de marca consistente
+ * - Optimizaciones de rendimiento (GPU acceleration)
+ * - Mejor experiencia UX/UI
+ */
+
+/* ============================================
+   PANEL PRINCIPAL - Contenedor Base
+   ============================================ */
+
+.kf-mobile-panel {
+	width: 100%;
+	max-width: 420px;
+	
+	/* Gradiente dual para profundidad */
+	background: linear-gradient(
+		135deg,
+		rgba(255, 255, 255, 0.98) 0%,
+		rgba(255, 249, 244, 0.96) 100%
+	);
+	
+	/* Bordes y sombras refinadas */
+	border-radius: 24px;
+	border: 2px solid var(--brand-primary);
+	box-shadow: 
+		0 28px 48px rgba(31, 27, 17, 0.28),
+		0 0 1px rgba(201, 137, 39, 0.4) inset;
+	
+	/* Efectos y estructura */
+	backdrop-filter: blur(8px);
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+	
+	/* Animación de entrada fluida */
+	animation: kf-mobile-panel-enter 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+	transform-origin: top center;
+}
+
+/* Animación de entrada del panel */
+@keyframes kf-mobile-panel-enter {
+	from {
+		opacity: 0;
+		transform: translateY(-20px) scale(0.95);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+}
+
+/* ============================================
+   MENÚ PRINCIPAL - Navegación
+   ============================================ */
+
+.kf-navbar-mobile .kf-main-menu {
+	margin: 0;
+	padding: 8px 0;
+	background: transparent;
+	border-radius: 0;
+	box-shadow: none;
+	border: 0;
+}
+
+.kf-navbar-mobile .kf-main-menu ul {
+	list-style: none;
+	margin: 0;
+	padding: 8px 0;
+}
+
+.kf-navbar-mobile .kf-main-menu ul li {
+	margin: 0;
+	background: transparent;
+	transition: all 0.3s ease;
+}
+
+.kf-navbar-mobile .kf-main-menu ul li + li {
+	border-top: 1px solid rgba(147, 66, 24, 0.12);
+}
+
+/* Estilos para enlace de menú */
+.kf-navbar-mobile .kf-main-menu ul li a {
+	display: block;
+	color: var(--text-dark) !important;
+	font-weight: 600;
+	font-size: 1rem;
+	padding: 14px 24px;
+	transition: all 0.3s ease;
+	text-decoration: none;
+	letter-spacing: 0.3px;
+	position: relative;
+}
+
+/* Indicador visual (bullet point) */
+.kf-navbar-mobile .kf-main-menu ul li a::before {
+	content: '';
+	position: absolute;
+	left: 24px;
+	top: 50%;
+	width: 6px;
+	height: 6px;
+	background: var(--brand-primary);
+	border-radius: 50%;
+	transform: translateY(-50%) scale(0);
+	transition: all 0.3s ease;
+	opacity: 0;
+}
+
+/* Estados hover y focus */
+.kf-navbar-mobile .kf-main-menu ul li a:hover,
+.kf-navbar-mobile .kf-main-menu ul li a:focus {
+	background: linear-gradient(90deg, rgba(201, 137, 39, 0.08) 0%, transparent 100%);
+	color: var(--brand-primary) !important;
+	padding-left: 40px;
+	font-weight: 700;
+}
+
+.kf-navbar-mobile .kf-main-menu ul li a:hover::before,
+.kf-navbar-mobile .kf-main-menu ul li a:focus::before {
+	transform: translateY(-50%) scale(1);
+	opacity: 1;
+}
+
+/* ============================================
+   ICONOS - Usuario e Idioma
+   ============================================ */
+
+.kf-navbar-mobile .kf-header-actions {
+	display: flex !important;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	gap: 14px;
+	margin-bottom: 8px;
+}
+
+.kf-navbar-mobile .kf-user-icon,
+.kf-navbar-mobile .kf-lang-icon {
+	width: 44px;
+	height: 44px;
+	border-radius: 50%;
+	border: 2.5px solid var(--brand-primary);
+	background: linear-gradient(135deg, rgba(250, 221, 163, 0.2), rgba(255, 255, 255, 0.8));
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	position: relative;
+	box-shadow: 0 4px 12px rgba(201, 137, 39, 0.15);
+}
+
+.kf-navbar-mobile .kf-user-icon i,
+.kf-navbar-mobile .kf-lang-icon i {
+	color: var(--brand-primary);
+	font-size: 1.1rem;
+	transition: all 0.3s ease;
+}
+
+.kf-navbar-mobile .kf-user-icon:hover,
+.kf-navbar-mobile .kf-lang-icon:hover {
+	border-color: var(--brand-accent);
+	background: linear-gradient(135deg, var(--brand-secondary), rgba(250, 221, 163, 0.6));
+	transform: scale(1.1) rotateZ(-5deg);
+	box-shadow: 0 8px 20px rgba(147, 66, 24, 0.25);
+}
+
+.kf-navbar-mobile .kf-user-icon:hover i,
+.kf-navbar-mobile .kf-lang-icon:hover i {
+	color: var(--brand-accent);
+	transform: scale(1.2);
+}
+
+/* ============================================
+   REDES SOCIALES
+   ============================================ */
+
+.kf-navbar-mobile .kf-h-social {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 12px;
+	padding: 12px 0 8px;
+	flex-wrap: wrap;
+}
+
+.kf-navbar-mobile .kf-h-social a {
+	width: 44px;
+	height: 44px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 12px;
+	border: 2px solid transparent;
+	background: linear-gradient(135deg, rgba(201, 137, 39, 0.12), rgba(250, 221, 163, 0.08));
+	transition: all 0.3s ease;
+	position: relative;
+	overflow: hidden;
+}
+
+/* Efecto de fondo al hover */
+.kf-navbar-mobile .kf-h-social a::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
+	opacity: 0;
+	transition: opacity 0.3s ease;
+	z-index: 1;
+}
+
+.kf-navbar-mobile .kf-h-social a i {
+	color: var(--brand-accent);
+	font-size: 1.1rem;
+	position: relative;
+	z-index: 2;
+	transition: all 0.3s ease;
+}
+
+.kf-navbar-mobile .kf-h-social a:hover {
+	border-color: var(--brand-primary);
+	box-shadow: 
+		0 8px 20px rgba(201, 137, 39, 0.3),
+		inset 0 0 1px rgba(201, 137, 39, 0.2);
+	transform: translateY(-3px) scale(1.08);
+}
+
+.kf-navbar-mobile .kf-h-social a:hover::before {
+	opacity: 1;
+}
+
+.kf-navbar-mobile .kf-h-social a:hover i {
+	color: var(--text-light);
+	transform: rotate(12deg) scale(1.15);
+}
+
+/* ============================================
+   INFORMACIÓN DE CONTACTO (Horario, Ubicación)
+   ============================================ */
+
+.kf-navbar-mobile .kf-h-group {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	padding: 16px 18px;
+	border-radius: 16px;
+	background: linear-gradient(135deg, rgba(250, 221, 163, 0.18) 0%, rgba(201, 137, 39, 0.08) 100%);
+	border: 1.5px solid rgba(201, 137, 39, 0.24);
+	color: var(--text-dark);
+	font-weight: 500;
+	justify-content: flex-start;
+	transition: all 0.3s ease;
+	position: relative;
+	overflow: hidden;
+}
+
+/* Barra indicadora izquierda */
+.kf-navbar-mobile .kf-h-group::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	width: 4px;
+	background: linear-gradient(180deg, var(--brand-primary), var(--brand-secondary));
+}
+
+.kf-navbar-mobile .kf-h-group:hover {
+	background: linear-gradient(135deg, rgba(250, 221, 163, 0.28) 0%, rgba(201, 137, 39, 0.16) 100%);
+	border-color: var(--brand-primary);
+	box-shadow: 0 6px 16px rgba(201, 137, 39, 0.18);
+	transform: translateY(-2px);
+}
+
+/* Icono con sombra */
+.kf-navbar-mobile .kf-h-group i {
+	width: 40px;
+	height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	background: linear-gradient(135deg, var(--brand-primary), var(--brand-accent));
+	color: var(--text-light);
+	font-size: 1rem;
+	box-shadow: 0 6px 16px rgba(201, 137, 39, 0.35);
+	flex-shrink: 0;
+	transition: all 0.3s ease;
+}
+
+.kf-navbar-mobile .kf-h-group:hover i {
+	transform: scale(1.1) rotate(-5deg);
+	box-shadow: 0 8px 20px rgba(201, 137, 39, 0.45);
+}
+
+.kf-navbar-mobile .kf-h-group em {
+	font-style: normal;
+	font-weight: 700;
+	color: var(--brand-accent);
+	text-transform: uppercase;
+	font-size: 0.85rem;
+	letter-spacing: 0.5px;
+}
+
+/* ============================================
+   SECCIÓN TOPLINE
+   ============================================ */
+
+.kf-navbar-mobile .kf-topline {
+	padding: 24px 20px 28px;
+	background: linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(250, 221, 163, 0.12) 100%);
+	border-top: 2px solid var(--brand-secondary);
+	display: flex;
+	flex-direction: column;
+	gap: 18px;
+	position: relative;
+}
+
+.kf-navbar-mobile .kf-topline::before {
+	content: '';
+	position: absolute;
+	top: -2px;
+	left: 24px;
+	right: 24px;
+	height: 2px;
+	background: linear-gradient(90deg, var(--brand-primary), transparent);
+}
+
+.kf-navbar-mobile .kf-topline .row {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	margin: 0;
+}
+
+.kf-navbar-mobile .kf-topline .row > div {
+	width: 100% !important;
+	padding: 0;
+}
+
+/* ============================================
+   BOTÓN DE RESERVA
+   ============================================ */
+
+.kf-navbar-mobile .kf-btn.h-btn {
+	padding: 14px 22px;
+	height: auto;
+	line-height: 1.4;
+	font-size: 0.95rem;
+	width: 100%;
+	margin: 0 0 14px 0;
+	background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-accent) 100%) !important;
+	border: 2px solid var(--brand-primary) !important;
+	color: white !important;
+	border-radius: 12px;
+	transition: all 0.3s ease;
+	font-weight: 700;
+	letter-spacing: 0.5px;
+	text-transform: uppercase;
+	position: relative;
+	overflow: hidden;
+	box-shadow: 0 8px 20px rgba(147, 66, 24, 0.25);
+}
+
+/* Efecto de brillo en hover */
+.kf-navbar-mobile .kf-btn.h-btn::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: rgba(255, 255, 255, 0.2);
+	opacity: 0;
+	transition: opacity 0.3s ease;
+}
+
+.kf-navbar-mobile .kf-btn.h-btn:hover {
+	background: linear-gradient(135deg, var(--text-light) 0%, var(--brand-secondary) 100%) !important;
+	color: var(--brand-primary) !important;
+	transform: translateY(-3px);
+	box-shadow: 0 12px 28px rgba(147, 66, 24, 0.35);
+	border-color: var(--brand-accent) !important;
+}
+
+.kf-navbar-mobile .kf-btn.h-btn:hover::before {
+	opacity: 1;
+}
+
+.kf-navbar-mobile .kf-btn.h-btn span {
+	display: inline;
+	position: relative;
+}
+
+.kf-navbar-mobile .kf-btn.h-btn i {
+	margin-left: 10px;
+	transition: transform 0.3s ease;
+}
+
+.kf-navbar-mobile .kf-btn.h-btn:hover i {
+	transform: translateX(4px);
+}
+
+/* ============================================
+   NAVBAR MOBILE - Contenedor General
+   ============================================ */
+
+.kf-navbar-mobile {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	padding: 110px 18px 48px;
+	
+	/* Gradiente radial elegante */
+	background: radial-gradient(
+		circle at top,
+		rgba(250, 221, 163, 0.92) 0%,
+		rgba(250, 221, 163, 0.78) 35%,
+		rgba(250, 221, 163, 0.65) 70%
+	);
+	
+	/* Efecto glass-morphism mejorado */
+	backdrop-filter: blur(16px);
+	-webkit-backdrop-filter: blur(16px);
+	
+	/* Transiciones fluidas */
+	transition: 
+		opacity 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+		transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+		visibility 0.35s ease;
+	
+	/* Estado inicial (oculto) */
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
+	transform: translateY(-30px);
+	
+	/* Scroll y z-index */
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
+	z-index: 95;
+	will-change: opacity, transform;
+}
+
+.kf-navbar-mobile:before {
+	display: none !important;
+}
+
+/* Estado visible (cuando está abierto) */
+.kf-header.opened .kf-navbar-mobile,
+.kf-header.show .kf-navbar-mobile,
+.kf-header.animated .kf-navbar-mobile {
+	opacity: 1;
+	visibility: visible;
+	pointer-events: auto;
+	transform: translateY(0);
+}
+
+/* ============================================
+   SCROLLBAR PERSONALIZADA
+   ============================================ */
+
+.kf-navbar-mobile::-webkit-scrollbar {
+	width: 6px;
+}
+
+.kf-navbar-mobile::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+.kf-navbar-mobile::-webkit-scrollbar-thumb {
+	background: rgba(201, 137, 39, 0.3);
+	border-radius: 3px;
+}
+
+.kf-navbar-mobile::-webkit-scrollbar-thumb:hover {
+	background: rgba(201, 137, 39, 0.5);
+}
+
+/* ============================================
+   UTILIDADES Y OPTIMIZACIONES
+   ============================================ */
+
+/* GPU Acceleration */
+.kf-mobile-panel,
+.kf-navbar-mobile .kf-h-social a,
+.kf-navbar-mobile .kf-btn.h-btn {
+	-webkit-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+
+/* ============================================
+   FIN DEL ARCHIVO
+   ========================================== */
