@@ -76,6 +76,43 @@
 			color: var(--brand-primary);
 		}
 
+		/* ========== TYPOGRAPHY OVERRIDES (scoped to index.html) ========== */
+		/* Force brand fonts consistently across this page */
+		:root {
+			--font-body: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+			--font-title: 'Merienda', Georgia, serif;
+		}
+
+		/* Body and generic text elements */
+		body, p, span, a, li, ul, ol, dl, dt, dd, small, strong, em,
+		label, input, textarea, select, option,
+		button, .btn, .kf-btn, .kf-btn-link, .kf-lnk,
+		.kf-text, .kf-text p, .kf-comm, .kf-date,
+		.kf-h-group, .kf-h-social, .kf-main-menu ul li a,
+		.kf-filter a, .collapse-item .collapse-btn, .tab-menu .tab-btn {
+			font-family: var(--font-body) !important;
+		}
+
+		/* All headings and prominent titles */
+		h1, h2, h3, h4, h5, h6,
+		.kf-title, .kf-h-title, .kf-p-title,
+		.name, .kf-started-item .name,
+		.kf-services-item .desc .name,
+		.kf-testimonials-slider .slide-item .name,
+		.kf-category-item .desc .name,
+		.kf-contacts-item .name,
+		.kf-archive-item .desc .name {
+			font-family: var(--font-title) !important;
+			letter-spacing: 0.3px;
+		}
+
+		/* Subtitles keep accent color and use title font for brand consistency */
+		.kf-subtitle { font-family: var(--font-title) !important; font-weight: 600; }
+
+		/* Buttons and links - ensure consistent body font weight */
+		.kf-btn, a.kf-btn, .kf-btn-link, a.kf-btn-link,
+		button, input[type="submit"] { font-family: var(--font-body) !important; font-weight: 500; }
+
 		/* ========== PRELOADER ELEGANTE ========== */
 		.kf-preloader {
 			position: fixed;
@@ -127,6 +164,42 @@
 			50% {
 				transform: scale(1.18);
 				opacity: 0.9;
+			}
+		}
+
+		/* ========== Tablet (768px–991px): center menu items visually ========== */
+		@media screen and (min-width: 768px) and (max-width: 991px) {
+			/* Center the item within its column without changing layout order */
+			.kf-menu-items .col-xs-12.col-sm-12.col-md-12.col-lg-6 {
+				display: flex;
+				justify-content: center;
+			}
+
+			/* Ensure the item’s own flex layout centers horizontally */
+			.kf-menu-item.element-anim-1.scroll-animate.animate__active.animate__animated {
+				justify-content: center;
+			}
+
+			/* Make the CTA button under kf-choose-list full-width and centered on tablets */
+			.kf-choose-list + a.kf-btn {
+				display: flex !important;
+				width: 100% !important;
+				max-width: 100% !important;
+				justify-content: center;
+				align-items: center;
+				text-align: center;
+			}
+		}
+
+		/* ========== Phones (<=767px): center and full-width CTA ========== */
+		@media screen and (max-width: 767px) {
+			.kf-choose-list + a.kf-btn {
+				display: flex !important;
+				width: 100% !important;
+				max-width: 100% !important;
+				justify-content: center;
+				align-items: center;
+				text-align: center;
 			}
 		}
 
@@ -2773,8 +2846,8 @@
 								</ul>
 							</div>
 
-							<a href="menu-restaurant.html" class="kf-btn element-anim-1 scroll-animate" data-animate="active">
-								<span>ver menú</span>
+							<a href="https://wa.me/573102244351?text=Hola%20Dulce%20Berl%C3%ADn%2C%20quisiera%20ver%20el%20men%C3%BA%20y%20hacer%20un%20pedido.%20%C2%BFTienen%20disponibilidad%20hoy%3F" target="_blank" rel="noopener" class="kf-btn element-anim-1 scroll-animate" data-animate="active" title="Escríbenos para ver el menú y hacer tu pedido" aria-label="Escríbenos para ver el menú y hacer tu pedido">
+								<span>Pedir por WhatsApp</span>
 								<i class="fas fa-chevron-right"></i>
 							</a>
 
@@ -2802,59 +2875,71 @@
 
 						<div class="kf-titles align-center">
 							<div class="kf-subtitle">
-								Booking Table
-							</div>
-							<h3 class="kf-title">
-								Make Your Reservation
-							</h3>
+									Contacto y pedidos
+								</div>
+								<h3 class="kf-title">
+									Escríbenos por WhatsApp
+								</h3>
 						</div>
 
-						<form id="rform" method="post">
+						<form id="rform" method="post" onsubmit="return false;">
 							<div class="row">
 								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 									<div class="kf-field">
-										<input type="text" name="name" placeholder="Full Name" />
+										<input type="text" name="name" placeholder="Nombre completo" required />
 										<i class="far fa-user"></i>
 									</div>
 								</div>
 								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 									<div class="kf-field">
-										<input type="email" name="email" placeholder="Email Address" />
-										<i class="fas fa-at"></i>
-									</div>
-								</div>
-								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-									<div class="kf-field">
-										<input type="tel" name="tel" placeholder="Phone Number" />
+										<input type="tel" name="tel" placeholder="WhatsApp" required />
 										<i class="fas fa-mobile-alt"></i>
 									</div>
 								</div>
 								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 									<div class="kf-field">
-										<select name="persons">
-											<option>1 Person</option>
-											<option>2 Persons</option>
-											<option>3 Persons</option>
-											<option>4 Persons</option>
+										<select name="reason" required>
+											<option value="Pedido">Quiero hacer un pedido</option>
+											<option value="Consulta">Tengo una consulta</option>
+											<option value="Reserva">Quiero reservar</option>
+											<option value="Cotización">Solicitar cotización</option>
 										</select>
 									</div>
 								</div>
 								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 									<div class="kf-field">
-										<input type="date" name="date" />
+										<input type="text" name="product" placeholder="Producto o referencia (opcional)" />
+										<i class="fas fa-birthday-cake"></i>
+									</div>
+								</div>
+								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+									<div class="kf-field">
+										<input type="number" name="qty" min="1" step="1" placeholder="Cantidad (opcional)" />
+										<i class="fas fa-sort-numeric-up"></i>
+									</div>
+								</div>
+								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+									<div class="kf-field">
+										<input type="date" name="date" placeholder="Fecha (opcional)" />
 										<i class="far fa-calendar-alt"></i>
 									</div>
 								</div>
 								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 									<div class="kf-field">
-										<input type="text" name="time" placeholder="Time" />
+										<input type="text" name="time" placeholder="Hora (opcional)" />
 										<i class="far fa-clock"></i>
 									</div>
 								</div>
 								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+									<div class="kf-field">
+										<textarea name="message" rows="3" placeholder="Cuéntanos tu pedido, dudas o petición (opcional)"></textarea>
+										<i class="far fa-comment-dots"></i>
+									</div>
+								</div>
+								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 									<div class="kf-bts">
-										<a href="#" class="kf-btn" onclick="$('#rform').submit(); return false;">
-											<span>booking table</span>
+										<a href="#" class="kf-btn" id="wa-send">
+											<span>Enviar por WhatsApp</span>
 											<i class="fas fa-chevron-right"></i>
 										</a>
 									</div>
@@ -2862,8 +2947,93 @@
 							</div>
 						</form>
 						<div class="alert-success" style="display: none;">
-							<p>Thanks, your message is sent successfully.</p>
+							<p>Gracias, abrimos WhatsApp con tu mensaje.</p>
 						</div>
+
+						<style>
+							/* Dulce Berlin: Reservation form styling overrides */
+							.section.kf-reservation .kf-reservation-form {
+								background: rgba(255, 250, 244, 0.96);
+								color: var(--text-dark);
+								border-top: 3px solid var(--brand-primary);
+								box-shadow: 0 10px 30px rgba(31, 27, 17, 0.08);
+							}
+							.section.kf-reservation .kf-reservation-form .kf-field input,
+							.section.kf-reservation .kf-reservation-form .kf-field select,
+							.section.kf-reservation .kf-reservation-form .kf-field textarea {
+								background: #ffffff;
+								color: var(--text-dark);
+								border: 1px solid rgba(201, 137, 39, 0.35);
+							}
+							.section.kf-reservation .kf-reservation-form .kf-field input::placeholder,
+							.section.kf-reservation .kf-reservation-form .kf-field textarea::placeholder {
+								color: rgba(31, 27, 17, 0.6);
+							}
+							.section.kf-reservation .kf-reservation-form .kf-field input:focus,
+							.section.kf-reservation .kf-reservation-form .kf-field select:focus,
+							.section.kf-reservation .kf-reservation-form .kf-field textarea:focus {
+								border-color: var(--brand-primary);
+								box-shadow: 0 0 0 3px rgba(201, 137, 39, 0.15);
+							}
+							.section.kf-reservation .kf-reservation-form .kf-bts .kf-btn {
+								background: var(--brand-primary);
+								border-color: var(--brand-primary);
+							}
+							.section.kf-reservation .kf-reservation-form .kf-bts .kf-btn:hover {
+								background: var(--brand-accent);
+								border-color: var(--brand-accent);
+							}
+						</style>
+
+						<script>
+						(function() {
+							function buildAndOpenWA() {
+								var form = document.getElementById('rform');
+								if (!form) return;
+								var name = (form.elements['name'] && form.elements['name'].value || '').trim();
+								var tel = (form.elements['tel'] && form.elements['tel'].value || '').trim();
+								var reason = (form.elements['reason'] && form.elements['reason'].value || '').trim();
+								var product = (form.elements['product'] && form.elements['product'].value || '').trim();
+								var qty = (form.elements['qty'] && form.elements['qty'].value || '').trim();
+								var date = (form.elements['date'] && form.elements['date'].value || '').trim();
+								var time = (form.elements['time'] && form.elements['time'].value || '').trim();
+								var note = (form.elements['message'] && form.elements['message'].value || '').trim();
+
+								if (!name || !tel || !reason) {
+									alert('Por favor completa tu nombre, WhatsApp y motivo.');
+									return;
+								}
+
+								var parts = [];
+								parts.push('Hola Dulce Berlín \uD83D\uDC4B');
+								parts.push('Motivo: ' + reason);
+								parts.push('Nombre: ' + name);
+								parts.push('WhatsApp: ' + tel);
+								if (product) parts.push('Producto: ' + product);
+								if (qty) parts.push('Cantidad: ' + qty);
+								var fechaHora = '';
+								if (date) fechaHora += date;
+								if (time) fechaHora += (fechaHora ? ' ' : '') + time;
+								if (fechaHora) parts.push('Fecha/Hora: ' + fechaHora);
+								if (note) parts.push('Mensaje: ' + note);
+
+								var msg = parts.join('\n');
+								var waUrl = 'https://wa.me/573102244351?text=' + encodeURIComponent(msg);
+								window.open(waUrl, '_blank');
+
+								var alertBox = form.nextElementSibling;
+								if (alertBox && alertBox.classList.contains('alert-success')) {
+									alertBox.style.display = 'block';
+									setTimeout(function(){ alertBox.style.display = 'none'; }, 3000);
+								}
+							}
+
+							var btn = document.getElementById('wa-send');
+							if (btn) {
+								btn.addEventListener('click', function(e){ e.preventDefault(); buildAndOpenWA(); });
+							}
+						})();
+						</script>
 
 					</div>
 
