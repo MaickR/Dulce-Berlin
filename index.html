@@ -2882,60 +2882,87 @@
 								</h3>
 						</div>
 
-						<form id="rform" method="post" onsubmit="return false;">
+						<form id="rform" method="post" onsubmit="return false;" novalidate>
 							<div class="row">
+								<!-- Nombre completo -->
 								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 									<div class="kf-field">
-										<input type="text" name="name" placeholder="Nombre completo" required />
+										<input type="text" name="name" placeholder="Nombre completo" maxlength="50" required />
 										<i class="far fa-user"></i>
+										<span class="form-error" data-field="name"></span>
 									</div>
 								</div>
+
+								<!-- WhatsApp -->
 								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 									<div class="kf-field">
-										<input type="tel" name="tel" placeholder="WhatsApp" required />
+										<input type="tel" name="tel" placeholder="WhatsApp (ej: 573102244351)" maxlength="20" required />
 										<i class="fas fa-mobile-alt"></i>
+										<span class="form-error" data-field="tel"></span>
 									</div>
 								</div>
+
+								<!-- Motivo de contacto -->
 								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 									<div class="kf-field">
 										<select name="reason" required>
+											<option value="">-- Selecciona un motivo --</option>
 											<option value="Pedido">Quiero hacer un pedido</option>
 											<option value="Consulta">Tengo una consulta</option>
 											<option value="Reserva">Quiero reservar</option>
 											<option value="Cotización">Solicitar cotización</option>
 										</select>
+										<i class="fas fa-list"></i>
+										<span class="form-error" data-field="reason"></span>
 									</div>
 								</div>
-								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+
+								<!-- Producto (mostrar según motivo) -->
+								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" id="product-field" style="display: none;">
 									<div class="kf-field">
-										<input type="text" name="product" placeholder="Producto o referencia (opcional)" />
+										<select name="product" id="product-select">
+											<option value="">-- Selecciona un producto --</option>
+											<option value="Torta personalizada">Torta personalizada</option>
+											<option value="Pastel / Brownies">Pastel / Brownies</option>
+											<option value="Cupcakes">Cupcakes</option>
+											<option value="Galletas personalizadas">Galletas personalizadas</option>
+											<option value="Macarrones">Macarrones</option>
+											<option value="Frappé / Bebida">Frappé / Bebida</option>
+											<option value="Otro producto">Otro producto</option>
+										</select>
 										<i class="fas fa-birthday-cake"></i>
+										<span class="form-error" data-field="product"></span>
 									</div>
 								</div>
-								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+
+								<!-- Cantidad -->
+								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" id="qty-field" style="display: none;">
 									<div class="kf-field">
-										<input type="number" name="qty" min="1" step="1" placeholder="Cantidad (opcional)" />
+										<input type="number" name="qty" min="1" max="999" step="1" placeholder="Cantidad" />
 										<i class="fas fa-sort-numeric-up"></i>
+										<span class="form-error" data-field="qty"></span>
 									</div>
 								</div>
-								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+
+								<!-- Fecha (mostrar según motivo) -->
+								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" id="date-field" style="display: none;">
 									<div class="kf-field">
-										<input type="date" name="date" placeholder="Fecha (opcional)" />
+										<input type="date" name="date" id="date-input" />
 										<i class="far fa-calendar-alt"></i>
+										<span class="form-error" data-field="date"></span>
 									</div>
 								</div>
-								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-									<div class="kf-field">
-										<input type="text" name="time" placeholder="Hora (opcional)" />
-										<i class="far fa-clock"></i>
-									</div>
-								</div>
+
+								<!-- Mensaje adicional -->
 								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 									<div class="kf-field">
-										<textarea name="message" rows="3" placeholder="Cuéntanos tu pedido, dudas o petición (opcional)"></textarea>
+										<textarea name="message" rows="3" placeholder="Cuéntanos tu pedido, dudas o petición..." maxlength="500"></textarea>
 										<i class="far fa-comment-dots"></i>
+										<span class="form-info">Máximo 500 caracteres</span>
 									</div>
 								</div>
+
+								<!-- Botón envío -->
 								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 									<div class="kf-bts">
 										<a href="#" class="kf-btn" id="wa-send">
@@ -2946,91 +2973,419 @@
 								</div>
 							</div>
 						</form>
+
 						<div class="alert-success" style="display: none;">
-							<p>Gracias, abrimos WhatsApp con tu mensaje.</p>
+							<p>✓ Abrimos WhatsApp con tu mensaje. ¡Gracias por contactarnos!</p>
 						</div>
 
 						<style>
-							/* Dulce Berlin: Reservation form styling overrides */
+							/* Dulce Berlin: Advanced Reservation form styling */
 							.section.kf-reservation .kf-reservation-form {
 								background: rgba(255, 250, 244, 0.96);
 								color: var(--text-dark);
 								border-top: 3px solid var(--brand-primary);
 								box-shadow: 0 10px 30px rgba(31, 27, 17, 0.08);
 							}
+
+							.section.kf-reservation .kf-reservation-form .kf-field {
+								position: relative;
+								margin-bottom: 0.5rem;
+							}
+
 							.section.kf-reservation .kf-reservation-form .kf-field input,
 							.section.kf-reservation .kf-reservation-form .kf-field select,
 							.section.kf-reservation .kf-reservation-form .kf-field textarea {
 								background: #ffffff;
 								color: var(--text-dark);
-								border: 1px solid rgba(201, 137, 39, 0.35);
+								border: 2px solid rgba(201, 137, 39, 0.25);
+								transition: border-color 0.2s, box-shadow 0.2s;
+								font-family: 'Roboto', sans-serif;
+								font-size: 0.95rem;
 							}
+
 							.section.kf-reservation .kf-reservation-form .kf-field input::placeholder,
 							.section.kf-reservation .kf-reservation-form .kf-field textarea::placeholder {
-								color: rgba(31, 27, 17, 0.6);
+								color: rgba(31, 27, 17, 0.55);
 							}
+
 							.section.kf-reservation .kf-reservation-form .kf-field input:focus,
 							.section.kf-reservation .kf-reservation-form .kf-field select:focus,
 							.section.kf-reservation .kf-reservation-form .kf-field textarea:focus {
 								border-color: var(--brand-primary);
 								box-shadow: 0 0 0 3px rgba(201, 137, 39, 0.15);
+								outline: none;
 							}
+
+							.section.kf-reservation .kf-reservation-form .kf-field input:invalid:not(:placeholder-shown),
+							.section.kf-reservation .kf-reservation-form .kf-field input.has-error {
+								border-color: #c43c3c;
+							}
+
+							.section.kf-reservation .kf-reservation-form .kf-field input:valid:not(:placeholder-shown),
+							.section.kf-reservation .kf-reservation-form .kf-field input.is-valid {
+								border-color: #3ca86d;
+							}
+
+							.section.kf-reservation .kf-reservation-form .form-error {
+								display: block;
+								color: #c43c3c;
+								font-size: 0.75rem;
+								margin-top: 0.3rem;
+								font-weight: 500;
+								min-height: 1rem;
+							}
+
+							.section.kf-reservation .kf-reservation-form .form-info {
+								display: block;
+								color: rgba(31, 27, 17, 0.6);
+								font-size: 0.75rem;
+								margin-top: 0.3rem;
+								font-style: italic;
+							}
+
 							.section.kf-reservation .kf-reservation-form .kf-bts .kf-btn {
 								background: var(--brand-primary);
 								border-color: var(--brand-primary);
+								color: #ffffff;
+								font-weight: 600;
+								transition: all 0.3s ease;
 							}
+
 							.section.kf-reservation .kf-reservation-form .kf-bts .kf-btn:hover {
 								background: var(--brand-accent);
 								border-color: var(--brand-accent);
+								transform: translateY(-2px);
+								box-shadow: 0 8px 20px rgba(147, 66, 24, 0.25);
+							}
+
+							.section.kf-reservation .kf-reservation-form .alert-success {
+								background: rgba(60, 168, 109, 0.1);
+								border-left: 4px solid #3ca86d;
+								color: #2a6d52;
+								padding: 1rem;
+								border-radius: 4px;
+								margin-top: 1rem;
+								font-weight: 500;
+								animation: slideIn 0.3s ease;
+							}
+
+							@keyframes slideIn {
+								from { opacity: 0; transform: translateY(-10px); }
+								to { opacity: 1; transform: translateY(0); }
 							}
 						</style>
 
 						<script>
 						(function() {
+							// Config: Required fields by reason
+							var fieldsByReason = {
+								'Pedido': { required: ['product', 'qty'], optional: ['date', 'message'] },
+								'Consulta': { required: [], optional: ['message'] },
+								'Reserva': { required: ['product', 'date'], optional: ['qty', 'message'] },
+								'Cotización': { required: ['product'], optional: ['qty', 'message'] }
+							};
+
+							var products = ['Torta personalizada', 'Pastel / Brownies', 'Cupcakes', 'Galletas personalizadas', 'Macarrones', 'Frappé / Bebida', 'Otro producto'];
+
+							// Sanitize input
+							function sanitize(str) {
+								if (!str) return '';
+								return String(str).replace(/[^\w\s\-áéíóúñ@.,]/g, '').trim();
+							}
+
+							// Validate phone
+							function isValidPhone(tel) {
+								var cleaned = tel.replace(/\D/g, '');
+								return cleaned.length >= 10 && cleaned.length <= 15;
+							}
+
+							// Validate name
+							function isValidName(name) {
+								return /^[a-záéíóúñ\s]{2,50}$/i.test(name);
+							}
+
+							// Validate quantity
+							function isValidQty(qty) {
+								var num = parseInt(qty, 10);
+								return !isNaN(num) && num >= 1 && num <= 999;
+							}
+
+							// Validate date (must be today or later)
+							function isValidDate(dateStr) {
+								if (!dateStr) return false;
+								var selected = new Date(dateStr + 'T00:00:00');
+								var today = new Date();
+								today.setHours(0, 0, 0, 0);
+								return selected >= today;
+							}
+
+							// Set min date to today
+							function setMinDate() {
+								var dateInput = document.getElementById('date-input');
+								if (dateInput) {
+									var today = new Date().toISOString().split('T')[0];
+									dateInput.setAttribute('min', today);
+								}
+							}
+
+							// Clear error message
+							function clearError(fieldName) {
+								var errorEl = document.querySelector('[data-field="' + fieldName + '"]');
+								if (errorEl) errorEl.textContent = '';
+							}
+
+							// Show error message
+							function showError(fieldName, message) {
+								var errorEl = document.querySelector('[data-field="' + fieldName + '"]');
+								if (errorEl) {
+									errorEl.textContent = message;
+									var field = document.querySelector('input[name="' + fieldName + '"], select[name="' + fieldName + '"], textarea[name="' + fieldName + '"]');
+									if (field) {
+										field.classList.add('has-error');
+										field.classList.remove('is-valid');
+									}
+								}
+							}
+
+							// Clear all errors
+							function clearAllErrors() {
+								document.querySelectorAll('.form-error').forEach(function(el) {
+									el.textContent = '';
+								});
+								document.querySelectorAll('.kf-field input, .kf-field select, .kf-field textarea').forEach(function(el) {
+									el.classList.remove('has-error', 'is-valid');
+								});
+							}
+
+							// Toggle conditional fields based on reason
+							function updateConditionalFields() {
+								var reason = document.querySelector('select[name="reason"]').value;
+								var productField = document.getElementById('product-field');
+								var qtyField = document.getElementById('qty-field');
+								var dateField = document.getElementById('date-field');
+
+								// Hide all conditional fields
+								productField.style.display = 'none';
+								qtyField.style.display = 'none';
+								dateField.style.display = 'none';
+
+								// Show based on reason
+								if (reason === 'Pedido' || reason === 'Reserva' || reason === 'Cotización') {
+									productField.style.display = 'block';
+								}
+								if (reason === 'Pedido' || reason === 'Reserva' || reason === 'Cotización') {
+									qtyField.style.display = 'block';
+								}
+								if (reason === 'Reserva' || reason === 'Pedido') {
+									dateField.style.display = 'block';
+								}
+
+								// Clear conditional field values and errors when hidden
+								document.querySelector('select[name="product"]').value = '';
+								document.querySelector('input[name="qty"]').value = '';
+								document.querySelector('input[name="date"]').value = '';
+								clearAllErrors();
+							}
+
+							// Main validation and WA message builder
 							function buildAndOpenWA() {
+								clearAllErrors();
+
 								var form = document.getElementById('rform');
 								if (!form) return;
-								var name = (form.elements['name'] && form.elements['name'].value || '').trim();
-								var tel = (form.elements['tel'] && form.elements['tel'].value || '').trim();
-								var reason = (form.elements['reason'] && form.elements['reason'].value || '').trim();
-								var product = (form.elements['product'] && form.elements['product'].value || '').trim();
-								var qty = (form.elements['qty'] && form.elements['qty'].value || '').trim();
-								var date = (form.elements['date'] && form.elements['date'].value || '').trim();
-								var time = (form.elements['time'] && form.elements['time'].value || '').trim();
-								var note = (form.elements['message'] && form.elements['message'].value || '').trim();
 
-								if (!name || !tel || !reason) {
-									alert('Por favor completa tu nombre, WhatsApp y motivo.');
+								var name = (form.elements['name'].value || '').trim();
+								var tel = (form.elements['tel'].value || '').trim();
+								var reason = (form.elements['reason'].value || '').trim();
+								var product = (form.elements['product'].value || '').trim();
+								var qty = (form.elements['qty'].value || '').trim();
+								var date = (form.elements['date'].value || '').trim();
+								var message = (form.elements['message'].value || '').trim();
+
+								var hasErrors = false;
+
+								// Validate name
+								if (!name) {
+									showError('name', '* Campo requerido');
+									hasErrors = true;
+								} else if (!isValidName(name)) {
+									showError('name', '* Solo letras y espacios (2-50 caracteres)');
+									hasErrors = true;
+								} else {
+									clearError('name');
+								}
+
+								// Validate phone
+								if (!tel) {
+									showError('tel', '* Campo requerido');
+									hasErrors = true;
+								} else if (!isValidPhone(tel)) {
+									showError('tel', '* Teléfono inválido');
+									hasErrors = true;
+								} else {
+									clearError('tel');
+								}
+
+								// Validate reason
+								if (!reason) {
+									showError('reason', '* Campo requerido');
+									hasErrors = true;
+								} else {
+									clearError('reason');
+								}
+
+								// Validate required conditional fields
+								if (fieldsByReason[reason]) {
+									var required = fieldsByReason[reason].required || [];
+									required.forEach(function(field) {
+										var val = (form.elements[field].value || '').trim();
+										if (!val) {
+											var labels = { product: '* Selecciona un producto', date: '* Selecciona una fecha', qty: '* Ingresa cantidad' };
+											showError(field, labels[field] || '* Campo requerido');
+											hasErrors = true;
+										}
+									});
+								}
+
+								// Validate quantity if provided
+								if (qty && !isValidQty(qty)) {
+									showError('qty', '* Cantidad inválida (1-999)');
+									hasErrors = true;
+								}
+
+								// Validate date if provided or required
+								if (date && !isValidDate(date)) {
+									showError('date', '* Fecha debe ser hoy o posterior');
+									hasErrors = true;
+								} else if (fieldsByReason[reason] && fieldsByReason[reason].required.indexOf('date') !== -1 && !date) {
+									showError('date', '* Campo requerido');
+									hasErrors = true;
+								}
+
+								// Validate message length
+								if (message && message.length > 500) {
+									showError('message', '* Máximo 500 caracteres');
+									hasErrors = true;
+								}
+
+								if (hasErrors) {
 									return;
 								}
 
+								// Sanitize all inputs
+								name = sanitize(name);
+								tel = sanitize(tel);
+								reason = sanitize(reason);
+								product = sanitize(product);
+								qty = sanitize(qty);
+								date = sanitize(date);
+								message = sanitize(message);
+
+								// Build message
 								var parts = [];
-								parts.push('Hola Dulce Berlín \uD83D\uDC4B');
-								parts.push('Motivo: ' + reason);
-								parts.push('Nombre: ' + name);
-								parts.push('WhatsApp: ' + tel);
-								if (product) parts.push('Producto: ' + product);
-								if (qty) parts.push('Cantidad: ' + qty);
-								var fechaHora = '';
-								if (date) fechaHora += date;
-								if (time) fechaHora += (fechaHora ? ' ' : '') + time;
-								if (fechaHora) parts.push('Fecha/Hora: ' + fechaHora);
-								if (note) parts.push('Mensaje: ' + note);
+								parts.push('👋 Hola Dulce Berlín');
+								parts.push('━━━━━━━━━━━━━');
+								parts.push('📌 Motivo: ' + reason);
+								parts.push('👤 Nombre: ' + name);
+								parts.push('📱 WhatsApp: ' + tel);
+
+								if (product) parts.push('🍰 Producto: ' + product);
+								if (qty) parts.push('📦 Cantidad: ' + qty);
+								if (date) parts.push('📅 Fecha: ' + date);
+
+								if (message) parts.push('💬 Mensaje: ' + message);
+
+								parts.push('━━━━━━━━━━━━━');
 
 								var msg = parts.join('\n');
 								var waUrl = 'https://wa.me/573102244351?text=' + encodeURIComponent(msg);
 								window.open(waUrl, '_blank');
 
-								var alertBox = form.nextElementSibling;
-								if (alertBox && alertBox.classList.contains('alert-success')) {
+								// Show success message
+								var alertBox = form.closest('.kf-reservation-form').querySelector('.alert-success');
+								if (alertBox) {
 									alertBox.style.display = 'block';
-									setTimeout(function(){ alertBox.style.display = 'none'; }, 3000);
+									setTimeout(function() { alertBox.style.display = 'none'; }, 4000);
 								}
+
+								// Reset form
+								setTimeout(function() { form.reset(); updateConditionalFields(); }, 500);
 							}
 
-							var btn = document.getElementById('wa-send');
-							if (btn) {
-								btn.addEventListener('click', function(e){ e.preventDefault(); buildAndOpenWA(); });
+							// Initialize
+							function init() {
+								setMinDate();
+								updateConditionalFields();
+
+								// Reason change handler
+								var reasonSelect = document.querySelector('select[name="reason"]');
+								if (reasonSelect) {
+									reasonSelect.addEventListener('change', updateConditionalFields);
+								}
+
+								// Send button
+								var btn = document.getElementById('wa-send');
+								if (btn) {
+									btn.addEventListener('click', function(e) {
+										e.preventDefault();
+										buildAndOpenWA();
+									});
+								}
+
+								// Real-time validation feedback
+								var inputs = document.querySelectorAll('input[type="text"], input[type="tel"], input[type="number"], input[type="date"]');
+								inputs.forEach(function(input) {
+									input.addEventListener('blur', function() {
+										var field = input.name;
+										var value = input.value.trim();
+
+										if (!value) {
+											clearError(field);
+											return;
+										}
+
+										if (field === 'name' && value) {
+											if (isValidName(value)) {
+												clearError(field);
+												input.classList.remove('has-error');
+												input.classList.add('is-valid');
+											} else {
+												showError(field, 'Solo letras (2-50 caracteres)');
+											}
+										} else if (field === 'tel' && value) {
+											if (isValidPhone(value)) {
+												clearError(field);
+												input.classList.remove('has-error');
+												input.classList.add('is-valid');
+											} else {
+												showError(field, 'Teléfono inválido');
+											}
+										} else if (field === 'qty' && value) {
+											if (isValidQty(value)) {
+												clearError(field);
+												input.classList.remove('has-error');
+												input.classList.add('is-valid');
+											} else {
+												showError(field, 'Número entre 1 y 999');
+											}
+										} else if (field === 'date' && value) {
+											if (isValidDate(value)) {
+												clearError(field);
+												input.classList.remove('has-error');
+												input.classList.add('is-valid');
+											} else {
+												showError(field, 'Fecha debe ser hoy o posterior');
+											}
+										}
+									});
+								});
+							}
+
+							// DOMContentLoaded
+							if (document.readyState === 'loading') {
+								document.addEventListener('DOMContentLoaded', init);
+							} else {
+								init();
 							}
 						})();
 						</script>
