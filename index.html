@@ -113,7 +113,7 @@
 		.kf-btn, a.kf-btn, .kf-btn-link, a.kf-btn-link,
 		button, input[type="submit"] { font-family: var(--font-body) !important; font-weight: 500; }
 
-		/* ========== PRELOADER ELEGANTE ========== */
+		/* ========== PRELOADER MINIMALISTA ========== */
 		.kf-preloader {
 			position: fixed;
 			top: 0;
@@ -139,31 +139,47 @@
 
 		.kf-preloader-container {
 			position: relative;
-			width: clamp(160px, 28vw, 240px);
-			height: clamp(160px, 28vw, 240px);
 			display: flex;
+			flex-direction: column;
 			align-items: center;
 			justify-content: center;
+			gap: clamp(32px, 5vh, 48px);
+			text-align: center;
 		}
 
 		.kf-preloader-glow {
 			position: absolute;
-			width: 125%;
-			height: 125%;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: clamp(350px, 60vw, 600px);
+			height: clamp(350px, 60vw, 600px);
 			border-radius: 50%;
-			background: radial-gradient(circle, rgba(201, 137, 39, 0.42) 0%, rgba(201, 137, 39, 0.12) 45%, transparent 70%);
-			filter: blur(18px);
-			animation: kf-glow-pulse 2.8s ease-in-out infinite;
+			background: radial-gradient(circle at center, rgba(201, 137, 39, 0.35) 0%, rgba(201, 137, 39, 0.18) 40%, transparent 70%);
+			filter: blur(40px);
+			opacity: 0.85;
+			animation: kf-glow-pulse 3.5s ease-in-out infinite;
+			z-index: 0;
+			pointer-events: none;
 		}
 
 		@keyframes kf-glow-pulse {
 			0%, 100% {
-				transform: scale(1);
-				opacity: 0.55;
+				transform: translate(-50%, -50%) scale(1);
+				opacity: 0.7;
 			}
 			50% {
-				transform: scale(1.18);
-				opacity: 0.9;
+				transform: translate(-50%, -50%) scale(1.2);
+				opacity: 1;
+			}
+		}
+
+		@keyframes kf-logo-breathe {
+			0%, 100% {
+				transform: scale(0.98);
+			}
+			50% {
+				transform: scale(1.02);
 			}
 		}
 
@@ -175,7 +191,7 @@
 				justify-content: center;
 			}
 
-			/* Ensure the item’s own flex layout centers horizontally */
+			/* Ensure the item's own flex layout centers horizontally */
 			.kf-menu-item.element-anim-1.scroll-animate.animate__active.animate__animated {
 				justify-content: center;
 			}
@@ -205,122 +221,106 @@
 
 		.kf-preloader-logo {
 			position: relative;
-			width: 78%;
-			height: 78%;
-			z-index: 2;
+			z-index: 1;
+			width: clamp(300px, 50vw, 520px);
+			max-width: 90vw;
 			display: flex;
 			align-items: center;
 			justify-content: center;
 		}
 
-		.kf-svg-logo {
+		.kf-preloader-image {
 			width: 100%;
-			height: 100%;
-			transform-origin: 50% 50%;
-			filter: drop-shadow(0 12px 26px rgba(147, 66, 24, 0.32));
-		}
-
-		.kf-orbit {
-			fill: none;
-			stroke: rgba(201, 137, 39, 0.44);
-			transform-origin: 512px 512px;
-		}
-
-		.kf-orbit-1 {
-			stroke-width: 18;
-			animation: kf-rotate-cw 9s linear infinite;
-		}
-
-		.kf-orbit-2 {
-			stroke: rgba(250, 221, 163, 0.85);
-			stroke-width: 12;
-			animation: kf-rotate-ccw 6.2s linear infinite;
-		}
-
-		@keyframes kf-rotate-cw {
-			from {
-				transform: rotate(0deg);
-			}
-			to {
-				transform: rotate(360deg);
-			}
-		}
-
-		@keyframes kf-rotate-ccw {
-			from {
-				transform: rotate(0deg);
-			}
-			to {
-				transform: rotate(-360deg);
-			}
-		}
-
-		.kf-pretzel {
-			transform-origin: 512px 512px;
-			animation: kf-pretzel-breathe 3.6s ease-in-out infinite;
-		}
-
-		@keyframes kf-pretzel-breathe {
-			0%, 100% {
-				transform: scale(0.97) rotate(-2deg);
-			}
-			50% {
-				transform: scale(1.03) rotate(2deg);
-			}
-		}
-
-		.kf-particle {
-			fill: var(--brand-secondary);
-			opacity: 0.75;
-			transform-origin: 512px 512px;
-			animation: kf-particle-twinkle 2.6s ease-in-out infinite;
-		}
-
-		.kf-particle-2 {
-			animation-delay: 0.4s;
-			fill: var(--brand-primary);
-		}
-
-		.kf-particle-3 {
-			animation-delay: 0.8s;
-			fill: var(--brand-accent);
-		}
-
-		.kf-particle-4 {
-			animation-delay: 1.2s;
-			fill: var(--brand-accent-dark);
-		}
-
-		@keyframes kf-particle-twinkle {
-			0%, 100% {
-				opacity: 0.4;
-				transform: scale(0.85);
-			}
-			50% {
-				opacity: 0.95;
-				transform: scale(1.25);
-			}
+			height: auto;
+			max-height: clamp(220px, 40vh, 450px);
+			object-fit: contain;
+			filter: drop-shadow(0 25px 50px rgba(110, 66, 18, 0.35));
+			animation: kf-logo-breathe 3.5s ease-in-out infinite;
 		}
 
 		.kf-preloader-text {
-			position: absolute;
-			bottom: -52px;
-			width: 100%;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			font-family: 'Merienda', Georgia, serif;
-			font-size: clamp(1.1rem, 2.3vw, 1.8rem);
-			color: var(--brand-accent);
-			font-weight: 600;
-			letter-spacing: 2px;
+			display: none;
 		}
 
 		.kf-preloader-percent {
-			display: inline-flex;
+			position: relative;
+			z-index: 1;
+			display: flex;
 			align-items: center;
 			justify-content: center;
-			min-width: 3ch;
+			min-width: 4ch;
+			font-family: 'Merienda', Georgia, serif;
+			font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+			font-variant-numeric: tabular-nums;
+			color: var(--brand-primary);
+			font-weight: 700;
+			letter-spacing: 0.02em;
+			text-shadow: 0 4px 12px rgba(201, 137, 39, 0.3);
+		}
+
+		/* Media queries para preloader minimalista responsive */
+		@media screen and (max-width: 480px) {
+			.kf-preloader-logo {
+				width: 85vw;
+			}
+			
+			.kf-preloader-image {
+				max-height: 200px;
+			}
+			
+			.kf-preloader-percent {
+				font-size: 1.4rem;
+			}
+			
+			.kf-preloader-glow {
+				width: 85vw;
+				height: 85vw;
+			}
+		}
+
+		@media screen and (min-width: 481px) and (max-width: 768px) {
+			.kf-preloader-logo {
+				width: 70vw;
+			}
+			
+			.kf-preloader-image {
+				max-height: 280px;
+			}
+			
+			.kf-preloader-glow {
+				width: 70vw;
+				height: 70vw;
+			}
+		}
+
+		@media screen and (min-width: 769px) and (max-width: 1024px) {
+			.kf-preloader-logo {
+				width: 55vw;
+			}
+			
+			.kf-preloader-image {
+				max-height: 360px;
+			}
+			
+			.kf-preloader-glow {
+				width: 55vw;
+				height: 55vw;
+			}
+		}
+
+		@media screen and (min-width: 1025px) {
+			.kf-preloader-logo {
+				width: 500px;
+			}
+			
+			.kf-preloader-image {
+				max-height: 420px;
+			}
+			
+			.kf-preloader-glow {
+				width: 550px;
+				height: 550px;
+			}
 		}
 
 		/* ========== HEADER & NAVIGATION ========== */
@@ -860,12 +860,40 @@
 			color: var(--text-light) !important;
 			font-weight: 600;
 			transition: all 0.3s ease;
+			position: relative;
+			overflow: hidden;
+			box-shadow: 0 8px 20px rgba(147, 66, 24, 0.25);
+		}
+
+		/* Efecto de brillo en hover para todos los botones */
+		.kf-btn::before {
+			content: '';
+			position: absolute;
+			inset: 0;
+			background: rgba(255, 255, 255, 0.2);
+			opacity: 0;
+			transition: opacity 0.3s ease;
 		}
 
 		.kf-btn:hover {
-			background: transparent !important;
+			background: linear-gradient(135deg, var(--text-light) 0%, var(--brand-secondary) 100%) !important;
 			color: var(--brand-primary) !important;
-			border-color: var(--brand-primary) !important;
+			border-color: var(--brand-accent) !important;
+			transform: translateY(-3px);
+			box-shadow: 0 12px 28px rgba(147, 66, 24, 0.35);
+		}
+
+		.kf-btn:hover::before {
+			opacity: 1;
+		}
+
+		/* Los íconos dentro de los botones se mueven a la derecha en hover */
+		.kf-btn i {
+			transition: transform 0.3s ease;
+		}
+
+		.kf-btn:hover i {
+			transform: translateX(4px);
 		}
 
 		.kf-btn.dark-btn {
@@ -876,8 +904,10 @@
 
 		.kf-btn.dark-btn:hover {
 			background: var(--brand-primary) !important;
-			border-color: var(--brand-primary) !important;
+			border-color: var(--brand-accent) !important;
 			color: var(--text-light) !important;
+			transform: translateY(-3px);
+			box-shadow: 0 12px 28px rgba(147, 66, 24, 0.35);
 		}
 
 		.h-btn {
@@ -1617,8 +1647,11 @@
 		}
 		
 		.section.kf-choose.kf-choose-2 .kf-btn:hover { 
-			background: var(--brand-accent); 
-			border-color: var(--brand-accent); 
+			background: linear-gradient(135deg, var(--text-light) 0%, var(--brand-secondary) 100%) !important;
+			color: var(--brand-primary) !important;
+			border-color: var(--brand-accent) !important;
+			transform: translateY(-3px);
+			box-shadow: 0 12px 28px rgba(147, 66, 24, 0.35);
 		}
 
 		/* Responsive adjustments for tablets and phones */
@@ -1775,59 +1808,285 @@
 		}
 
 		/* ========== NUMBERS SECTION ========== */
+		.section.kf-numbers-2 {
+			padding: clamp(60px, 10vw, 100px) 0;
+		}
+
+		.section.kf-numbers-2 .kf-titles {
+			margin-bottom: clamp(40px, 8vw, 60px);
+		}
+
+		.kf-numbers-items-2.row {
+			display: flex;
+			flex-wrap: wrap;
+			margin-left: -15px;
+			margin-right: -15px;
+			align-items: stretch;
+		}
+
+		.kf-numbers-items-2 > [class*="col-"] {
+			display: flex;
+			padding-left: 15px;
+			padding-right: 15px;
+			margin-bottom: 30px;
+		}
+
 		.kf-numbers-item-2 {
 			background: white;
-			padding: 30px;
+			padding: 35px 25px;
 			border: 2px solid var(--brand-secondary);
-			border-radius: 8px;
+			border-radius: 12px;
 			text-align: center;
-			transition: all 0.3s ease;
-			box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+			transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+			box-shadow: 0 6px 16px rgba(31, 27, 17, 0.08);
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: space-between;
+			width: 100%;
+			height: 100%;
+			min-height: 320px;
+			position: relative;
+			overflow: hidden;
+		}
+
+		.kf-numbers-item-2::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			height: 4px;
+			background: linear-gradient(90deg, var(--brand-primary), var(--brand-secondary));
+			transform: scaleX(0);
+			transform-origin: left;
+			transition: transform 0.4s ease;
 		}
 
 		.kf-numbers-item-2:hover {
 			border-color: var(--brand-primary);
-			box-shadow: 0 8px 20px rgba(201, 137, 39, 0.2);
-			transform: translateY(-5px);
+			box-shadow: 0 12px 32px rgba(201, 137, 39, 0.25);
+			transform: translateY(-8px);
+		}
+
+		.kf-numbers-item-2:hover::before {
+			transform: scaleX(1);
 		}
 
 		.kf-numbers-item-2 .icon {
 			color: var(--brand-primary) !important;
-			font-size: 2.5rem;
+			font-size: 3rem;
 			margin-bottom: 15px;
+			transition: all 0.3s ease;
+			width: 85px;
+			height: 85px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			border-radius: 50%;
+			background: linear-gradient(135deg, rgba(250, 221, 163, 0.3), rgba(201, 137, 39, 0.15));
+			flex-shrink: 0;
+		}
+
+		.kf-numbers-item-2:hover .icon {
+			transform: scale(1.1) rotateY(360deg);
+			background: linear-gradient(135deg, rgba(250, 221, 163, 0.5), rgba(201, 137, 39, 0.25));
 		}
 
 		.kf-numbers-item-2 .num {
 			color: var(--brand-primary);
+			font-family: 'Merienda', Georgia, serif;
 			font-weight: 700;
-			font-size: 2rem;
-			margin: 10px 0;
+			font-size: 2.2rem;
+			
+			
+			flex-shrink: 0;
+		}
+
+		.kf-numbers-item-2 .desc {
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			gap: 10px;
+			width: 100%;
 		}
 
 		.kf-numbers-item-2 .name {
 			color: var(--text-dark);
+			font-family: 'Merienda', Georgia, serif;
+			font-weight: 700;
+			font-size: 1.15rem;
+			line-height: 1.3;
+			margin: 0;
+			min-height: 2.6em;
+			display: flex;
+			align-items: center;
+			justify-content: center;
 		}
 
 		.kf-numbers-item-2 .subname {
-			color: #888;
+			color: rgba(31, 27, 17, 0.7);
 			font-size: 0.9rem;
+			line-height: 1.5;
+			margin: 0;
+			font-weight: 400;
+			min-height: 4.5em;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
 		}
 
-		/* ========== CTA SECTION ========== */
-		.kf-cta {
-			background-position: center;
-			background-attachment: fixed;
-			background-color: rgba(31, 27, 17, 0.8);
-			background-blend-mode: overlay;
+		/* Responsive adjustments for numbers section */
+		@media (min-width: 992px) and (max-width: 1199px) {
+			.kf-numbers-item-2 {
+				padding: 30px 20px;
+				min-height: 340px;
+			}
+
+			.kf-numbers-item-2 .icon {
+				width: 75px;
+				height: 75px;
+				font-size: 2.5rem;
+			}
+
+			.kf-numbers-item-2 .num {
+				font-size: 2rem;
+			}
+
+			.kf-numbers-item-2 .name {
+				font-size: 1.1rem;
+			}
+
+			.kf-numbers-item-2 .subname {
+				font-size: 0.85rem;
+			}
 		}
 
-		.kf-cta .kf-subtitle {
-			color: var(--brand-secondary);
+		@media (min-width: 768px) and (max-width: 991px) {
+			.kf-numbers-items-2 > [class*="col-"] {
+				margin-bottom: 25px;
+			}
+
+			.kf-numbers-item-2 {
+				padding: 35px 25px;
+				min-height: 320px;
+			}
+
+			.kf-numbers-item-2 .icon {
+				width: 80px;
+				height: 80px;
+				font-size: 2.8rem;
+			}
+
+			.kf-numbers-item-2 .num {
+				font-size: 2.1rem;
+			}
+
+			.kf-numbers-item-2 .name {
+				font-size: 1.1rem;
+			}
+
+			.kf-numbers-item-2 .subname {
+				font-size: 0.88rem;
+			}
 		}
 
-		.kf-cta .kf-title {
-			color: var(--text-light);
+		@media (min-width: 576px) and (max-width: 767px) {
+			.section.kf-numbers-2 {
+				padding: 60px 0;
+			}
+
+			.kf-numbers-items-2 > [class*="col-"] {
+				margin-bottom: 20px;
+			}
+
+			.kf-numbers-item-2 {
+				padding: 30px 22px;
+				min-height: 300px;
+			}
+
+			.kf-numbers-item-2 .icon {
+				width: 75px;
+				height: 75px;
+				font-size: 2.6rem;
+			}
+
+			.kf-numbers-item-2 .num {
+				font-size: 2rem;
+			}
+
+			.kf-numbers-item-2 .name {
+				font-size: 1.05rem;
+			}
+
+			.kf-numbers-item-2 .subname {
+				font-size: 0.87rem;
+			}
 		}
+
+		@media (max-width: 575px) {
+			.section.kf-numbers-2 {
+				padding: 50px 0;
+			}
+
+			.section.kf-numbers-2 .kf-titles {
+				margin-bottom: 35px;
+			}
+
+			.kf-numbers-items-2 > [class*="col-"] {
+				padding-left: 12px;
+				padding-right: 12px;
+				margin-bottom: 20px;
+			}
+
+			.kf-numbers-item-2 {
+				padding: 28px 20px;
+				min-height: 280px;
+			}
+
+			.kf-numbers-item-2 .icon {
+				width: 70px;
+				height: 70px;
+				font-size: 2.4rem;
+				margin-bottom: 12px;
+			}
+
+			.kf-numbers-item-2 .num {
+				font-size: 1.9rem;
+				margin: 8px 0 12px 0;
+			}
+
+			.kf-numbers-item-2 .name {
+				font-size: 1rem;
+				min-height: 2.4em;
+			}
+
+			.kf-numbers-item-2 .subname {
+				font-size: 0.85rem;
+				min-height: 4em;
+			}
+		}
+
+	/* ========== CTA SECTION ========== */
+	.kf-cta {
+		background-position: center;
+		background-attachment: fixed;
+		background-color: rgba(31, 27, 17, 0.25);
+		background-blend-mode: overlay;
+	}
+
+	.kf-cta .kf-subtitle {
+		color: var(--brand-secondary);
+		text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+	}
+
+	.kf-cta .kf-title {
+		color: var(--brand-secondary);
+		text-shadow: 0 3px 12px rgba(0, 0, 0, 0.7), 0 1px 3px rgba(0, 0, 0, 0.9);
+		font-weight: 700;
+	}
 
 		/* ========== BLOG SECTION ========== */
 		.kf-blog-grid-item {
@@ -2228,6 +2487,7 @@
 
 			.kf-navbar .kf-header-actions {
 				display: flex !important;
+				flex-direction: row-reverse;
 				align-items: center;
 				gap: 18px;
 			}
@@ -2312,21 +2572,14 @@
 <body>
 	<div class="bg">
 
-		<!-- Preloader Elegante con Pretzel Animado -->
+		<!-- Preloader minimalista con logo Dulce Berlín -->
 		<div class="kf-preloader">
+			<div class="kf-preloader-glow"></div>
 			<div class="kf-preloader-container">
-				<div class="kf-preloader-glow"></div>
-				<div class="kf-preloader-logo">
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" class="kf-svg-logo" role="img" aria-label="Cargando Dulce Berlin">
-						<title>Cargando Dulce Berlin</title>
-						<circle class="kf-orbit kf-orbit-1" cx="512" cy="512" r="440"></circle>
-						<circle class="kf-orbit kf-orbit-2" cx="512" cy="512" r="320"></circle>
-						<g class="kf-pretzel">
-							<path d="M207.168 832a57.792 57.792 0 0 1-55.68-43.392c-8.064-31.061333 10.282667-62.848 41.024-71.04 1.194667-0.362667 26.24-7.509333 61.909333-21.482667C159.872 622.997333 128.597333 514.624 128 444.672 130.282667 258.986667 279.978667 192 379.989333 192c40.554667 0 89.109333 11.050667 132.565334 36.288C548.117333 206.016 593.045333 192 648.789333 192c72.576 0 131.605333 22.72 175.466667 67.584 71.04 72.661333 71.872 173.973333 71.744 185.301333 0.042667 4.010667 0.042667 129.194667-93.717333 224.746667-10.090667 10.218667-20.821333 19.797333-32.149334 28.522667 20.181333 6.805333 41.941333 13.290667 65.386667 19.221333 30.869333 7.786667 49.642667 39.36 41.92 70.549333-7.701333 31.168-39.04 50.218667-69.824 42.282667-72.874667-18.389333-132.757333-41.536-181.994667-67.392-34.261333 7.274667-71.381333 10.944-111.210666 10.944-45.098667 0-85.312-4.693333-121.088-13.184-85.994667 46.186667-164.224 67.584-171.456 69.482667-4.906667 1.258667-9.856 1.941333-14.698667 1.941333z" fill="#FF9800"></path>
-							<path d="M821.632 832c-4.629333 0-9.344-0.618667-13.994667-1.792-406.677333-102.677333-409.834667-354.346667-408.426666-387.605333C399.872 341.226667 466.602667 192 648.789333 192c31.786667 0 57.6 26.090667 57.6 58.24 0 32.085333-25.813333 58.176-57.6 58.176-130.624 0-134.378667 121.834667-134.378666 135.744 0 1.557333-0.064 3.136-0.213334 4.778667-0.298667 6.634667-5.248 185.962667 321.344 268.437333 30.869333 7.786667 49.642667 39.36 41.92 70.549333A57.749333 57.749333 0 0 1 821.632 832z" fill="#FF9800"></path>
-							<path d="M641.130667 637.290667c33.408 21.888 75.712 42.709333 129.088 60.778666a311.936 311.936 0 0 0 32.085333-28.437333c0.490667-0.512 0.874667-1.002667 1.301333-1.450667-49.578667-15.146667-89.450667-32.490667-121.408-50.730666-12.202667 7.381333-25.706667 14.186667-41.066666 19.84zM431.104 317.546667a3.413333 3.413333 0 0 0-0.384 0.789333c21.077333-40.277333 53.738667-76.885333 100.202667-100.181333a216.96 216.96 0 0 0-18.368 10.154666 263.061333 263.061333 0 0 0-40.469334-18.901333c-35.626667 27.434667-61.653333 62.528-79.530666 99.797333a163.925333 163.925333 0 0 1 38.549333 8.341334zM254.4 696.085333c35.392-13.909333 81.152-34.538667 124.437333-61.866666a237.802667 237.802667 0 0 1-40.213333-21.034667c-42.816 24.448-86.677333 42.538667-117.056 53.738667 10.005333 10.133333 20.928 19.925333 32.832 29.162666zM538.730667 706.538667c28.864-25.664 55.232-54.741333 76.522666-87.530667a339.52 339.52 0 0 1-29.290666-25.194667c1.621333-2.624 3.114667-5.376 4.672-8.042666-49.045333 84.181333-136.234667 144-213.696 183.317333a1107.2 1107.2 0 0 0 16.405333-8.533333 484.48 484.48 0 0 0 58.986667 9.962666c40.384 2.858667 59.690667 6.144 111.936 1.066667a492.8 492.8 0 0 0 61.397333-8.768c6.208 3.242667 12.629333 6.442667 19.2 9.642667-42.282667-20.373333-77.162667-42.752-106.133333-65.92zM614.997333 353.173333a233.258667 233.258667 0 0 0-16.064-37.632c1.045333-0.341333 2.304-0.448 3.392-0.768l-1.130666-2.432c-3.456 1.578667-85.098667 39.850667-104.448 135.168-11.925333 58.666667-61.354667 95.808-75.754667 105.536 4.757333 11.904 10.176 24.149333 17.216 36.906667-0.277333 0.256-0.576 0.448-0.853333 0.682667l1.088 1.877333c3.349333-1.962667 82.282667-48.96 100.096-136.512 12.992-63.829333 61.973333-94.912 76.458666-102.826667z" fill="#D66100"></path>
-							<path d="M214.464 490.709333A21.333333 21.333333 0 1 1 212.074667 533.333333C200.32 532.672 170.666667 509.653333 170.666667 509.653333s32-19.605333 43.797333-18.944zM853.333333 426.666667a21.333333 21.333333 0 1 1-42.666666 0c0-11.797333 21.333333-42.666667 21.333333-42.666667s21.333333 30.869333 21.333333 42.666667zM274.944 282.368a21.333333 21.333333 0 0 1-37.866667-19.626667c5.418667-10.474667 38.570667-28.074667 38.570667-28.074666s4.736 37.248-0.704 47.701333zM669.824 267.626667a21.333333 21.333333 0 0 1-31.424-28.864c7.957333-8.661333 44.586667-16.981333 44.586667-16.981334s-5.205333 37.162667-13.162667 45.845334zM799.338667 287.658667a21.269333 21.269333 0 0 1 21.973333 20.672c0.384 11.776-8.853333 21.632-20.650667 21.994666s-43.328-19.989333-43.328-19.989333 30.208-22.293333 42.005334-22.677333zM468.650667 362.666667a21.312 21.312 0 0 1 21.994666 20.672A21.333333 21.333333 0 0 1 469.994667 405.333333c-11.797333 0.362667-43.328-19.989333-43.328-19.989333s30.208-22.293333 41.984-22.677333zM426.709333 446.250667a21.333333 21.333333 0 1 1 42.496 3.84c-1.066667 11.733333-25.088 40.576-25.088 40.576s-18.474667-32.682667-17.408-44.416zM340.672 234.666667a21.312 21.312 0 0 1 21.994667 20.672A21.333333 21.333333 0 0 1 342.016 277.333333c-11.776 0.362667-43.306667-20.010667-43.306667-20.010666s30.186667-22.272 41.962667-22.656zM816.170667 575.509333a21.333333 21.333333 0 1 1-9.066667-41.664c11.52-2.517333 46.229333 11.733333 46.229333 11.733334s-25.621333 27.413333-37.162666 29.930666zM537.877333 319.509333a21.312 21.312 0 1 1-9.066666-41.664c11.52-2.496 46.250667 11.754667 46.250666 11.754667s-25.642667 27.392-37.184 29.909333zM197.504 383.296a21.312 21.312 0 1 1-9.066667-41.664c11.52-2.496 46.229333 11.733333 46.229334 11.733333s-25.621333 27.434667-37.162667 29.930667zM725.312 255.125333A21.376 21.376 0 0 1 704.896 277.333333 21.376 21.376 0 0 1 682.666667 256.917333c-0.469333-11.818667 19.541333-43.541333 19.541333-43.541333s22.613333 29.930667 23.104 41.749333z" fill="#FFF9C4"></path>
+				<div class="kf-preloader-logo" aria-label="Cargando Dulce Berlín">
+					<img src="assets/images/dulce-berlin.png" alt="Logo Dulce Berlín" class="kf-preloader-image" />
 				</div>
+				<div class="kf-preloader-percent">0%</div>
 			</div>
 		</div>
 
@@ -2338,22 +2591,22 @@
 				<div class="row">
 					<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
 
-						<!-- hours -->
-						<div class="kf-h-group">
-							<i class="far fa-clock"></i>
-							<em>Horario:</em> 08:00 am - 09:00 pm
-						</div>
+				<!-- hours -->
+				<div class="kf-h-group">
+					<i class="far fa-clock"></i>
+					<em>Horario:</em> Lun-Vie: 7AM-6PM | Sáb: 7AM-1PM
+				</div>
 
-					</div>
-					<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 align-center">
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 align-center">
 
-						<!-- social -->
-						<div class="kf-h-social">
-							<a href="facebook.html" target="blank"><i class="fab fa-facebook-f"></i></a>
-							<a href="twitter.html" target="blank"><i class="fab fa-twitter"></i></a>
-							<a href="instagram.html" target="blank"><i class="fab fa-instagram"></i></a>
-							<a href="youtube.html" target="blank"><i class="fab fa-youtube"></i></a>
-						</div>
+				<!-- social -->
+				<div class="kf-h-social">
+					<a href="https://www.facebook.com/dulceberlin" target="_blank" rel="noopener noreferrer" title="Facebook Dulce Berlín"><i class="fab fa-facebook-f"></i></a>
+					<a href="https://www.instagram.com/dulceberlin" target="_blank" rel="noopener noreferrer" title="Instagram Dulce Berlín"><i class="fab fa-instagram"></i></a>
+					<a href="https://wa.me/573102244351" target="_blank" rel="noopener noreferrer" title="WhatsApp Dulce Berlín"><i class="fab fa-whatsapp"></i></a>
+					<a href="mailto:info.dulceberlin@gmail.com" title="Email Dulce Berlín"><i class="far fa-envelope"></i></a>
+				</div>
 
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 align-right">
@@ -2462,22 +2715,22 @@
 							</div>
 							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
-								<!-- social -->
-								<div class="kf-h-social">
-									<a href="facebook.html" target="blank"><i class="fab fa-facebook-f"></i></a>
-									<a href="twitter.html" target="blank"><i class="fab fa-twitter"></i></a>
-									<a href="instagram.html" target="blank"><i class="fab fa-instagram"></i></a>
-									<a href="youtube.html" target="blank"><i class="fab fa-youtube"></i></a>
-								</div>
+						<!-- social -->
+						<div class="kf-h-social">
+							<a href="https://www.facebook.com/dulceberlin" target="_blank" rel="noopener noreferrer" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+							<a href="https://www.instagram.com/dulceberlin" target="_blank" rel="noopener noreferrer" title="Instagram"><i class="fab fa-instagram"></i></a>
+							<a href="https://wa.me/573102244351" target="_blank" rel="noopener noreferrer" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+							<a href="mailto:info.dulceberlin@gmail.com" title="Email"><i class="far fa-envelope"></i></a>
+						</div>
 
-							</div>
-							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
-								<!-- hours -->
-								<div class="kf-h-group">
-									<i class="far fa-clock"></i>
-									<em>Horario:</em> 08:00 am - 09:00 pm
-								</div>
+						<!-- hours -->
+						<div class="kf-h-group">
+							<i class="far fa-clock"></i>
+							<em>Horario:</em> Lun-Vie: 7AM-6PM | Sáb: 7AM-1PM
+						</div>
 
 							</div>
 							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -2703,7 +2956,7 @@
 							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
 								<div class="kf-menu-item element-anim-1 scroll-animate" data-animate="active">
 									<div class="image kf-image-hover">
-										<a href="assets/images/Schwarzw%C3%A4lder%20Kirschtorte%20-%20Selva%20Negra%20Alemana.jpeg" class="has-popup-image"><img src="assets/images/Schwarzw%C3%A4lder%20Kirschtorte%20-%20Selva%20Negra%20Alemana.jpeg" alt="Schwarzwälder Kirschtorte con cerezas" /></a>
+										<a href="assets/images/Schwarzw%C3%A4lder%20Kirschtorte%20-%20Selva%20Negra%20Alemana.jpeg" class="has-popup-image"><img src="assets/images/Schwarzw%C3%A4lder%20Kirschtorte%20-%20Selva%20Negra%20Alemana.jpeg" alt="Schwarzwälder Kirschtorte con cerezas y crema Chantilly" /></a>
 									</div>
 									<div class="desc">
 										<h5 class="name">Schwarzwälder (Selva Negra)</h5>
@@ -2864,40 +3117,146 @@
 				</div>
 		</section>
 
+		<!-- Section Numbers-2 -->
+		<section class="section kf-numbers-2 section-bg">
+			<div class="container">
+
+				<div class="kf-titles align-center">
+					<div class="kf-subtitle element-anim-1 scroll-animate" data-animate="active">
+						¿Por qué elegir Dulce Berlin?
+					</div>
+					<h3 class="kf-title element-anim-1 scroll-animate" data-animate="active" style="margin-bottom: 10px;">
+						Panadería Alemana Auténtica <br>Elaborada con Pasión y Excelencia
+					</h3>
+					<div class="kf-text element-anim-1 scroll-animate" data-animate="active" style="max-width: 720px; margin: 0 auto; margin-top: 20px;">
+						<p>
+							Desde nuestras recetas tradicionales hasta nuestras técnicas artesanales, cada detalle refleja nuestro compromiso de traerte la mejor tradición panadera alemana con calidez y dedicación local.
+						</p>
+					</div>
+				</div>
+
+				<div class="kf-numbers-items-2 row">
+
+					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+						<div class="kf-numbers-item-2 element-anim-1 scroll-animate" data-animate="active">
+							<div class="icon"><i class="las la-birthday-cake"></i></div>
+							<div class="num">100%</div>
+							<div class="desc">
+								<h5 class="name">Recetas Artesanales</h5>
+								<div class="subname">Técnicas tradicionales alemanas transmitidas por generaciones</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+						<div class="kf-numbers-item-2 element-anim-1 scroll-animate" data-animate="active">
+							<div class="icon"><i class="las la-leaf"></i></div>
+							<div class="num">Fresco</div>
+							<div class="desc">
+								<h5 class="name">Horneado Diario</h5>
+								<div class="subname">Todo hecho fresco cada mañana con ingredientes premium</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+						<div class="kf-numbers-item-2 element-anim-1 scroll-animate" data-animate="active">
+							<div class="icon"><i class="las la-award"></i></div>
+							<div class="num">5+</div>
+							<div class="desc">
+								<h5 class="name">Años de Experiencia</h5>
+								<div class="subname">Perfeccionando el arte de la panadería y repostería alemana</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+						<div class="kf-numbers-item-2 element-anim-1 scroll-animate" data-animate="active">
+							<div class="icon"><i class="lar la-smile-beam"></i></div>
+							<div class="num">500+</div>
+							<div class="desc">
+								<h5 class="name">Clientes Felices</h5>
+								<div class="subname">Deleitando paladares con sabores auténticos y servicio de calidad</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+		</section>
+
 			<!-- Section Reservation -->
 			<section class="section kf-reservation kf-section-no-margin">
 				<div class="container">
 
 					<div class="kf-reservation-form element-anim-1 scroll-animate" data-animate="active">
 
-						<div class="image-left" style="background-image: url(images/reservation5.jpg);"></div>
-						<div class="image-right" style="background-image: url(images/reservation6.jpg);"></div>
+						<!-- Imagen izquierda: Pan y pasteles alemanes artesanales -->
+						<div class="image-left" style="background-image: url(https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=1200&auto=format&fit=crop);"></div>
+						<!-- Imagen derecha: Pretzel alemán tradicional -->
+						<div class="image-right" style="background-image: url(https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=1200&auto=format&fit=crop);"></div>
 
 						<div class="kf-titles align-center">
 							<div class="kf-subtitle">
-									Contacto y pedidos
+									Contacto y Pedidos
 								</div>
 								<h3 class="kf-title">
 									Escríbenos por WhatsApp
 								</h3>
+								<p style="margin-top: 15px; color: rgba(31, 27, 17, 0.75); font-size: 0.95rem;">
+									Completa el formulario y te contactaremos de inmediato
+								</p>
 						</div>
 
-						<form id="rform" method="post" onsubmit="return false;" novalidate>
+						<form id="rform" method="post" onsubmit="return false;" novalidate autocomplete="on">
 							<div class="row">
 								<!-- Nombre completo -->
 								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 									<div class="kf-field">
-										<input type="text" name="name" placeholder="Nombre completo" maxlength="50" required />
+										<input 
+											type="text" 
+											name="name" 
+											placeholder="Nombre completo *" 
+											maxlength="50" 
+											required 
+											autocomplete="name"
+											aria-label="Nombre completo"
+										/>
 										<i class="far fa-user"></i>
 										<span class="form-error" data-field="name"></span>
+									</div>
+								</div>
+
+								<!-- Email (opcional) -->
+								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+									<div class="kf-field">
+										<input 
+											type="email" 
+											name="email" 
+											placeholder="Email (opcional)" 
+											maxlength="80"
+											autocomplete="email"
+											aria-label="Correo electrónico"
+										/>
+										<i class="far fa-envelope"></i>
+										<span class="form-error" data-field="email"></span>
 									</div>
 								</div>
 
 								<!-- WhatsApp -->
 								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 									<div class="kf-field">
-										<input type="tel" name="tel" placeholder="WhatsApp (ej: 573102244351)" maxlength="20" required />
-										<i class="fas fa-mobile-alt"></i>
+										<input 
+											type="tel" 
+											name="tel" 
+											placeholder="WhatsApp (ej: 3102244351) *" 
+											maxlength="20" 
+											required 
+											autocomplete="tel"
+											aria-label="Número de WhatsApp"
+										/>
+										<i class="fab fa-whatsapp"></i>
 										<span class="form-error" data-field="tel"></span>
 									</div>
 								</div>
@@ -2905,14 +3264,16 @@
 								<!-- Motivo de contacto -->
 								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 									<div class="kf-field">
-										<select name="reason" required>
-											<option value="">-- Selecciona un motivo --</option>
-											<option value="Pedido">Quiero hacer un pedido</option>
-											<option value="Consulta">Tengo una consulta</option>
-											<option value="Reserva">Quiero reservar</option>
-											<option value="Cotización">Solicitar cotización</option>
+										<select name="reason" required aria-label="Motivo de contacto">
+											<option value="">-- ¿Qué necesitas? * --</option>
+											<option value="Pedido">🛍️ Hacer un pedido</option>
+											<option value="Cotización">💰 Solicitar cotización</option>
+											<option value="Consulta">💬 Tengo una consulta</option>
+											<option value="Evento">🎉 Pedido para evento</option>
+											<option value="Recomendación">🎂 Pedir recomendación</option>
+											<option value="Otro">📝 Otro motivo</option>
 										</select>
-										<i class="fas fa-list"></i>
+										<i class="fas fa-list-ul"></i>
 										<span class="form-error" data-field="reason"></span>
 									</div>
 								</div>
@@ -2920,25 +3281,65 @@
 								<!-- Producto (mostrar según motivo) -->
 								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" id="product-field" style="display: none;">
 									<div class="kf-field">
-										<select name="product" id="product-select">
-											<option value="">-- Selecciona un producto --</option>
-											<option value="Torta personalizada">Torta personalizada</option>
-											<option value="Pastel / Brownies">Pastel / Brownies</option>
-											<option value="Cupcakes">Cupcakes</option>
-											<option value="Galletas personalizadas">Galletas personalizadas</option>
-											<option value="Macarrones">Macarrones</option>
-											<option value="Frappé / Bebida">Frappé / Bebida</option>
-											<option value="Otro producto">Otro producto</option>
+										<select name="product" id="product-select" aria-label="Seleccionar producto">
+											<option value="">-- Selecciona un producto * --</option>
+											<optgroup label="🍰 Pasteles Alemanes">
+												<option value="Käsekuchen (Cheesecake Alemán)">Käsekuchen (Cheesecake Alemán)</option>
+												<option value="Schwarzwälder Kirschtorte (Selva Negra)">Schwarzwälder Kirschtorte (Selva Negra)</option>
+												<option value="Apfelkuchen (Tarta de Manzana)">Apfelkuchen (Tarta de Manzana)</option>
+												<option value="Bienenstich (Tarta de Miel)">Bienenstich (Tarta de Miel)</option>
+											</optgroup>
+											<optgroup label="🥐 Panadería">
+												<option value="Brötchen (Panecillos)">Brötchen (Panecillos)</option>
+												<option value="Brezel (Pretzel Alemán)">Brezel (Pretzel Alemán)</option>
+												<option value="Roggenbrot (Pan de Centeno)">Roggenbrot (Pan de Centeno)</option>
+												<option value="Vollkornbrot (Pan Integral)">Vollkornbrot (Pan Integral)</option>
+											</optgroup>
+											<optgroup label="🎂 Postres & Repostería">
+												<option value="Apfelstrudel">Apfelstrudel</option>
+												<option value="Berliner (Donas Alemanas)">Berliner (Donas Alemanas)</option>
+												<option value="Baumkuchen">Baumkuchen</option>
+												<option value="Lebkuchen (Galletas Especiadas)">Lebkuchen (Galletas Especiadas)</option>
+											</optgroup>
+											<optgroup label="☕ Otros">
+												<option value="Café y Bebidas">Café y Bebidas</option>
+												<option value="Torta Personalizada">Torta Personalizada</option>
+												<option value="Otro">Otro producto</option>
+											</optgroup>
 										</select>
 										<i class="fas fa-birthday-cake"></i>
 										<span class="form-error" data-field="product"></span>
 									</div>
 								</div>
 
+								<!-- Porciones / Tamaño (para tortas/pasteles) -->
+								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" id="portions-field" style="display: none;">
+									<div class="kf-field">
+										<select name="portions" id="portions-select" aria-label="Porciones o tamaño">
+											<option value="">-- Porciones / Tamaño --</option>
+											<option value="6-8 porciones">6-8 porciones (pequeño)</option>
+											<option value="10-12 porciones">10-12 porciones (mediano)</option>
+											<option value="15-20 porciones">15-20 porciones (grande)</option>
+											<option value="25+ porciones">25+ porciones (extra grande)</option>
+											<option value="Por definir">Por definir</option>
+										</select>
+										<i class="fas fa-ruler-combined"></i>
+										<span class="form-error" data-field="portions"></span>
+									</div>
+								</div>
+
 								<!-- Cantidad -->
 								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" id="qty-field" style="display: none;">
 									<div class="kf-field">
-										<input type="number" name="qty" min="1" max="999" step="1" placeholder="Cantidad" />
+										<input 
+											type="number" 
+											name="qty" 
+											min="1" 
+											max="999" 
+											step="1" 
+											placeholder="Cantidad" 
+											aria-label="Cantidad"
+										/>
 										<i class="fas fa-sort-numeric-up"></i>
 										<span class="form-error" data-field="qty"></span>
 									</div>
@@ -2947,35 +3348,66 @@
 								<!-- Fecha (mostrar según motivo) -->
 								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" id="date-field" style="display: none;">
 									<div class="kf-field">
-										<input type="date" name="date" id="date-input" />
+										<input 
+											type="date" 
+											name="date" 
+											id="date-input" 
+											aria-label="Fecha de entrega o evento"
+										/>
 										<i class="far fa-calendar-alt"></i>
 										<span class="form-error" data-field="date"></span>
+										<span class="form-info" style="display: block; margin-top: 4px; font-size: 0.8rem;">Fecha de entrega o evento</span>
 									</div>
 								</div>
 
 								<!-- Mensaje adicional -->
 								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 									<div class="kf-field">
-										<textarea name="message" rows="3" placeholder="Cuéntanos tu pedido, dudas o petición..." maxlength="500"></textarea>
+										<textarea 
+											name="message" 
+											id="message-textarea"
+											rows="4" 
+											placeholder="Cuéntanos más detalles: sabores, decoración, alergias, ingredientes especiales..." 
+											maxlength="400"
+											aria-label="Mensaje adicional"
+										></textarea>
 										<i class="far fa-comment-dots"></i>
-										<span class="form-info">Máximo 500 caracteres</span>
+										<span class="form-error" data-field="message"></span>
+										<div class="char-counter" id="char-counter">
+											<span class="char-count">0</span> / 400 caracteres
+										</div>
 									</div>
+								</div>
+
+								<!-- Honeypot field (campo trampa anti-bots) - invisible para usuarios reales -->
+								<div style="position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden;" aria-hidden="true">
+									<label for="website">Website</label>
+									<input type="text" name="website" id="website" tabindex="-1" autocomplete="off" />
 								</div>
 
 								<!-- Botón envío -->
 								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 									<div class="kf-bts">
-										<a href="#" class="kf-btn" id="wa-send">
+										<button type="button" class="kf-btn" id="wa-send">
 											<span>Enviar por WhatsApp</span>
-											<i class="fas fa-chevron-right"></i>
-										</a>
+											<i class="fab fa-whatsapp"></i>
+										</button>
 									</div>
 								</div>
 							</div>
 						</form>
 
-						<div class="alert-success" style="display: none;">
-							<p>✓ Abrimos WhatsApp con tu mensaje. ¡Gracias por contactarnos!</p>
+						<!-- Modal de notificaciones -->
+						<div class="form-modal" id="form-modal" style="display: none;">
+							<div class="form-modal-overlay" id="modal-overlay"></div>
+							<div class="form-modal-content">
+								<div class="form-modal-icon" id="modal-icon">
+									<i class="fas fa-check-circle"></i>
+								</div>
+								<h3 class="form-modal-title" id="modal-title">Mensaje Enviado</h3>
+								<p class="form-modal-message" id="modal-message">Tu mensaje ha sido enviado correctamente</p>
+								<button type="button" class="form-modal-btn" id="modal-close-btn">Entendido</button>
+							</div>
 						</div>
 
 						<style>
@@ -3026,6 +3458,33 @@
 								border-color: #3ca86d;
 							}
 
+							.section.kf-reservation .kf-reservation-form .kf-field select {
+								cursor: pointer;
+								appearance: none;
+								-webkit-appearance: none;
+								-moz-appearance: none;
+								background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c98927' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+								background-repeat: no-repeat;
+								background-position: right 12px center;
+								background-size: 18px;
+								padding-right: 40px;
+							}
+
+							.section.kf-reservation .kf-reservation-form .kf-field select:focus,
+							.section.kf-reservation .kf-reservation-form .kf-field select.is-valid {
+								border-color: var(--brand-primary);
+							}
+
+							.section.kf-reservation .kf-reservation-form .kf-field textarea {
+								resize: vertical;
+								min-height: 100px;
+								font-family: inherit;
+							}
+
+							.section.kf-reservation .kf-reservation-form .kf-field input[type="date"] {
+								cursor: pointer;
+							}
+
 							.section.kf-reservation .kf-reservation-form .form-error {
 								display: block;
 								color: #c43c3c;
@@ -3033,6 +3492,13 @@
 								margin-top: 0.3rem;
 								font-weight: 500;
 								min-height: 1rem;
+								animation: errorShake 0.3s ease;
+							}
+
+							@keyframes errorShake {
+								0%, 100% { transform: translateX(0); }
+								25% { transform: translateX(-5px); }
+								75% { transform: translateX(5px); }
 							}
 
 							.section.kf-reservation .kf-reservation-form .form-info {
@@ -3043,60 +3509,415 @@
 								font-style: italic;
 							}
 
+							/* Contador de caracteres */
+							.char-counter {
+								display: block;
+								text-align: right;
+								font-size: 0.8rem;
+								margin-top: 0.4rem;
+								font-weight: 500;
+								color: rgba(31, 27, 17, 0.65);
+								transition: color 0.3s ease;
+							}
+
+							.char-counter .char-count {
+								font-weight: 700;
+								font-size: 0.85rem;
+							}
+
+							.char-counter.warning {
+								color: #d97706;
+							}
+
+							.char-counter.warning .char-count {
+								color: #f59e0b;
+							}
+
+							.char-counter.danger {
+								color: #c43c3c;
+								animation: pulse 0.5s ease-in-out;
+							}
+
+							.char-counter.danger .char-count {
+								color: #dc2626;
+								font-weight: 800;
+							}
+
+							@keyframes pulse {
+								0%, 100% { opacity: 1; }
+								50% { opacity: 0.7; }
+							}
+
 							.section.kf-reservation .kf-reservation-form .kf-bts .kf-btn {
 								background: var(--brand-primary);
 								border-color: var(--brand-primary);
 								color: #ffffff;
 								font-weight: 600;
 								transition: all 0.3s ease;
+								cursor: pointer;
+								border: none;
+								padding: 14px 32px;
+								border-radius: 6px;
+								font-size: 1rem;
+								display: inline-flex;
+								align-items: center;
+								gap: 8px;
+								width: 100%;
+								justify-content: center;
 							}
 
-							.section.kf-reservation .kf-reservation-form .kf-bts .kf-btn:hover {
-								background: var(--brand-accent);
-								border-color: var(--brand-accent);
+							.section.kf-reservation .kf-reservation-form .kf-bts .kf-btn:hover:not(:disabled) {
+								background: linear-gradient(135deg, var(--text-light) 0%, var(--brand-secondary) 100%) !important;
+								color: var(--brand-primary) !important;
+								border-color: var(--brand-accent) !important;
+								transform: translateY(-3px);
+								box-shadow: 0 12px 28px rgba(147, 66, 24, 0.35);
+							}
+
+							.section.kf-reservation .kf-reservation-form .kf-bts .kf-btn:disabled {
+								opacity: 0.6 !important;
+								cursor: not-allowed !important;
+								transform: none !important;
+								background: var(--brand-primary) !important;
+								color: #ffffff !important;
+							}
+
+							.section.kf-reservation .kf-reservation-form .kf-bts .kf-btn:focus {
+								outline: 2px solid var(--brand-primary);
+								outline-offset: 2px;
+							}
+
+							/* Modal de notificaciones */
+							.form-modal {
+								position: fixed;
+								top: 0;
+								left: 0;
+								width: 100%;
+								height: 100%;
+								z-index: 99999;
+								display: flex;
+								align-items: center;
+								justify-content: center;
+								animation: modalFadeIn 0.3s ease;
+							}
+
+							.form-modal-overlay {
+								position: absolute;
+								top: 0;
+								left: 0;
+								width: 100%;
+								height: 100%;
+								background: rgba(0, 0, 0, 0.6);
+								backdrop-filter: blur(4px);
+								animation: overlayFadeIn 0.3s ease;
+							}
+
+							.form-modal-content {
+								position: relative;
+								background: #ffffff;
+								border-radius: 16px;
+								padding: 2.5rem 2rem;
+								max-width: 440px;
+								width: 90%;
+								text-align: center;
+								box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+								animation: modalSlideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+								border-top: 4px solid var(--brand-primary);
+							}
+
+							.form-modal-icon {
+								width: 80px;
+								height: 80px;
+								margin: 0 auto 1.5rem;
+								border-radius: 50%;
+								display: flex;
+								align-items: center;
+								justify-content: center;
+								font-size: 2.5rem;
+								background: linear-gradient(135deg, rgba(60, 168, 109, 0.15), rgba(60, 168, 109, 0.05));
+								color: #3ca86d;
+								animation: iconBounce 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+							}
+
+							.form-modal-icon.error {
+								background: linear-gradient(135deg, rgba(196, 60, 60, 0.15), rgba(196, 60, 60, 0.05));
+								color: #c43c3c;
+							}
+
+							.form-modal-title {
+								font-family: 'Merienda', Georgia, serif;
+								font-size: 1.5rem;
+								font-weight: 700;
+								color: var(--text-dark);
+								margin: 0 0 0.75rem 0;
+							}
+
+							.form-modal-message {
+								font-size: 0.95rem;
+								color: rgba(31, 27, 17, 0.75);
+								line-height: 1.6;
+								margin: 0 0 1.75rem 0;
+							}
+
+							.form-modal-btn {
+								background: var(--brand-primary);
+								color: #ffffff;
+								border: none;
+								padding: 12px 32px;
+								border-radius: 8px;
+								font-size: 0.95rem;
+								font-weight: 600;
+								cursor: pointer;
+								transition: all 0.3s ease;
+								box-shadow: 0 4px 12px rgba(201, 137, 39, 0.3);
+							}
+
+							.form-modal-btn:hover {
+								background: var(--brand-secondary);
+								color: var(--brand-primary);
 								transform: translateY(-2px);
-								box-shadow: 0 8px 20px rgba(147, 66, 24, 0.25);
+								box-shadow: 0 6px 18px rgba(201, 137, 39, 0.4);
 							}
 
-							.section.kf-reservation .kf-reservation-form .alert-success {
-								background: rgba(60, 168, 109, 0.1);
-								border-left: 4px solid #3ca86d;
-								color: #2a6d52;
-								padding: 1rem;
-								border-radius: 4px;
-								margin-top: 1rem;
-								font-weight: 500;
-								animation: slideIn 0.3s ease;
+							.form-modal-btn:focus {
+								outline: 2px solid var(--brand-primary);
+								outline-offset: 2px;
 							}
 
-							@keyframes slideIn {
-								from { opacity: 0; transform: translateY(-10px); }
-								to { opacity: 1; transform: translateY(0); }
+							@keyframes modalFadeIn {
+								from { opacity: 0; }
+								to { opacity: 1; }
+							}
+
+							@keyframes overlayFadeIn {
+								from { opacity: 0; }
+								to { opacity: 1; }
+							}
+
+							@keyframes modalSlideUp {
+								from {
+									opacity: 0;
+									transform: translateY(40px) scale(0.95);
+								}
+								to {
+									opacity: 1;
+									transform: translateY(0) scale(1);
+								}
+							}
+
+							@keyframes iconBounce {
+								0% {
+									transform: scale(0);
+									opacity: 0;
+								}
+								50% {
+									transform: scale(1.1);
+								}
+								100% {
+									transform: scale(1);
+									opacity: 1;
+								}
+							}
+
+							/* Animación de salida del modal */
+							.form-modal.hiding {
+								animation: modalFadeOut 0.3s ease forwards;
+							}
+
+							.form-modal.hiding .form-modal-content {
+								animation: modalSlideDown 0.3s ease forwards;
+							}
+
+							@keyframes modalFadeOut {
+								from { opacity: 1; }
+								to { opacity: 0; }
+							}
+
+							@keyframes modalSlideDown {
+								from {
+									opacity: 1;
+									transform: translateY(0) scale(1);
+								}
+								to {
+									opacity: 0;
+									transform: translateY(20px) scale(0.95);
+								}
+							}
+
+							/* Responsive modal */
+							@media (max-width: 575px) {
+								.form-modal-content {
+									padding: 2rem 1.5rem;
+									max-width: 340px;
+								}
+								.form-modal-icon {
+									width: 70px;
+									height: 70px;
+									font-size: 2rem;
+								}
+								.form-modal-title {
+									font-size: 1.3rem;
+								}
+								.form-modal-message {
+									font-size: 0.9rem;
+								}
 							}
 						</style>
 
 						<script>
 						(function() {
-							// Config: Required fields by reason
-							var fieldsByReason = {
-								'Pedido': { required: ['product', 'qty'], optional: ['date', 'message'] },
-								'Consulta': { required: [], optional: ['message'] },
-								'Reserva': { required: ['product', 'date'], optional: ['qty', 'message'] },
-								'Cotización': { required: ['product'], optional: ['qty', 'message'] }
+							'use strict';
+
+							// ==================== CONFIGURACIÓN ====================
+							var CONFIG = {
+								maxSubmissionsPerHour: 3,
+								maxSubmissionsPerDay: 10,
+								blockDurationMinutes: 30,
+								minTimeBetweenSubmissionsSeconds: 60,
+								whatsappNumber: '573102244351',
+								storageKey: 'dulceBerlin_formSubmissions'
 							};
 
-							var products = ['Torta personalizada', 'Pastel / Brownies', 'Cupcakes', 'Galletas personalizadas', 'Macarrones', 'Frappé / Bebida', 'Otro producto'];
+							// Config: Required fields by reason
+							var fieldsByReason = {
+								'Pedido': { required: ['product'], show: ['product', 'portions', 'qty', 'date'], optional: ['portions', 'qty', 'date', 'message'] },
+								'Cotización': { required: ['product'], show: ['product', 'portions', 'qty', 'date'], optional: ['portions', 'qty', 'date', 'message'] },
+								'Consulta': { required: [], show: ['message'], optional: ['message'] },
+								'Evento': { required: ['product', 'date'], show: ['product', 'portions', 'qty', 'date'], optional: ['portions', 'qty', 'message'] },
+								'Recomendación': { required: [], show: ['message'], optional: ['message'] },
+								'Otro': { required: [], show: ['message'], optional: ['message'] }
+							};
 
-							// Sanitize input
-							function sanitize(str) {
-								if (!str) return '';
-								return String(str).replace(/[^\w\s\-áéíóúñ@.,]/g, '').trim();
+							// ==================== RATE LIMITING ====================
+							function getSubmissionHistory() {
+								try {
+									var data = localStorage.getItem(CONFIG.storageKey);
+									return data ? JSON.parse(data) : [];
+								} catch (e) {
+									console.warn('Error al leer historial:', e);
+									return [];
+								}
 							}
 
-							// Validate phone
+							function saveSubmission() {
+								try {
+									var history = getSubmissionHistory();
+									history.push(Date.now());
+									// Mantener solo últimas 24 horas
+									var oneDayAgo = Date.now() - (24 * 60 * 60 * 1000);
+									history = history.filter(function(timestamp) {
+										return timestamp > oneDayAgo;
+									});
+									localStorage.setItem(CONFIG.storageKey, JSON.stringify(history));
+								} catch (e) {
+									console.warn('Error al guardar historial:', e);
+								}
+							}
+
+							function checkRateLimit() {
+								var history = getSubmissionHistory();
+								var now = Date.now();
+								var oneHourAgo = now - (60 * 60 * 1000);
+								var oneDayAgo = now - (24 * 60 * 60 * 1000);
+
+								// Limpiar entradas antiguas
+								history = history.filter(function(timestamp) {
+									return timestamp > oneDayAgo;
+								});
+
+								var submissionsLastHour = history.filter(function(timestamp) {
+									return timestamp > oneHourAgo;
+								}).length;
+
+								var submissionsLastDay = history.length;
+
+								// Verificar si está bloqueado temporalmente
+								var lastSubmission = history[history.length - 1];
+								if (lastSubmission) {
+									var secondsSinceLastSubmission = (now - lastSubmission) / 1000;
+									if (secondsSinceLastSubmission < CONFIG.minTimeBetweenSubmissionsSeconds) {
+										var waitTime = Math.ceil(CONFIG.minTimeBetweenSubmissionsSeconds - secondsSinceLastSubmission);
+										return {
+											allowed: false,
+											reason: 'Por favor espera ' + waitTime + ' segundos antes de enviar otro mensaje.'
+										};
+									}
+								}
+
+								if (submissionsLastHour >= CONFIG.maxSubmissionsPerHour) {
+									return {
+										allowed: false,
+										reason: 'Has alcanzado el límite de ' + CONFIG.maxSubmissionsPerHour + ' mensajes por hora. Intenta más tarde.'
+									};
+								}
+
+								if (submissionsLastDay >= CONFIG.maxSubmissionsPerDay) {
+									return {
+										allowed: false,
+										reason: 'Has alcanzado el límite de ' + CONFIG.maxSubmissionsPerDay + ' mensajes diarios. Intenta mañana.'
+									};
+								}
+
+								return { allowed: true };
+							}
+
+							// ==================== SEGURIDAD ====================
+							// Sanitización estricta con lista blanca
+							function sanitize(str) {
+								if (!str) return '';
+								// Convertir a string y truncar longitud máxima
+								str = String(str).substring(0, 1000);
+								// Remover caracteres peligrosos, mantener solo caracteres seguros
+								str = str.replace(/[<>\"'`]/g, ''); // Remover HTML/JS peligrosos
+								str = str.replace(/[\x00-\x1F\x7F]/g, ''); // Remover caracteres de control
+								// Permitir: letras, números, espacios, acentos, puntuación básica
+								str = str.replace(/[^\w\s\-áéíóúñÁÉÍÓÚÑüÜ@.,()+=°/:;\n\r]/gi, '');
+								return str.trim();
+							}
+
+							// Sanitización extra para nombres (solo letras)
+							function sanitizeName(str) {
+								if (!str) return '';
+								return String(str).substring(0, 50).replace(/[^a-záéíóúñüA-ZÁÉÍÓÚÑÜ\s]/gi, '').trim();
+							}
+
+							// Sanitización para números de teléfono
+							function sanitizePhone(str) {
+								if (!str) return '';
+								// Solo números, +, espacios, guiones, paréntesis
+								return String(str).substring(0, 20).replace(/[^\d\s\-+()]/g, '').trim();
+							}
+
+							// Detectar patrones sospechosos
+							function containsSuspiciousContent(str) {
+								if (!str) return false;
+								var suspiciousPatterns = [
+									/<script/i,
+									/javascript:/i,
+									/on\w+\s*=/i, // eventos inline (onclick, onerror, etc)
+									/<iframe/i,
+									/eval\s*\(/i,
+									/expression\s*\(/i,
+									/vbscript:/i,
+									/data:text\/html/i
+								];
+								return suspiciousPatterns.some(function(pattern) {
+									return pattern.test(str);
+								});
+							}
+
+							// Validate email
+							function isValidEmail(email) {
+								if (!email) return true; // Email es opcional
+								var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+								return re.test(email);
+							}
+
+							// Validate phone (acepta con o sin código de país)
 							function isValidPhone(tel) {
 								var cleaned = tel.replace(/\D/g, '');
-								return cleaned.length >= 10 && cleaned.length <= 15;
+								// Acepta números de 7 a 15 dígitos
+								return cleaned.length >= 7 && cleaned.length <= 15;
 							}
 
 							// Validate name
@@ -3161,29 +3982,48 @@
 							function updateConditionalFields() {
 								var reason = document.querySelector('select[name="reason"]').value;
 								var productField = document.getElementById('product-field');
+								var portionsField = document.getElementById('portions-field');
 								var qtyField = document.getElementById('qty-field');
 								var dateField = document.getElementById('date-field');
 
-								// Hide all conditional fields
+								// Hide all conditional fields by default
 								productField.style.display = 'none';
+								portionsField.style.display = 'none';
 								qtyField.style.display = 'none';
 								dateField.style.display = 'none';
 
-								// Show based on reason
-								if (reason === 'Pedido' || reason === 'Reserva' || reason === 'Cotización') {
-									productField.style.display = 'block';
-								}
-								if (reason === 'Pedido' || reason === 'Reserva' || reason === 'Cotización') {
-									qtyField.style.display = 'block';
-								}
-								if (reason === 'Reserva' || reason === 'Pedido') {
-									dateField.style.display = 'block';
+								// Show fields based on reason
+								if (fieldsByReason[reason]) {
+									var fieldsToShow = fieldsByReason[reason].show || [];
+									
+									if (fieldsToShow.indexOf('product') !== -1) {
+										productField.style.display = 'block';
+									}
+									if (fieldsToShow.indexOf('portions') !== -1) {
+										portionsField.style.display = 'block';
+									}
+									if (fieldsToShow.indexOf('qty') !== -1) {
+										qtyField.style.display = 'block';
+									}
+									if (fieldsToShow.indexOf('date') !== -1) {
+										dateField.style.display = 'block';
+									}
 								}
 
 								// Clear conditional field values and errors when hidden
-								document.querySelector('select[name="product"]').value = '';
-								document.querySelector('input[name="qty"]').value = '';
-								document.querySelector('input[name="date"]').value = '';
+								if (productField.style.display === 'none') {
+									document.querySelector('select[name="product"]').value = '';
+								}
+								if (portionsField.style.display === 'none') {
+									var portionsSelect = document.querySelector('select[name="portions"]');
+									if (portionsSelect) portionsSelect.value = '';
+								}
+								if (qtyField.style.display === 'none') {
+									document.querySelector('input[name="qty"]').value = '';
+								}
+								if (dateField.style.display === 'none') {
+									document.querySelector('input[name="date"]').value = '';
+								}
 								clearAllErrors();
 							}
 
@@ -3194,13 +4034,40 @@
 								var form = document.getElementById('rform');
 								if (!form) return;
 
+								// ========== VERIFICACIÓN HONEYPOT (Anti-bots) ==========
+								var honeypot = form.elements['website'];
+								if (honeypot && honeypot.value) {
+									// Bot detectado - honeypot field fue llenado
+									console.warn('Bot detectado');
+									return;
+								}
+
+								// ========== VERIFICACIÓN RATE LIMITING ==========
+								var rateLimitCheck = checkRateLimit();
+								if (!rateLimitCheck.allowed) {
+									showErrorModal(rateLimitCheck.reason);
+									return;
+								}
+
+								// ========== OBTENER Y SANITIZAR VALORES ==========
 								var name = (form.elements['name'].value || '').trim();
+								var email = (form.elements['email'].value || '').trim();
 								var tel = (form.elements['tel'].value || '').trim();
 								var reason = (form.elements['reason'].value || '').trim();
 								var product = (form.elements['product'].value || '').trim();
+								var portions = (form.elements['portions'] ? form.elements['portions'].value || '' : '').trim();
 								var qty = (form.elements['qty'].value || '').trim();
 								var date = (form.elements['date'].value || '').trim();
 								var message = (form.elements['message'].value || '').trim();
+
+								// ========== VERIFICAR CONTENIDO SOSPECHOSO ==========
+								var allFields = [name, email, tel, reason, product, portions, qty, date, message];
+								for (var i = 0; i < allFields.length; i++) {
+									if (containsSuspiciousContent(allFields[i])) {
+										showErrorModal('Se detectó contenido no permitido en el formulario. Por favor revisa los datos ingresados.');
+										return;
+									}
+								}
 
 								var hasErrors = false;
 
@@ -3215,12 +4082,20 @@
 									clearError('name');
 								}
 
+								// Validate email (opcional)
+								if (email && !isValidEmail(email)) {
+									showError('email', '* Email inválido');
+									hasErrors = true;
+								} else {
+									clearError('email');
+								}
+
 								// Validate phone
 								if (!tel) {
 									showError('tel', '* Campo requerido');
 									hasErrors = true;
 								} else if (!isValidPhone(tel)) {
-									showError('tel', '* Teléfono inválido');
+									showError('tel', '* Número inválido (min 7 dígitos)');
 									hasErrors = true;
 								} else {
 									clearError('tel');
@@ -3240,7 +4115,12 @@
 									required.forEach(function(field) {
 										var val = (form.elements[field].value || '').trim();
 										if (!val) {
-											var labels = { product: '* Selecciona un producto', date: '* Selecciona una fecha', qty: '* Ingresa cantidad' };
+											var labels = { 
+												product: '* Selecciona un producto', 
+												date: '* Selecciona una fecha', 
+												qty: '* Ingresa cantidad',
+												portions: '* Selecciona las porciones'
+											};
 											showError(field, labels[field] || '* Campo requerido');
 											hasErrors = true;
 										}
@@ -3263,8 +4143,8 @@
 								}
 
 								// Validate message length
-								if (message && message.length > 500) {
-									showError('message', '* Máximo 500 caracteres');
+								if (message && message.length > 400) {
+									showError('message', '* Máximo 400 caracteres');
 									hasErrors = true;
 								}
 
@@ -3272,58 +4152,304 @@
 									return;
 								}
 
-								// Sanitize all inputs
-								name = sanitize(name);
-								tel = sanitize(tel);
+								// ========== SANITIZAR TODOS LOS INPUTS ==========
+								name = sanitizeName(name);
+								email = email ? sanitize(email) : '';
+								tel = sanitizePhone(tel);
 								reason = sanitize(reason);
 								product = sanitize(product);
-								qty = sanitize(qty);
+								portions = sanitize(portions);
+								qty = qty ? parseInt(qty, 10).toString() : ''; // Convertir a número limpio
 								date = sanitize(date);
 								message = sanitize(message);
 
-								// Build message
-								var parts = [];
-								parts.push('👋 Hola Dulce Berlín');
-								parts.push('━━━━━━━━━━━━━');
-								parts.push('📌 Motivo: ' + reason);
-								parts.push('👤 Nombre: ' + name);
-								parts.push('📱 WhatsApp: ' + tel);
-
-								if (product) parts.push('🍰 Producto: ' + product);
-								if (qty) parts.push('📦 Cantidad: ' + qty);
-								if (date) parts.push('📅 Fecha: ' + date);
-
-								if (message) parts.push('💬 Mensaje: ' + message);
-
-								parts.push('━━━━━━━━━━━━━');
-
-								var msg = parts.join('\n');
-								var waUrl = 'https://wa.me/573102244351?text=' + encodeURIComponent(msg);
-								window.open(waUrl, '_blank');
-
-								// Show success message
-								var alertBox = form.closest('.kf-reservation-form').querySelector('.alert-success');
-								if (alertBox) {
-									alertBox.style.display = 'block';
-									setTimeout(function() { alertBox.style.display = 'none'; }, 4000);
+								// Verificar que después de la sanitización, los campos requeridos sigan teniendo contenido
+								if (!name || !tel || !reason) {
+									showErrorModal('Los datos ingresados no son válidos después de la validación.');
+									return;
 								}
 
-								// Reset form
-								setTimeout(function() { form.reset(); updateConditionalFields(); }, 500);
+								// Formatear fecha si existe
+								var formattedDate = date;
+								if (date) {
+									try {
+										var dateObj = new Date(date + 'T00:00:00');
+										var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+										formattedDate = dateObj.toLocaleDateString('es-CO', options);
+									} catch (e) {
+										formattedDate = date;
+									}
+								}
+
+								// Build message con formato mejorado
+								var parts = [];
+								parts.push('🎂 *Dulce Berlín - Nuevo Contacto*');
+								parts.push('━━━━━━━━━━━━━━━━━━━━━━');
+								parts.push('');
+								parts.push('📋 *INFORMACIÓN DE CONTACTO*');
+								parts.push('👤 Nombre: ' + name);
+								if (email) parts.push('📧 Email: ' + email);
+								parts.push('📱 WhatsApp: ' + tel);
+								parts.push('');
+								parts.push('🎯 *MOTIVO*: ' + reason);
+								
+								if (product || portions || qty || date) {
+									parts.push('');
+									parts.push('🛒 *DETALLES DEL PEDIDO*');
+									if (product) parts.push('🍰 Producto: *' + product + '*');
+									if (portions) parts.push('📏 Porciones: ' + portions);
+									if (qty) parts.push('📦 Cantidad: ' + qty + ' unidad(es)');
+									if (date) parts.push('📅 Fecha: ' + formattedDate);
+								}
+
+								if (message) {
+									parts.push('');
+									parts.push('💬 *MENSAJE ADICIONAL*:');
+									parts.push(message);
+								}
+
+								parts.push('');
+								parts.push('━━━━━━━━━━━━━━━━━━━━━━');
+								parts.push('');
+								parts.push('_Enviado desde dulceberlin.com_');
+
+								var msg = parts.join('\n');
+								
+								// Validar longitud máxima del mensaje (WhatsApp tiene límite de ~65000 caracteres)
+								if (msg.length > 5000) {
+									showErrorModal('El mensaje es demasiado largo. Por favor reduce el texto y vuelve a intentar.');
+									return;
+								}
+
+								var waUrl = 'https://wa.me/' + CONFIG.whatsappNumber + '?text=' + encodeURIComponent(msg);
+								
+								// ========== DESHABILITAR BOTÓN TEMPORALMENTE ==========
+								var btn = document.getElementById('wa-send');
+								var originalText = '';
+								if (btn) {
+									btn.disabled = true;
+									btn.style.opacity = '0.6';
+									btn.style.cursor = 'not-allowed';
+									originalText = btn.querySelector('span').textContent;
+									btn.querySelector('span').textContent = 'Abriendo WhatsApp...';
+								}
+								
+								// ========== ABRIR WHATSAPP ==========
+								try {
+									// Usar window.open con parámetros de seguridad
+									var newWindow = window.open(waUrl, '_blank', 'noopener,noreferrer');
+									if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
+										// Pop-up bloqueado
+										showErrorModal('Por favor permite las ventanas emergentes para abrir WhatsApp.');
+										if (btn) {
+											btn.disabled = false;
+											btn.style.opacity = '1';
+											btn.style.cursor = 'pointer';
+											btn.querySelector('span').textContent = originalText;
+										}
+										return;
+									}
+								} catch (e) {
+									showErrorModal('No se pudo abrir WhatsApp. Por favor intenta de nuevo.');
+									if (btn) {
+										btn.disabled = false;
+										btn.style.opacity = '1';
+										btn.style.cursor = 'pointer';
+										btn.querySelector('span').textContent = originalText;
+									}
+									return;
+								}
+
+								// Re-habilitar botón después de un tiempo
+								setTimeout(function() {
+									if (btn) {
+										btn.disabled = false;
+										btn.style.opacity = '1';
+										btn.style.cursor = 'pointer';
+										btn.querySelector('span').textContent = originalText;
+									}
+								}, 2000);
+
+								// ========== GUARDAR ENVÍO (RATE LIMITING) ==========
+								saveSubmission();
+
+								// ========== MOSTRAR MODAL DE ÉXITO ==========
+								showSuccessModal();
+
+								// ========== RESETEAR FORMULARIO ==========
+								setTimeout(function() { 
+									form.reset(); 
+									updateConditionalFields();
+									clearAllErrors();
+									updateCharCounter(); // Resetear contador de caracteres
+								}, 800);
+							}
+
+							// ==================== MODAL FUNCTIONS ====================
+							function showModal(type, title, message) {
+								var modal = document.getElementById('form-modal');
+								var modalIcon = document.getElementById('modal-icon');
+								var modalTitle = document.getElementById('modal-title');
+								var modalMessage = document.getElementById('modal-message');
+								var modalBtn = document.getElementById('modal-close-btn');
+								
+								if (!modal) return;
+
+								// Configurar contenido del modal
+								modalTitle.textContent = title;
+								modalMessage.textContent = message;
+
+								// Configurar icono según tipo
+								if (type === 'success') {
+									modalIcon.innerHTML = '<i class="fas fa-check-circle"></i>';
+									modalIcon.classList.remove('error');
+								} else if (type === 'error') {
+									modalIcon.innerHTML = '<i class="fas fa-exclamation-circle"></i>';
+									modalIcon.classList.add('error');
+								}
+
+								// Mostrar modal
+								modal.style.display = 'flex';
+								modal.classList.remove('hiding');
+								
+								// Prevenir scroll del body
+								document.body.style.overflow = 'hidden';
+							}
+
+							function closeModal() {
+								var modal = document.getElementById('form-modal');
+								if (!modal) return;
+
+								// Agregar clase de animación de salida
+								modal.classList.add('hiding');
+
+								// Ocultar después de la animación
+								setTimeout(function() {
+									modal.style.display = 'none';
+									modal.classList.remove('hiding');
+									document.body.style.overflow = '';
+								}, 300);
+							}
+
+							function showSuccessModal() {
+								showModal(
+									'success',
+									'¡Mensaje Enviado!',
+									'Se ha abierto WhatsApp con tu mensaje. Te responderemos lo más pronto posible. ¡Gracias por contactarnos!'
+								);
+							}
+
+							function showErrorModal(message) {
+								showModal(
+									'error',
+									'Error al Enviar',
+									message || 'Hubo un problema al procesar tu solicitud. Por favor intenta nuevamente.'
+								);
+							}
+
+							// ==================== CONTADOR DE CARACTERES ====================
+							function updateCharCounter() {
+								var textarea = document.getElementById('message-textarea');
+								var counter = document.getElementById('char-counter');
+								var charCount = counter.querySelector('.char-count');
+								
+								if (!textarea || !counter || !charCount) return;
+
+								var length = textarea.value.length;
+								var maxLength = 400;
+								var remaining = maxLength - length;
+								
+								charCount.textContent = length;
+
+								// Remover clases previas
+								counter.classList.remove('warning', 'danger');
+
+								// Aplicar estilos según el progreso
+								if (length >= maxLength - 20) {
+									// Rojo: quedan 20 o menos caracteres (380+)
+									counter.classList.add('danger');
+								} else if (length >= maxLength / 2) {
+									// Amarillo/Naranja: pasó la mitad (200+)
+									counter.classList.add('warning');
+								}
+							}
+
+							// ==================== UTILITY FUNCTIONS ====================
+							// Debounce function para optimizar validaciones
+							function debounce(func, wait) {
+								var timeout;
+								return function executedFunction() {
+									var context = this;
+									var args = arguments;
+									var later = function() {
+										timeout = null;
+										func.apply(context, args);
+									};
+									clearTimeout(timeout);
+									timeout = setTimeout(later, wait);
+								};
 							}
 
 							// Initialize
 							function init() {
 								setMinDate();
 								updateConditionalFields();
+								updateCharCounter(); // Inicializar contador
 
-								// Reason change handler
+								var form = document.getElementById('rform');
+								if (!form) return;
+
+								// ========== PREVENIR ENVÍO CON ENTER ==========
+								form.addEventListener('submit', function(e) {
+									e.preventDefault();
+									return false;
+								});
+
+								// Prevenir Enter en inputs (excepto en textarea)
+								form.addEventListener('keydown', function(e) {
+									if (e.key === 'Enter' && e.target.tagName !== 'TEXTAREA') {
+										e.preventDefault();
+										return false;
+									}
+								});
+
+								// ========== CONTADOR DE CARACTERES EN TEXTAREA ==========
+								var textarea = document.getElementById('message-textarea');
+								if (textarea) {
+									textarea.addEventListener('input', updateCharCounter);
+									textarea.addEventListener('paste', function() {
+										setTimeout(updateCharCounter, 10);
+									});
+								}
+
+								// ========== MODAL CLOSE HANDLERS ==========
+								var modalCloseBtn = document.getElementById('modal-close-btn');
+								if (modalCloseBtn) {
+									modalCloseBtn.addEventListener('click', closeModal);
+								}
+
+								var modalOverlay = document.getElementById('modal-overlay');
+								if (modalOverlay) {
+									modalOverlay.addEventListener('click', closeModal);
+								}
+
+								// Cerrar modal con tecla ESC
+								document.addEventListener('keydown', function(e) {
+									if (e.key === 'Escape') {
+										var modal = document.getElementById('form-modal');
+										if (modal && modal.style.display === 'flex') {
+											closeModal();
+										}
+									}
+								});
+
+								// ========== REASON CHANGE HANDLER ==========
 								var reasonSelect = document.querySelector('select[name="reason"]');
 								if (reasonSelect) {
 									reasonSelect.addEventListener('change', updateConditionalFields);
 								}
 
-								// Send button
+								// ========== SEND BUTTON ==========
 								var btn = document.getElementById('wa-send');
 								if (btn) {
 									btn.addEventListener('click', function(e) {
@@ -3333,11 +4459,18 @@
 								}
 
 								// Real-time validation feedback
-								var inputs = document.querySelectorAll('input[type="text"], input[type="tel"], input[type="number"], input[type="date"]');
+								var inputs = document.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], input[type="number"], input[type="date"]');
 								inputs.forEach(function(input) {
 									input.addEventListener('blur', function() {
 										var field = input.name;
 										var value = input.value.trim();
+
+										// Para campos opcionales vacíos, solo limpiar errores
+										if (!value && (field === 'email' || field === 'qty' || field === 'date')) {
+											clearError(field);
+											input.classList.remove('has-error', 'is-valid');
+											return;
+										}
 
 										if (!value) {
 											clearError(field);
@@ -3352,13 +4485,21 @@
 											} else {
 												showError(field, 'Solo letras (2-50 caracteres)');
 											}
+										} else if (field === 'email' && value) {
+											if (isValidEmail(value)) {
+												clearError(field);
+												input.classList.remove('has-error');
+												input.classList.add('is-valid');
+											} else {
+												showError(field, 'Email inválido');
+											}
 										} else if (field === 'tel' && value) {
 											if (isValidPhone(value)) {
 												clearError(field);
 												input.classList.remove('has-error');
 												input.classList.add('is-valid');
 											} else {
-												showError(field, 'Teléfono inválido');
+												showError(field, 'Número inválido (min 7 dígitos)');
 											}
 										} else if (field === 'qty' && value) {
 											if (isValidQty(value)) {
@@ -3395,750 +4536,139 @@
 				</div>
 			</section>
 
-			<!-- Section About-2 -->
-			<section class="section kf-about-2" style="background-image: url(images/category_bg.jpg);">
-				<div class="container">
 
-					<div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-5 align-self-center">
+		<!-- Section CTA -->
+		<section class="section kf-cta kf-parallax" style="background-image: url(https://images.unsplash.com/photo-1486427944299-d1955d23e34d?q=80&w=1920&auto=format&fit=crop);">
+			<div class="container">
 
-							<div class="kf-titles">
-								<div class="kf-subtitle element-anim-1 scroll-animate" data-animate="active">
-									About Kaffen
-								</div>
-								<h3 class="kf-title element-anim-1 scroll-animate" data-animate="active">
-									Have Nice & Enjoyable <br>Time With Our Foods
-								</h3>
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-8">
+
+						<div class="kf-titles">
+							<div class="kf-subtitle element-anim-1 scroll-animate" data-animate="active">
+								🎁 Programa de Lealtad Dulce Berlín
 							</div>
-
-							<div class="kf-text element-anim-1 scroll-animate" data-animate="active">
-								<p>
-									Sed ut perspiciatis unde omnis iste natus error voluptate accusantium doloremque
-									laudantium, totam rem aperiam eaque ipsa quae abillo inventore veritatis
+							<h3 class="kf-title element-anim-1 scroll-animate" data-animate="active">
+								Acumula Dulce Points y Disfruta Recompensas Deliciosas
+							</h3>
+							<div class="kf-text element-anim-1 scroll-animate" data-animate="active" style="margin-top: 20px; font-size: 1.05rem; max-width: 650px;">
+								<p style="color: rgba(255, 255, 255, 0.95); line-height: 1.6;">
+									Por cada <strong>$5.000 en compras</strong>, acumulas <strong>1 punto</strong>. 
+									Redime tus puntos para pagar total o parcialmente tus compras. 
+									<span style="display: block; margin-top: 8px; font-size: 0.9rem; opacity: 0.85;">
+										*Válido únicamente en compras en línea
+									</span>
 								</p>
 							</div>
-
-							<div class="kf-choose-list">
-								<ul>
-									<li class="element-anim-1 scroll-animate" data-animate="active">
-										<div class="icon">
-											<img src="images/choose_icon2.png" alt="" />
-										</div>
-										<div class="desc">
-											<h5 class="name">100% ISO Certification</h5>
-											<div class="subname">Sed ut perspiciatis unde omnis iste natus error voluptate accusantium doloremque</div>
-										</div>
-									</li>
-								</ul>
-							</div>
-
-							<a href="about.html" class="kf-btn element-anim-1 scroll-animate" data-animate="active">
-								<span>explore more us</span>
-								<i class="fas fa-chevron-right"></i>
-							</a>
-
-						</div>
-						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 offset-lg-1 align-self-center">
-
-							<div class="kf-services-items-2 row">
-
-								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-									<div class="kf-services-item-2 element-anim-1 scroll-animate" data-animate="active">
-										<div class="image">
-											<img src="images/service_icon1.png" alt="" />
-										</div>
-										<div class="desc">
-											<h5 class="name">Birthday Cakes</h5>
-											<div class="subname">Sed ut perspiciatis unde</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-									<div class="kf-services-item-2 element-anim-1 scroll-animate" data-animate="active">
-										<div class="image">
-											<img src="images/service_icon2.png" alt="" />
-										</div>
-										<div class="desc">
-											<h5 class="name">Fresh Foods</h5>
-											<div class="subname">Sed ut perspiciatis unde</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-									<div class="kf-services-item-2 element-anim-1 scroll-animate" data-animate="active">
-										<div class="image">
-											<img src="images/service_icon3.png" alt="" />
-										</div>
-										<div class="desc">
-											<h5 class="name">Skills Chefs</h5>
-											<div class="subname">Sed ut perspiciatis unde</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-									<div class="kf-services-item-2 element-anim-1 scroll-animate" data-animate="active">
-										<div class="image">
-											<img src="images/service_icon4.png" alt="" />
-										</div>
-										<div class="desc">
-											<h5 class="name">Organic Juice</h5>
-											<div class="subname">Sed ut perspiciatis unde</div>
-										</div>
-									</div>
-								</div>
-
-							</div>
-
-						</div>
-					</div>
-
-				</div>
-			</section>
-
-			<!-- Section Testimonials Carousel -->
-			<section class="section kf-testimonials kf-testimonials-2 section-bg" style="background-image: url(images/testimonials_bg2.jpg);">
-				<div class="container">
-
-					<div class="kf-titles align-center">
-						<div class="kf-subtitle element-anim-1 scroll-animate" data-animate="active">
-							Customer Feedback
-						</div>
-						<h3 class="kf-title element-anim-1 scroll-animate" data-animate="active">
-							What Our Clients Say
-						</h3>
-					</div>
-
-					<div class="kf-testimonials-carousel">
-						<div class="swiper-container">
-							<div class="swiper-wrapper">
-								<div class="swiper-slide">
-
-									<div class="slide-item element-anim-1 scroll-animate" data-animate="active">
-										<div class="image">
-											<img src="images/rev1.jpg" alt="" />
-										</div>
-										<div class="desc">
-											<div class="stars">
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-											</div>
-											<div class="text">
-												Sed ut perspiciatis unde omnis natus error luptatem accusantium doloremque laudantium
-												totam remriam eaque quae abillo
-											</div>
-											<h5 class="name">Frederick S. France <em>Web Deigner</em></h5>
-										</div>
-									</div>
-
-								</div>
-								<div class="swiper-slide">
-
-									<div class="slide-item element-anim-1 scroll-animate" data-animate="active">
-										<div class="image">
-											<img src="images/rev2.jpg" alt="" />
-										</div>
-										<div class="desc">
-											<div class="stars">
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-											</div>
-											<div class="text">
-												Sed ut perspiciatis unde omnis natus error luptatem accusantium doloremque laudantium
-												totam remriam eaque quae abillo
-											</div>
-											<h5 class="name">James M. London <em>Lawyer</em></h5>
-										</div>
-									</div>
-
-								</div>
-								<div class="swiper-slide">
-
-									<div class="slide-item element-anim-1 scroll-animate" data-animate="active">
-										<div class="image">
-											<img src="images/rev3.jpg" alt="" />
-										</div>
-										<div class="desc">
-											<div class="stars">
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-											</div>
-											<div class="kf-text">
-												Sed ut perspiciatis unde omnis natus error luptatem accusantium doloremque laudantium
-												totam remriam eaque quae abillo
-											</div>
-											<h5 class="name">Olivia D. New York <em>Dentist</em></h5>
-										</div>
-									</div>
-
-								</div>
-								<div class="swiper-slide">
-
-									<div class="slide-item element-anim-1 scroll-animate" data-animate="active">
-										<div class="image">
-											<img src="images/rev1.jpg" alt="" />
-										</div>
-										<div class="desc">
-											<div class="stars">
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-											</div>
-											<div class="kf-text">
-												Sed ut perspiciatis unde omnis natus error luptatem accusantium doloremque laudantium
-												totam remriam eaque quae abillo
-											</div>
-											<h5 class="name">Frederick S. France <em>Web Deigner</em></h5>
-										</div>
-									</div>
-
-								</div>
-								<div class="swiper-slide">
-
-									<div class="slide-item element-anim-1 scroll-animate" data-animate="active">
-										<div class="image">
-											<img src="images/rev2.jpg" alt="" />
-										</div>
-										<div class="desc">
-											<div class="stars">
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-											</div>
-											<div class="kf-text">
-												Sed ut perspiciatis unde omnis natus error luptatem accusantium doloremque laudantium
-												totam remriam eaque quae abillo
-											</div>
-											<h5 class="name">James M. London <em>Lawyer</em></h5>
-										</div>
-									</div>
-
-								</div>
-								<div class="swiper-slide">
-
-									<div class="slide-item element-anim-1 scroll-animate" data-animate="active">
-										<div class="image">
-											<img src="images/rev3.jpg" alt="" />
-										</div>
-										<div class="desc">
-											<div class="stars">
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-											</div>
-											<div class="kf-text">
-												Sed ut perspiciatis unde omnis natus error luptatem accusantium doloremque laudantium
-												totam remriam eaque quae abillo
-											</div>
-											<h5 class="name">Olivia D. New York <em>Dentist</em></h5>
-										</div>
-									</div>
-
-								</div>
-							</div>
-
-							<div class="swiper-pagination"></div>
-
-						</div>
-					</div>
-
-				</div>
-			</section>
-
-			<!-- Section Video -->
-			<div class="section kf-video kf-video-full">
-
-				<div class="kf-video-item kf-parallax" style="background-image: url(images/video_bg.jpg);">
-          <iframe class="js-video-iframe" data-src="https://www.youtube.com/embed/Gu6z6kIukgg?showinfo=0&amp;rel=0&amp;autoplay=1"></iframe>
-          <div class="play"><i class="fas fa-play"></i></div>
-				</div>
-
-			</div>
-
-			<!-- Section Numbers-2 -->
-			<section class="section kf-numbers-2 section-bg">
-				<div class="container">
-
-					<div class="kf-numbers-items-2 row">
-
-						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
-							<div class="kf-numbers-item-2 element-anim-1 scroll-animate" data-animate="active">
-								<div class="icon"><i class="las la-gem"></i></div>
-								<div class="num">256+</div>
-								<div class="desc">
-									<h5 class="name">Premium Clients</h5>
-									<div class="subname">Sed ut perspiciatis unde</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
-							<div class="kf-numbers-item-2 element-anim-1 scroll-animate" data-animate="active">
-								<div class="icon"><i class="las la-user-tie"></i></div>
-								<div class="num">36+</div>
-								<div class="desc">
-									<h5 class="name">Professional Chefs</h5>
-									<div class="subname">Sed ut perspiciatis unde</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
-							<div class="kf-numbers-item-2 element-anim-1 scroll-animate" data-animate="active">
-								<div class="icon"><i class="las la-trophy"></i></div>
-								<div class="num">753+</div>
-								<div class="desc">
-									<h5 class="name">Winning Awards</h5>
-									<div class="subname">Sed ut perspiciatis unde</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
-							<div class="kf-numbers-item-2 element-anim-1 scroll-animate" data-animate="active">
-								<div class="icon"><i class="lar la-grin-stars"></i></div>
-								<div class="num">100+</div>
-								<div class="desc">
-									<h5 class="name">5 Star Reviews</h5>
-									<div class="subname">Sed ut perspiciatis unde</div>
-								</div>
-							</div>
 						</div>
 
 					</div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 align-self-center align-right">
 
-				</div>
-			</section>
-
-			<!-- Section CTA -->
-			<section class="section kf-cta kf-parallax" style="background-image: url(images/cta_bg.jpg);">
-				<div class="container">
-
-					<div class="row">
-						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-8">
-
-							<div class="kf-titles">
-								<div class="kf-subtitle element-anim-1 scroll-animate" data-animate="active">
-									Need a Table On Coffee House
-								</div>
-								<h3 class="kf-title element-anim-1 scroll-animate" data-animate="active">
-									Booking Table For Your & Family Members
-								</h3>
-							</div>
-
-						</div>
-						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 align-self-center align-right">
-
-							<a href="reservation.html" class="kf-btn element-anim-1 scroll-animate" data-animate="active">
-								<span>booking table</span>
-								<i class="fas fa-chevron-right"></i>
-							</a>
-
-						</div>
-					</div>
-
-				</div>
-			</section>
-
-			<!-- Section Latest Blog -->
-			<section class="section kf-latest-blog section-bg">
-				<div class="container">
-
-					<div class="kf-titles align-center">
-						<div class="kf-subtitle element-anim-1 scroll-animate" data-animate="active">
-							Get Every Single Update
-						</div>
-						<h3 class="kf-title element-anim-1 scroll-animate" data-animate="active">
-							Read Some Latest Blog & News
-						</h3>
-					</div>
-
-					<div class="kf-blog-grid-items row">
-
-						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
-							<div class="kf-blog-grid-item element-anim-1 scroll-animate" data-animate="active">
-								<div class="image kf-image-hover">
-									<a href="blog-single.html"><img src="images/latest_blog1.jpg" alt="" /></a>
-								</div>
-								<div class="desc">
-									<h5 class="name">SWR React Hooks With Next Increm Ental Static Regeneration</h5>
-									<div class="kf-date"><i class="far fa-calendar-alt"></i>25 Sep 2021</div>
-									<div class="kf-comm"><i class="far fa-comments"></i>Comments (7)</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
-							<div class="kf-blog-grid-item element-anim-1 scroll-animate" data-animate="active">
-								<div class="image kf-image-hover">
-									<a href="blog-single.html"><img src="images/latest_blog2.jpg" alt="" /></a>
-								</div>
-								<div class="desc">
-									<h5 class="name">Decisions For Building Flexible Components DevTools Browser</h5>
-									<div class="kf-date"><i class="far fa-calendar-alt"></i>25 Sep 2021</div>
-									<div class="kf-comm"><i class="far fa-comments"></i>Comments (7)</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
-							<div class="kf-blog-grid-item element-anim-1 scroll-animate" data-animate="active">
-								<div class="image kf-image-hover">
-									<a href="blog-single.html"><img src="images/latest_blog3.jpg" alt="" /></a>
-								</div>
-								<div class="desc">
-									<h5 class="name">SWR React Hooks With Next Increm Ental Static Regeneration</h5>
-									<div class="kf-date"><i class="far fa-calendar-alt"></i>25 Sep 2021</div>
-									<div class="kf-comm"><i class="far fa-comments"></i>Comments (7)</div>
-								</div>
-							</div>
-						</div>
-
-					</div>
-
-					<div class="align-center">
-
-						<a href="blog-grid.html" class="kf-btn element-anim-1 scroll-animate" data-animate="active">
-							<span>view all</span>
-							<i class="fas fa-chevron-right"></i>
+						<a href="#" class="kf-btn element-anim-1 scroll-animate" data-animate="active" onclick="alert('Próximamente: Tienda en línea para acumular Dulce Points'); return false;">
+							<span>Comprar en Línea</span>
+							<i class="fas fa-shopping-cart"></i>
 						</a>
 
 					</div>
-
 				</div>
-			</section>
 
-			<!-- Section Insta Carousel -->
-			<div class="section kf-insta-carousel element-anim-1 scroll-animate" data-animate="active">
-				<div class="container">
-					<div class="swiper-container">
-						<div class="swiper-wrapper">
-							<div class="swiper-slide">
-
-								<div class="slide-item">
-									<div class="image kf-image-hover">
-										<a href="instagram.html" target="blank">
-											<img src="images/ins_gal1.jpg" alt="" />
-											<i class="fab fa-instagram"></i>
-										</a>
-									</div>
-								</div>
-
-							</div>
-							<div class="swiper-slide">
-
-								<div class="slide-item">
-									<div class="image kf-image-hover">
-										<a href="instagram.html" target="blank">
-											<img src="images/ins_gal2.jpg" alt="" />
-											<i class="fab fa-instagram"></i>
-										</a>
-									</div>
-								</div>
-
-							</div>
-							<div class="swiper-slide">
-
-								<div class="slide-item">
-									<div class="image kf-image-hover">
-										<a href="instagram.html" target="blank">
-											<img src="images/ins_gal3.jpg" alt="" />
-											<i class="fab fa-instagram"></i>
-										</a>
-									</div>
-								</div>
-
-							</div>
-							<div class="swiper-slide">
-
-								<div class="slide-item">
-									<div class="image kf-image-hover">
-										<a href="instagram.html" target="blank">
-											<img src="images/ins_gal4.jpg" alt="" />
-											<i class="fab fa-instagram"></i>
-										</a>
-									</div>
-								</div>
-
-							</div>
-							<div class="swiper-slide">
-
-								<div class="slide-item">
-									<div class="image kf-image-hover">
-										<a href="instagram.html" target="blank">
-											<img src="images/ins_gal5.jpg" alt="" />
-											<i class="fab fa-instagram"></i>
-										</a>
-									</div>
-								</div>
-
-							</div>
-							<div class="swiper-slide">
-
-								<div class="slide-item">
-									<div class="image kf-image-hover">
-										<a href="instagram.html" target="blank">
-											<img src="images/ins_gal6.jpg" alt="" />
-											<i class="fab fa-instagram"></i>
-										</a>
-									</div>
-								</div>
-
-							</div>
-							<div class="swiper-slide">
-
-								<div class="slide-item">
-									<div class="image kf-image-hover">
-										<a href="instagram.html" target="blank">
-											<img src="images/ins_gal1.jpg" alt="" />
-											<i class="fab fa-instagram"></i>
-										</a>
-									</div>
-								</div>
-
-							</div>
-							<div class="swiper-slide">
-
-								<div class="slide-item">
-									<div class="image kf-image-hover">
-										<a href="instagram.html" target="blank">
-											<img src="images/ins_gal2.jpg" alt="" />
-											<i class="fab fa-instagram"></i>
-										</a>
-									</div>
-								</div>
-
-							</div>
-							<div class="swiper-slide">
-
-								<div class="slide-item">
-									<div class="image kf-image-hover">
-										<a href="instagram.html" target="blank">
-											<img src="images/ins_gal3.jpg" alt="" />
-											<i class="fab fa-instagram"></i>
-										</a>
-									</div>
-								</div>
-
-							</div>
-							<div class="swiper-slide">
-
-								<div class="slide-item">
-									<div class="image kf-image-hover">
-										<a href="instagram.html" target="blank">
-											<img src="images/ins_gal4.jpg" alt="" />
-											<i class="fab fa-instagram"></i>
-										</a>
-									</div>
-								</div>
-
-							</div>
-							<div class="swiper-slide">
-
-								<div class="slide-item">
-									<div class="image kf-image-hover">
-										<a href="instagram.html" target="blank">
-											<img src="images/ins_gal5.jpg" alt="" />
-											<i class="fab fa-instagram"></i>
-										</a>
-									</div>
-								</div>
-
-							</div>
-							<div class="swiper-slide">
-
-								<div class="slide-item">
-									<div class="image kf-image-hover">
-										<a href="instagram.html" target="blank">
-											<img src="images/ins_gal6.jpg" alt="" />
-											<i class="fab fa-instagram"></i>
-										</a>
-									</div>
-								</div>
-
-							</div>
-						</div>
-					</div>
-				</div>
 			</div>
+		</section>
 
-			<!-- Section Brands -->
-			<div class="section kf-brands">
-				<div class="container">
-
-					<div class="kf-brands-items row">
-
-						<div class="col-xs-12 col-sm-12 col-md-4 col-lg-2">
-							<div class="kf-brands-item element-anim-1 scroll-animate" data-animate="active">
-								<div class="image">
-									<img src="images/brand1.png" alt="" />
-								</div>
-							</div>
-						</div>
-
-						<div class="col-xs-12 col-sm-12 col-md-4 col-lg-2">
-							<div class="kf-brands-item element-anim-1 scroll-animate" data-animate="active">
-								<div class="image">
-									<img src="images/brand2.png" alt="" />
-								</div>
-							</div>
-						</div>
-
-						<div class="col-xs-12 col-sm-12 col-md-4 col-lg-2">
-							<div class="kf-brands-item element-anim-1 scroll-animate" data-animate="active">
-								<div class="image">
-									<img src="images/brand3.png" alt="" />
-								</div>
-							</div>
-						</div>
-
-						<div class="col-xs-12 col-sm-12 col-md-4 col-lg-2">
-							<div class="kf-brands-item element-anim-1 scroll-animate" data-animate="active">
-								<div class="image">
-									<img src="images/brand4.png" alt="" />
-								</div>
-							</div>
-						</div>
-
-						<div class="col-xs-12 col-sm-12 col-md-4 col-lg-2">
-							<div class="kf-brands-item element-anim-1 scroll-animate" data-animate="active">
-								<div class="image">
-									<img src="images/brand5.png" alt="" />
-								</div>
-							</div>
-						</div>
-
-						<div class="col-xs-12 col-sm-12 col-md-4 col-lg-2">
-							<div class="kf-brands-item element-anim-1 scroll-animate" data-animate="active">
-								<div class="image">
-									<img src="images/brand6.png" alt="" />
-								</div>
-							</div>
-						</div>
-
-					</div>
-
-				</div>
-			</div>
 
 		</div>
 
-		<!-- Footer -->
-	  <div class="kf-footer">
-	  	<div class="container">
-	  		<div class="row">
-	  			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
+	<!-- Footer -->
+  <div class="kf-footer">
+  	<div class="container">
+  		<div class="row">
+  			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
 
-	  				<!-- logo -->
-	  				<div class="kf-logo element-anim-1 scroll-animate" data-animate="active">
-	  					<a href="index.html"><img src="images/logo.png" alt="" /></a>
-	  				</div>
+  				<!-- logo -->
+  				<div class="kf-logo element-anim-1 scroll-animate" data-animate="active">
+  					<a href="index.html"><img src="assets/images/dulce-berlin.png" alt="Dulce Berlín - Panadería Alemana" /></a>
+  				</div>
 
-	  			</div>
-	  			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
+  			</div>
+  			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
 
-	  				<!-- hours -->
-	  				<div class="kf-f-hours element-anim-1 scroll-animate" data-animate="active">
-	  					<h5>Working Hours</h5>
-	  					<ul>
-	  						<li>
-	  							Sunday - Thursday
-	  							<em>08:00 am - 09:00pm</em>
-	  						</li>
-	  						<li>
-	  							Only Friday
-	  							<em>03:00 pm - 09:00pm</em>
-	  						</li>
-	  						<li>
-	  							<strong>Saturday Close</strong>
-	  						</li>
-	  					</ul>
-	  				</div>
+  				<!-- hours -->
+  				<div class="kf-f-hours element-anim-1 scroll-animate" data-animate="active">
+  					<h5>Horarios</h5>
+  					<ul>
+  						<li>
+  							Lunes - Viernes
+  							<em>7:00 AM - 6:00 PM</em>
+  						</li>
+  						<li>
+  							Sábados
+  							<em>7:00 AM - 1:00 PM</em>
+  						</li>
+  						<li>
+  							<strong>Domingos: Cerrado</strong>
+  						</li>
+  					</ul>
+  				</div>
 
-	  			</div>
-	  			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
+  			</div>
+  			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
 
-	  				<!-- contact -->
-	  				<div class="kf-f-contact element-anim-1 scroll-animate" data-animate="active">
-	  					<h5>Contact Us</h5>
-	  					<ul>
-			  				<li>
-			  					<i class="las la-map-marker"></i>
-			  					<em>Location :</em>
-			  					Bogotá, Colombia
-			  				</li>
-	  						<li>
-	  							<i class="las la-envelope-open-text"></i>
-	  							<em>Email Address :</em>
-	  							kaffendev@gmail.com
-	  						</li>
-	  						<li>
-	  							<i class="las la-phone"></i>
-	  							<em>Phone Number :</em>
-	  							+012 (345) 678 99
-	  						</li>
-	  					</ul>
-	  				</div>
+  				<!-- contact -->
+  				<div class="kf-f-contact element-anim-1 scroll-animate" data-animate="active">
+  					<h5>Contacto</h5>
+  					<ul>
+		  				<li>
+		  					<i class="las la-map-marker"></i>
+		  					<em>Ubicación:</em>
+		  					Bogotá, Colombia
+		  				</li>
+  						<li>
+  							<i class="las la-envelope-open-text"></i>
+  							<em>Email:</em>
+  							info.dulceberlin@gmail.com
+  						</li>
+  						<li>
+  							<i class="lab la-whatsapp"></i>
+  							<em>WhatsApp:</em>
+  							+57 310 224 4351
+  						</li>
+  					</ul>
+  				</div>
 
-	  			</div>
-	  			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
+  			</div>
+  			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
 
-	  				<!-- gallery -->
-	  				<div class="kf-f-gallery element-anim-1 scroll-animate" data-animate="active">
-	  					<h5>Gallery</h5>
-	  					<ul>
-	  						<li>
-	  							<a href="images/grid_gal1.jpg" class="kf-image-hover has-popup-image"><img src="images/grid_gal1.jpg" alt="" /></a>
-	  						</li>
-	  						<li>
-	  							<a href="images/grid_gal2.jpg" class="kf-image-hover has-popup-image"><img src="images/grid_gal2.jpg" alt="" /></a>
-	  						</li>
-	  						<li>
-	  							<a href="images/grid_gal3.jpg" class="kf-image-hover has-popup-image"><img src="images/grid_gal3.jpg" alt="" /></a>
-	  						</li>
-	  						<li>
-	  							<a href="images/grid_gal4.jpg" class="kf-image-hover has-popup-image"><img src="images/grid_gal4.jpg" alt="" /></a>
-	  						</li>
-	  						<li>
-	  							<a href="images/grid_gal5.jpg" class="kf-image-hover has-popup-image"><img src="images/grid_gal5.jpg" alt="" /></a>
-	  						</li>
-	  						<li>
-	  							<a href="images/grid_gal6.html" class="kf-image-hover has-popup-image"><img src="images/grid_gal1.jpg" alt="" /></a>
-	  						</li>
-	  					</ul>
-	  				</div>
+  				<!-- about -->
+  				<div class="kf-f-about element-anim-1 scroll-animate" data-animate="active">
+  					<h5>Dulce Berlín</h5>
+  					<div class="kf-text">
+  						<p style="line-height: 1.6; color: rgba(255, 255, 255, 0.8);">
+  							Auténtica panadería alemana en el corazón de Colombia, donde cada producto cuenta la historia de la tradición europea.
+  						</p>
+  					</div>
+  					<!-- social -->
+  					<div class="kf-f-social" style="margin-top: 20px;">
+  						<a href="https://www.facebook.com/dulceberlin" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+  						<a href="https://www.instagram.com/dulceberlin" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+  						<a href="https://wa.me/573102244351" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+  					</div>
+  				</div>
 
-	  			</div>
-	  		</div>
-	  		<div class="row">
-	  			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 align-center">
+  			</div>
+  		</div>
+  		<div class="row">
+  			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 align-center">
 
-	  				<!-- copyright -->
-	  				<div class="kf-copyright element-anim-1 scroll-animate" data-animate="active">
-	  					Copyright © 2022 Kaffen. All Rights Reserved.
-	  				</div>
+  				<!-- copyright -->
+  				<div class="kf-copyright element-anim-1 scroll-animate" data-animate="active">
+  					Copyright © <span id="current-year"></span> Dulce Berlín. Todos los derechos reservados.
+  				</div>
 
-	  			</div>
-	  		</div>
-	  	</div>
-	  </div>
+  			</div>
+  		</div>
+  	</div>
+  </div>
 
 	</div>
 
@@ -4246,6 +4776,17 @@
 	  gtag('js', new Date());
 
 	  gtag('config', 'UA-125314689-11');
+	</script>
+
+	<!-- Dynamic Year Script -->
+	<script>
+		// Actualizar el año dinámicamente en el copyright
+		(function() {
+			const yearElement = document.getElementById('current-year');
+			if (yearElement) {
+				yearElement.textContent = new Date().getFullYear();
+			}
+		})();
 	</script>
 
 	<!-- bslthemes.com buttons html begin -->
